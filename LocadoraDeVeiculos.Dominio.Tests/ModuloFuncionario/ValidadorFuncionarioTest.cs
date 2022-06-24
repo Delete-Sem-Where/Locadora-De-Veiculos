@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
             funcionario = new()
             {
                 Nome = "nome",
-                Email = "email",
+                Email = "email@gmail.com",
                 Telefone = "telefone",
                 Endereco = "endereco",
                 Login = "login",
@@ -37,6 +37,26 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         public void Nome_deve_ser_obrigatorio()
         {
             funcionario.Nome = null;
+
+            var resultado = validador.TestValidate(funcionario);
+
+            resultado.ShouldHaveValidationErrorFor(funcionario => funcionario.Nome);
+        }
+
+        [TestMethod]
+        public void Nome_deve_ser_valido()
+        {
+            funcionario.Nome = "asdads123adas";
+
+            var resultado = validador.TestValidate(funcionario);
+
+            resultado.ShouldHaveValidationErrorFor(funcionario => funcionario.Nome);
+        }
+
+        [TestMethod]
+        public void Nome_deve_ter_pelo_menos_2_caracteres()
+        {
+            funcionario.Nome = "a";
 
             var resultado = validador.TestValidate(funcionario);
 
@@ -74,9 +94,39 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         }
 
         [TestMethod]
+        public void Telefone_deve_ser_valido()
+        {
+            funcionario.Telefone = "13212312312";
+
+            var resultado = validador.TestValidate(funcionario);
+
+            resultado.ShouldHaveValidationErrorFor(funcionario => funcionario.Telefone);
+        }
+
+        [TestMethod]
         public void Endereco_deve_ser_obrigatorio()
         {
             funcionario.Endereco = null;
+
+            var resultado = validador.TestValidate(funcionario);
+
+            resultado.ShouldHaveValidationErrorFor(funcionario => funcionario.Endereco);
+        }
+
+        [TestMethod]
+        public void Endereco_deve_ser_valido()
+        {
+            funcionario.Endereco = "asdad1215615 %%asdadsa";
+
+            var resultado = validador.TestValidate(funcionario);
+
+            resultado.ShouldHaveValidationErrorFor(funcionario => funcionario.Endereco);
+        }
+
+        [TestMethod]
+        public void Endereco_deve_ter_pelo_menos_2_caracteres()
+        {
+            funcionario.Endereco = "a";
 
             var resultado = validador.TestValidate(funcionario);
 

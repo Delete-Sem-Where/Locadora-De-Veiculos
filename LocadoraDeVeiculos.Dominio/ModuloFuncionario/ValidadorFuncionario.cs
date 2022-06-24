@@ -1,4 +1,6 @@
 ﻿using FluentValidation;
+using FluentValidation.Validators;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +15,18 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         {
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty()
-                .MinimumLength(2);
+                .RegrasNomes();
 
             RuleFor(x => x.Email)
                 .NotNull().NotEmpty()
                 .EmailAddress();
 
             RuleFor(x => x.Telefone)
-                .NotNull().NotEmpty();
+                .Telefone();
 
             RuleFor(x => x.Endereco)
-                .NotNull().NotEmpty();
+                .NotNull().NotEmpty()
+                .RegrasNomes();
 
             RuleFor(x => x.Login)
                 .NotNull().NotEmpty();
