@@ -14,17 +14,19 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica
         {
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty()
-                .RegrasNomes();
+                .Nomes();
 
             RuleFor(x => x.Email)
                 .NotNull().NotEmpty()
                 .EmailAddress();
 
             RuleFor(x => x.Telefone)
+                .NotNull().NotEmpty()
                 .Telefone();
 
             RuleFor(x => x.Endereco)
-                .NotNull().NotEmpty();
+                .NotNull().NotEmpty()
+                .Endereco();
 
             RuleFor(x => x.CNPJ)
                 .NotNull().NotEmpty()
