@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.Compartilhado
         public IntegrationTestBase()
         {
             //Deletar tabelas do banco aqui
-            //Db.ExecutarSql("DELETE FROM TBBANCO; DBCC CHECKIDENT (TBBANCO, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBPESSOAJURIDICA; DBCC CHECKIDENT (TBPESSOAJURIDICA, RESEED, 0)");
         }
     }
 }
