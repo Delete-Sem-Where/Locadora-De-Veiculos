@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.WinApp.Compartilhado;
+﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.ModuloTaxas;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -164,13 +166,16 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //var repositorioTarefa = new RepositorioTarefaEmBancoDados();
+            var repositorioTaxa = new RepositorioTaxaEmBancoDados();
 
-            //controladores = new Dictionary<string, ControladorBase>();
+            controladores = new Dictionary<string, ControladorBase>();
 
-            //controladores.Add("Tarefas", new ControladorTarefa(repositorioTarefa));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
         }
 
-
+        private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
     }
 }

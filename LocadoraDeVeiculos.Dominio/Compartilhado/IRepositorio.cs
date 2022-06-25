@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
     public interface IRepositorio<T> where T : EntidadeBase<T>
     {
-        ValidationResult Inserir(T novoRegistro);
+        ValidationResult? Inserir(T novoRegistro);
 
-        ValidationResult Editar(T registro);
+        ValidationResult? Editar(T registro);
 
-        ValidationResult Excluir(T registro);
+        void Excluir(T registro);
 
         List<T> SelecionarTodos();
 
