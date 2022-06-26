@@ -12,11 +12,20 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
         /// <typeparam name="T"></typeparam>
         /// <param name="ruleBuilder"></param>
         /// <returns></returns>
-        public static IRuleBuilder<T, string> RegrasNomes<T>(this IRuleBuilder<T, string> ruleBuilder)
+        public static IRuleBuilder<T, string> Nomes<T>(this IRuleBuilder<T, string> ruleBuilder)
         {
             var options = ruleBuilder
                 .MinimumLength(2)
                 .Matches(@"^[a-zA-Z ]+$");
+
+            return options;
+        }
+
+        public static IRuleBuilder<T, string> Endereco<T>(this IRuleBuilder<T, string> ruleBuilder)
+        {
+            var options = ruleBuilder
+                .MinimumLength(2)
+                .Matches(@"^[a-zA-Z0-9 ]+$");
 
             return options;
         }
