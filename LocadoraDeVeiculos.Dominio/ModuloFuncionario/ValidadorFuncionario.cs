@@ -22,6 +22,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                 .EmailAddress();
 
             RuleFor(x => x.Telefone)
+                .NotNull().NotEmpty()
                 .Telefone();
 
             RuleFor(x => x.Endereco)

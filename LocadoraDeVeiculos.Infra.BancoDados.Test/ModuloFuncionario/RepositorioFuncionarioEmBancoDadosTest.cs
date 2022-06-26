@@ -83,9 +83,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloFuncionario
         {
             var f1 = new Funcionario()
             {
-                Nome = "nome 1",
+                Nome = "nome um",
                 Email = "email1@gmail.com",
-                Telefone = "telefone 1",
+                Telefone = "(11)1234-5671",
                 Endereco = "endereco 1",
                 Login = "login 1",
                 Senha = "senha 1",
@@ -97,9 +97,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloFuncionario
 
             var f2 = new Funcionario()
             {
-                Nome = "nome 2",
+                Nome = "nome dois",
                 Email = "email2@gmail.com",
-                Telefone = "telefone 2",
+                Telefone = "(11)1234-5672",
                 Endereco = "endereco 2",
                 Login = "login 2",
                 Senha = "senha 2",
@@ -111,9 +111,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloFuncionario
 
             var f3 = new Funcionario()
             {
-                Nome = "nome 3",
+                Nome = "nome tres",
                 Email = "email3@gmail.com",
-                Telefone = "telefone 3",
+                Telefone = "(11)1234-5673",
                 Endereco = "endereco 3",
                 Login = "login 3",
                 Senha = "senha 3",
@@ -138,7 +138,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloFuncionario
             {
                 Nome = "nome",
                 Email = "email@gmail.com",
-                Telefone = "telefone",
+                Telefone = "(11)1234-5678",
                 Endereco = "endereco",
                 Login = "login",
                 Senha = "senha",

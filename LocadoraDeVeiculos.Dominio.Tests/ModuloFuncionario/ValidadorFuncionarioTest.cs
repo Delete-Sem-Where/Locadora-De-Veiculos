@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
             {
                 Nome = "nome",
                 Email = "email@gmail.com",
-                Telefone = "telefone",
+                Telefone = "(11)1234-5678",
                 Endereco = "endereco",
                 Login = "login",
                 Senha = "senha",
@@ -96,7 +96,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         [TestMethod]
         public void Telefone_deve_ser_valido()
         {
-            funcionario.Telefone = "13212312312";
+            funcionario.Telefone = "5456asad";
 
             var resultado = validador.TestValidate(funcionario);
 
