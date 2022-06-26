@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
         
         #region Sql Queries
         protected override string sqlInserir =>
-            @"INSERT INTO [TAXA] 
+            @"INSERT INTO [TBTAXA] 
                 (
                     [DESCRICAO],
                     [VALOR]
@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
                 );SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
-            @"UPDATE [TAXA]	
+            @"UPDATE [TBTAXA]	
 		        SET
 			        [DESCRICAO] = @DESCRICAO,
 			        [VALOR] = @VALOR
@@ -40,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 			        [ID] = @ID";
 
         protected override string sqlExcluir =>
-            @"DELETE FROM [TAXA]
+            @"DELETE FROM [TBTAXA]
 		        WHERE
 			        [ID] = @ID";
 
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 		            [VALOR]
 
 	            FROM 
-		            [TAXA]";
+		            [TBTAXA]";
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 		            [VALOR]
 
 	            FROM 
-		            [TAXA]
+		            [TBTAXA]
 		        WHERE
                     [ID] = @ID";
 
@@ -81,10 +81,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             if (registroEncontradoNome)
             {
                 if (registro.Id == 0)
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrado com esse Nome"));
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrada com esse Nome"));
                 else if (registro.Id != 0)
                 {
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrado com esse Nome"));
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrada com esse Nome"));
                 }
             }
 

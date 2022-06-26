@@ -120,6 +120,7 @@
             this.txtUpDownValor.Size = new System.Drawing.Size(230, 23);
             this.txtUpDownValor.TabIndex = 8;
             this.txtUpDownValor.ThousandsSeparator = true;
+            this.txtUpDownValor.Controls[0].Enabled = false;
             this.txtUpDownValor.Value = new decimal(new int[] {
             1,
             0,
