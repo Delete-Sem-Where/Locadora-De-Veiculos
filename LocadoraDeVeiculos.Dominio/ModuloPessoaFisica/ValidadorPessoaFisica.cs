@@ -14,24 +14,27 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaFisica
         {
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty()
-                .RegrasNomes();
+                .Nomes();
 
             RuleFor(x => x.Email)
                 .NotNull().NotEmpty()
                 .EmailAddress();
 
             RuleFor(x => x.Telefone)
+                .NotNull().NotEmpty()
                 .Telefone();
 
             RuleFor(x => x.Endereco)
                 .NotNull().NotEmpty()
-                .RegrasNomes();
+                .Endereco();
 
             RuleFor(x => x.CPF)
-                .NotNull().NotEmpty();
+                .NotNull().NotEmpty()
+                .MinimumLength(11);
 
             RuleFor(x => x.CNH)
-                .NotNull().NotEmpty();
+                .NotNull().NotEmpty()
+                .MinimumLength(11);
         }
     }
 }
