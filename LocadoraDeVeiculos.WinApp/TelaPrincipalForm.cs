@@ -71,32 +71,7 @@ namespace LocadoraDeVeiculos.WinApp
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controlador.Excluir();
-        }
-
-        //private void btnAdicionarItens_Click(object sender, EventArgs e)
-        //{
-        //    controlador.AdicionarItens();
-        //}
-
-        //private void btnAtualizarItens_Click(object sender, EventArgs e)
-        //{
-        //    controlador.AtualizarItens();
-        //}
-
-        //private void btnFiltrar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Filtrar();
-        //}
-
-        //private void btnAgrupar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Agrupar();
-        //}
-
-        //private void btnVisualizar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Visualizar();
-        //}
+        }        
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
@@ -164,13 +139,16 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //var repositorioTarefa = new RepositorioTarefaEmBancoDados();
+            //var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
 
             //controladores = new Dictionary<string, ControladorBase>();
 
-            //controladores.Add("Tarefas", new ControladorTarefa(repositorioTarefa));
+            //controladores.Add("PessoaFisica", new ControladorTarefa(repositorioPessoaFisica));
         }
 
-
+        private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
     }
 }
