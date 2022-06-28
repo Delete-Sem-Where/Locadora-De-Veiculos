@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.WinApp.Compartilhado;
+﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -33,27 +35,7 @@ namespace LocadoraDeVeiculos.WinApp
             labelRodape.Text = mensagem;
         }
 
-        private void tarefasMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void contatosMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void compromissosMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void despesasMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void categoriasMenuItem_Click(object sender, EventArgs e)
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -164,13 +146,12 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //var repositorioTarefa = new RepositorioTarefaEmBancoDados();
+            var repositorioTarefa = new RepositorioFuncionarioEmBancoDados();
 
-            //controladores = new Dictionary<string, ControladorBase>();
+            controladores = new Dictionary<string, ControladorBase>();
 
-            //controladores.Add("Tarefas", new ControladorTarefa(repositorioTarefa));
+            controladores.Add("Funcionário", new ControladorFuncionario(repositorioTarefa));
         }
-
 
     }
 }
