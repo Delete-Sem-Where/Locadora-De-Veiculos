@@ -1,10 +1,12 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.WinApp.ModuloPessoaFisica;
+using LocadoraDeVeiculos.WinApp.ModuloTaxas;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -138,12 +140,19 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
             var repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
             var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
+            var repositorioTaxa = new RepositorioTaxaEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
             controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
+        }
+
+        private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
     }
 }

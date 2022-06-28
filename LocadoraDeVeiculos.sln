@@ -11,21 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Testes", "4 - Testes", "{6EDBF6A1-F96E-4B0D-BA67-99FD11811E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Dominio", "LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj", "{1D57FE25-2E57-41E9-BB13-8DAADE5BDFFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Dominio", "LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj", "{1D57FE25-2E57-41E9-BB13-8DAADE5BDFFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.BancoDados", "LocadoraDeVeiculos.Infra.BancoDados\LocadoraDeVeiculos.Infra.BancoDados.csproj", "{C857F24A-9F31-49A1-9CEE-4C0D8C27CBA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.BancoDados", "LocadoraDeVeiculos.Infra.BancoDados\LocadoraDeVeiculos.Infra.BancoDados.csproj", "{C857F24A-9F31-49A1-9CEE-4C0D8C27CBA0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Testes Unitarios", "4.1 - Testes Unitarios", "{0B81B08A-49A1-42DF-BD42-1D5A39E11548}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Testes de Integracao", "4.2 - Testes de Integracao", "{6A7AF5B9-9938-40DB-8A9F-538E6CEE71D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Dominio.Tests", "LocadoraDeVeiculos.Dominio.Tests\LocadoraDeVeiculos.Dominio.Tests.csproj", "{B8E1C7BF-E5E3-4757-A3D4-DA1DD8423C82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Dominio.Tests", "LocadoraDeVeiculos.Dominio.Tests\LocadoraDeVeiculos.Dominio.Tests.csproj", "{B8E1C7BF-E5E3-4757-A3D4-DA1DD8423C82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.BancoDados.Test", "LocadoraDeVeiculos.Infra.BancoDados.Test\LocadoraDeVeiculos.Infra.BancoDados.Test.csproj", "{396255ED-3929-409D-AA9B-6DAD21349909}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.BancoDados.Test", "LocadoraDeVeiculos.Infra.BancoDados.Test\LocadoraDeVeiculos.Infra.BancoDados.Test.csproj", "{396255ED-3929-409D-AA9B-6DAD21349909}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LocadoraDeVeiculosDb", "LocadoraDeVeiculosDb\LocadoraDeVeiculosDb.sqlproj", "{213544B0-575B-44A6-A721-3287A07672CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.WinApp", "LocadoraDeVeiculos.WinApp\LocadoraDeVeiculos.WinApp.csproj", "{B81AE012-E62C-40B6-B9AE-6EA37465BDD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.WinApp", "LocadoraDeVeiculos.WinApp\LocadoraDeVeiculos.WinApp.csproj", "{B81AE012-E62C-40B6-B9AE-6EA37465BDD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

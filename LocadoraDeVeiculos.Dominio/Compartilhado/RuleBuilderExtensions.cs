@@ -52,6 +52,6 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
                 .Matches(@"^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$");
 
             return options;
-        }
+        }               
     }
 }
