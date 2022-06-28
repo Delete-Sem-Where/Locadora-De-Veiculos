@@ -140,6 +140,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             return resultadoValidacao;
         }
-
     }
 }

@@ -1,6 +1,8 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
+using LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -36,6 +38,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void pessoaJurídicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -146,12 +153,13 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            var repositorioTarefa = new RepositorioFuncionarioEmBancoDados();
+            var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
+            var repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Funcionário", new ControladorFuncionario(repositorioTarefa));
+            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
+            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
         }
-
     }
 }

@@ -37,5 +37,13 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
 
             return options;
         }
+
+        public static IRuleBuilder<T, string> CNPJ<T>(this IRuleBuilder<T, string> ruleBuilder)
+        {
+            var options = ruleBuilder
+                .Matches(@"^[0-9]{2}.[0-9]{3}.[0-9]{3}\/[0-9]{4}-[0-9]{2}$");
+
+            return options;
+        }
     }
 }

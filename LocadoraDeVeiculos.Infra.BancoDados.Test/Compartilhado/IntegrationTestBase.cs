@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.Compartilhado
         public IntegrationTestBase()
         {
             Db.ExecutarSql("DELETE FROM TBFUNCIONARIO; DBCC CHECKIDENT(TBFUNCIONARIO, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBPESSOAJURIDICA; DBCC CHECKIDENT (TBPESSOAJURIDICA, RESEED, 0)");
         }
     }
 }
