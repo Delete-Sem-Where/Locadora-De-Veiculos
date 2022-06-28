@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
         {
             var options = ruleBuilder
                 .MinimumLength(2)
-                .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ[0-9] ]+$");
+                .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ0-9 ]+$");
 
             return options;
         }
