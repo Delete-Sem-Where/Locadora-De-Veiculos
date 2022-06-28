@@ -31,6 +31,7 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pessoasFísicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
@@ -62,8 +63,7 @@
             this.cadastrosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menu.Size = new System.Drawing.Size(1062, 30);
+            this.menu.Size = new System.Drawing.Size(929, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
             // 
@@ -73,8 +73,10 @@
             this.funcionárioToolStripMenuItem});
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pessoaJurídicaToolStripMenuItem});
+            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pessoasFísicasToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // funcionárioToolStripMenuItem
@@ -83,6 +85,13 @@
             this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.funcionárioToolStripMenuItem.Text = "Funcionário";
             this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
+            // 
+            // pessoasFísicasToolStripMenuItem
+            // 
+            this.pessoasFísicasToolStripMenuItem.Name = "pessoasFísicasToolStripMenuItem";
+            this.pessoasFísicasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pessoasFísicasToolStripMenuItem.Text = "Pessoas Físicas";
+            this.pessoasFísicasToolStripMenuItem.Click += new System.EventHandler(this.pessoasFísicasToolStripMenuItem_Click);
             // 
             // toolbox
             // 
@@ -103,9 +112,9 @@
             this.btnAgrupar,
             this.toolStripSeparator4,
             this.labelTipoCadastro});
-            this.toolbox.Location = new System.Drawing.Point(0, 30);
+            this.toolbox.Location = new System.Drawing.Point(0, 24);
             this.toolbox.Name = "toolbox";
-            this.toolbox.Size = new System.Drawing.Size(1062, 41);
+            this.toolbox.Size = new System.Drawing.Size(929, 41);
             this.toolbox.TabIndex = 1;
             this.toolbox.Text = "toolStrip1";
             // 
@@ -153,12 +162,12 @@
             // btnAdicionarItens
             // 
             this.btnAdicionarItens.Name = "btnAdicionarItens";
-            this.btnAdicionarItens.Size = new System.Drawing.Size(29, 38);
+            this.btnAdicionarItens.Size = new System.Drawing.Size(23, 38);
             // 
             // btnAtualizarItens
             // 
             this.btnAtualizarItens.Name = "btnAtualizarItens";
-            this.btnAtualizarItens.Size = new System.Drawing.Size(29, 38);
+            this.btnAtualizarItens.Size = new System.Drawing.Size(23, 38);
             // 
             // toolStripSeparator1
             // 
@@ -168,7 +177,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(29, 38);
+            this.btnFiltrar.Size = new System.Drawing.Size(23, 38);
             // 
             // toolStripSeparator3
             // 
@@ -178,7 +187,7 @@
             // btnVisualizar
             // 
             this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(29, 38);
+            this.btnVisualizar.Size = new System.Drawing.Size(23, 38);
             // 
             // toolStripSeparator5
             // 
@@ -188,7 +197,7 @@
             // btnAgrupar
             // 
             this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(29, 38);
+            this.btnAgrupar.Size = new System.Drawing.Size(23, 38);
             // 
             // toolStripSeparator4
             // 
@@ -199,7 +208,7 @@
             // 
             this.labelTipoCadastro.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.labelTipoCadastro.Name = "labelTipoCadastro";
-            this.labelTipoCadastro.Size = new System.Drawing.Size(121, 38);
+            this.labelTipoCadastro.Size = new System.Drawing.Size(90, 38);
             this.labelTipoCadastro.Text = "[tipoCadastro]";
             // 
             // statusStrip1
@@ -207,26 +216,24 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 786);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 587);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1062, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(929, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // labelRodape
             // 
             this.labelRodape.Name = "labelRodape";
-            this.labelRodape.Size = new System.Drawing.Size(67, 20);
+            this.labelRodape.Size = new System.Drawing.Size(52, 17);
             this.labelRodape.Text = "[rodapé]";
             // 
             // panelRegistros
             // 
             this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRegistros.Location = new System.Drawing.Point(0, 71);
-            this.panelRegistros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelRegistros.Location = new System.Drawing.Point(0, 65);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(1062, 715);
+            this.panelRegistros.Size = new System.Drawing.Size(929, 522);
             this.panelRegistros.TabIndex = 3;
             // 
             // pessoaJurídicaToolStripMenuItem
@@ -238,16 +245,15 @@
             // 
             // TelaPrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 812);
+            this.ClientSize = new System.Drawing.Size(929, 609);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1077, 848);
+            this.MinimumSize = new System.Drawing.Size(944, 646);
             this.Name = "TelaPrincipalForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -287,5 +293,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem funcionárioToolStripMenuItem;
         private ToolStripMenuItem pessoaJurídicaToolStripMenuItem;
+        private ToolStripMenuItem pessoasFísicasToolStripMenuItem;
     }
 }

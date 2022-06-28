@@ -1,8 +1,10 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica;
+using LocadoraDeVeiculos.WinApp.ModuloPessoaFisica;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -61,31 +63,6 @@ namespace LocadoraDeVeiculos.WinApp
         {
             controlador.Excluir();
         }
-
-        //private void btnAdicionarItens_Click(object sender, EventArgs e)
-        //{
-        //    controlador.AdicionarItens();
-        //}
-
-        //private void btnAtualizarItens_Click(object sender, EventArgs e)
-        //{
-        //    controlador.AtualizarItens();
-        //}
-
-        //private void btnFiltrar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Filtrar();
-        //}
-
-        //private void btnAgrupar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Agrupar();
-        //}
-
-        //private void btnVisualizar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Visualizar();
-        //}
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
@@ -155,11 +132,18 @@ namespace LocadoraDeVeiculos.WinApp
         {
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
             var repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
+            var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
+            controladores.Add("Pessoas Físicas", new ControladorPessoaFisica(repositorioPessoaFisica));
+        }
+
+        private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
     }
 }
