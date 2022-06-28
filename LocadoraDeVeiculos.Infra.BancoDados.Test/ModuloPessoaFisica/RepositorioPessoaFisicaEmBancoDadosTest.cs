@@ -84,7 +84,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaFisica
                 Email = "email1@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 1",
-                CPF = "12345678911",
+                CPF = "123.123.123-11",
                 CNH = "12345678912",
             };
 
@@ -96,7 +96,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaFisica
                 Email = "email2@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 2",
-                CPF = "12345678912",
+                CPF = "123.123.123-12",
                 CNH = "12345678912",
             };
 
@@ -108,7 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaFisica
                 Email = "email3@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 3",
-                CPF = "12345678913",
+                CPF = "123.123.123-13",
                 CNH = "12345678912",
             };
 
@@ -131,7 +131,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaFisica
                 Email = "email@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco",
-                CPF = "12345678912",
+                CPF = "123.123.123-12",
                 CNH = "12345678912",
             };
         }

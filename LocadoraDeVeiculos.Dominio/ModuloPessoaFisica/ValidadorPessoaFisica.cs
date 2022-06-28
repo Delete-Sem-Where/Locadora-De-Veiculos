@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaFisica
 
             RuleFor(x => x.CPF)
                 .NotNull().NotEmpty()
-                .MinimumLength(11);
+                .CPF();
 
             RuleFor(x => x.CNH)
                 .NotNull().NotEmpty()

@@ -32,13 +32,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
             set
             {
                 pessoaFisica = value;
-                textBoxNumeroPF.Text = pessoaFisica.Id.ToString();
-                textBoxNomePF.Text = pessoaFisica.Nome;
-                textBoxCpfPF.Text = pessoaFisica.CPF;
-                textBoxEmailPF.Text = pessoaFisica.Email;
-                textBoxTelefonePF.Text = pessoaFisica.Telefone;
-                textBoxEnderecoPF.Text = pessoaFisica.Endereco;
-                textBoxCnhPF.Text = pessoaFisica.CNH;                                
+                txtNumero.Text = pessoaFisica.Id.ToString();
+                txtNome.Text = pessoaFisica.Nome;
+                txtCPF.Text = pessoaFisica.CPF;
+                txtEmail.Text = pessoaFisica.Email;
+                txtTelefone.Text = pessoaFisica.Telefone;
+                txtEndereco.Text = pessoaFisica.Endereco;
+                txtCNH.Text = pessoaFisica.CNH;                                
             }
         }
 
@@ -54,12 +54,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
 
         private void buttonGravarPf_Click(object sender, EventArgs e)
         {
-            pessoaFisica.Nome = textBoxNomePF.Text;
-            pessoaFisica.CPF = textBoxCpfPF.Text;
-            pessoaFisica.Email = textBoxEmailPF.Text;
-            pessoaFisica.Telefone = textBoxTelefonePF.Text;
-            pessoaFisica.Endereco = textBoxEnderecoPF.Text;
-            pessoaFisica.CNH = textBoxCnhPF.Text;
+            pessoaFisica.Nome = txtNome.Text;
+            pessoaFisica.CPF = txtCPF.Text;
+            pessoaFisica.Email = txtEmail.Text;
+            pessoaFisica.Telefone = txtTelefone.Text;
+            pessoaFisica.Endereco = txtEndereco.Text;
+            pessoaFisica.CNH = txtCNH.Text;
 
             var resultadoValidacao = GravarRegistro(pessoaFisica);
 

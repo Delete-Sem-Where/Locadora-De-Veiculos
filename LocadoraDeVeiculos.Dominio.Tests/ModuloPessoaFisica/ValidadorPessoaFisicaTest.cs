@@ -130,7 +130,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPessoaFisica
         }
 
         [TestMethod]
-        public void CPF_deve_ter_tamanho_valido()
+        public void CPF_deve_ser_valido()
         {
             pessoaFisica.CPF = "123456";
 

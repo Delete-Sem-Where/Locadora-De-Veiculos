@@ -49,6 +49,11 @@ namespace LocadoraDeVeiculos.WinApp
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
+        private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
         private void btnInserir_Click(object sender, EventArgs e)
         {
             controlador.Inserir();
@@ -138,12 +143,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
-            controladores.Add("Pessoas Físicas", new ControladorPessoaFisica(repositorioPessoaFisica));
-        }
-
-        private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
         }
     }
 }

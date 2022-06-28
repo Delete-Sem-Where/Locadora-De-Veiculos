@@ -34,16 +34,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBoxNomePF = new System.Windows.Forms.TextBox();
-            this.textBoxCpfPF = new System.Windows.Forms.TextBox();
-            this.textBoxEmailPF = new System.Windows.Forms.TextBox();
-            this.textBoxEnderecoPF = new System.Windows.Forms.TextBox();
-            this.textBoxCnhPF = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtEndereco = new System.Windows.Forms.TextBox();
             this.buttonGravarPf = new System.Windows.Forms.Button();
             this.buttonCancelarPf = new System.Windows.Forms.Button();
-            this.textBoxNumeroPF = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxTelefonePF = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.txtCNH = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -102,43 +102,27 @@
             // 
             // textBoxNomePF
             // 
-            this.textBoxNomePF.Location = new System.Drawing.Point(104, 69);
-            this.textBoxNomePF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxNomePF.Name = "textBoxNomePF";
-            this.textBoxNomePF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxNomePF.TabIndex = 6;
-            // 
-            // textBoxCpfPF
-            // 
-            this.textBoxCpfPF.Location = new System.Drawing.Point(104, 122);
-            this.textBoxCpfPF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxCpfPF.Name = "textBoxCpfPF";
-            this.textBoxCpfPF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxCpfPF.TabIndex = 7;
+            this.txtNome.Location = new System.Drawing.Point(104, 69);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNome.Name = "textBoxNomePF";
+            this.txtNome.Size = new System.Drawing.Size(294, 27);
+            this.txtNome.TabIndex = 6;
             // 
             // textBoxEmailPF
             // 
-            this.textBoxEmailPF.Location = new System.Drawing.Point(104, 175);
-            this.textBoxEmailPF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxEmailPF.Name = "textBoxEmailPF";
-            this.textBoxEmailPF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxEmailPF.TabIndex = 8;
+            this.txtEmail.Location = new System.Drawing.Point(104, 175);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Name = "textBoxEmailPF";
+            this.txtEmail.Size = new System.Drawing.Size(294, 27);
+            this.txtEmail.TabIndex = 8;
             // 
             // textBoxEnderecoPF
             // 
-            this.textBoxEnderecoPF.Location = new System.Drawing.Point(104, 281);
-            this.textBoxEnderecoPF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxEnderecoPF.Name = "textBoxEnderecoPF";
-            this.textBoxEnderecoPF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxEnderecoPF.TabIndex = 10;
-            // 
-            // textBoxCnhPF
-            // 
-            this.textBoxCnhPF.Location = new System.Drawing.Point(104, 334);
-            this.textBoxCnhPF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxCnhPF.Name = "textBoxCnhPF";
-            this.textBoxCnhPF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxCnhPF.TabIndex = 11;
+            this.txtEndereco.Location = new System.Drawing.Point(104, 281);
+            this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEndereco.Name = "textBoxEnderecoPF";
+            this.txtEndereco.Size = new System.Drawing.Size(294, 27);
+            this.txtEndereco.TabIndex = 10;
             // 
             // buttonGravarPf
             // 
@@ -165,12 +149,12 @@
             // 
             // textBoxNumeroPF
             // 
-            this.textBoxNumeroPF.Enabled = false;
-            this.textBoxNumeroPF.Location = new System.Drawing.Point(104, 24);
-            this.textBoxNumeroPF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxNumeroPF.Name = "textBoxNumeroPF";
-            this.textBoxNumeroPF.Size = new System.Drawing.Size(34, 27);
-            this.textBoxNumeroPF.TabIndex = 15;
+            this.txtNumero.Enabled = false;
+            this.txtNumero.Location = new System.Drawing.Point(104, 24);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNumero.Name = "textBoxNumeroPF";
+            this.txtNumero.Size = new System.Drawing.Size(34, 27);
+            this.txtNumero.TabIndex = 15;
             // 
             // label7
             // 
@@ -181,30 +165,46 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Numero:";
             // 
-            // textBoxTelefonePf
+            // textBoxTelefonePF
             // 
-            this.textBoxTelefonePF.Location = new System.Drawing.Point(104, 228);
-            this.textBoxTelefonePF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxTelefonePF.Mask = "(99) 00000-0000";
-            this.textBoxTelefonePF.Name = "textBoxTelefonePf";
-            this.textBoxTelefonePF.Size = new System.Drawing.Size(294, 27);
-            this.textBoxTelefonePF.TabIndex = 55;
+            this.txtTelefone.Location = new System.Drawing.Point(104, 228);
+            this.txtTelefone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTelefone.Mask = "(99) 00000-0000";
+            this.txtTelefone.Name = "textBoxTelefonePF";
+            this.txtTelefone.Size = new System.Drawing.Size(294, 27);
+            this.txtTelefone.TabIndex = 55;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Location = new System.Drawing.Point(104, 122);
+            this.txtCPF.Mask = "000.000.000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(294, 27);
+            this.txtCPF.TabIndex = 56;
+            // 
+            // txtCNH
+            // 
+            this.txtCNH.Location = new System.Drawing.Point(104, 334);
+            this.txtCNH.Mask = "00000000000";
+            this.txtCNH.Name = "txtCNH";
+            this.txtCNH.Size = new System.Drawing.Size(294, 27);
+            this.txtCNH.TabIndex = 57;
             // 
             // TelaCadastroPessoaFisicaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 479);
-            this.Controls.Add(this.textBoxTelefonePF);
-            this.Controls.Add(this.textBoxNumeroPF);
+            this.Controls.Add(this.txtCNH);
+            this.Controls.Add(this.txtCPF);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.buttonCancelarPf);
             this.Controls.Add(this.buttonGravarPf);
-            this.Controls.Add(this.textBoxCnhPF);
-            this.Controls.Add(this.textBoxEnderecoPF);
-            this.Controls.Add(this.textBoxEmailPF);
-            this.Controls.Add(this.textBoxCpfPF);
-            this.Controls.Add(this.textBoxNomePF);
+            this.Controls.Add(this.txtEndereco);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -227,15 +227,15 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBoxNomePF;
-        private TextBox textBoxCpfPF;
-        private TextBox textBoxEmailPF;
-        private TextBox textBoxEnderecoPF;
-        private TextBox textBoxCnhPF;
+        private TextBox txtNome;
+        private TextBox txtEmail;
+        private TextBox txtEndereco;
         private Button buttonGravarPf;
         private Button buttonCancelarPf;
-        private TextBox textBoxNumeroPF;
+        private TextBox txtNumero;
         private Label label7;
-        private MaskedTextBox textBoxTelefonePF;
+        private MaskedTextBox txtTelefone;
+        private MaskedTextBox txtCPF;
+        private MaskedTextBox txtCNH;
     }
 }
