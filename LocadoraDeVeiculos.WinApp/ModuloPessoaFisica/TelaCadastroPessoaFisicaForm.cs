@@ -18,9 +18,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
         {
             InitializeComponent();
         }
+
         public Func<PessoaFisica, ValidationResult> GravarRegistro { get; set; }
 
-        public PessoaFisica pessoaFisica
+        private PessoaFisica pessoaFisica;
+
+        public PessoaFisica PessoaFisica
         {
             get
             {
@@ -39,7 +42,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
             }
         }
 
-
         private void TelaCadastroPessoaFisicaForm_Load(object sender, EventArgs e)
         {
             TelaPrincipalForm.Instancia.AtualizarRodape("");
@@ -50,7 +52,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
             TelaPrincipalForm.Instancia.AtualizarRodape("");
         }
 
-        private void buttonGravarPessoaFisica_Click(object sender, EventArgs e)
+        private void buttonGravarPf_Click(object sender, EventArgs e)
         {
             pessoaFisica.Nome = textBoxNomePF.Text;
             pessoaFisica.CPF = textBoxCpfPF.Text;
@@ -67,7 +69,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);
                 DialogResult = DialogResult.None;
             }
-
         }
     }
 }

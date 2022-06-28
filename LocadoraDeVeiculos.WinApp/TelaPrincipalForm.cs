@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.WinApp.Compartilhado;
+﻿using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.ModuloPessoaFisica;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -139,11 +141,11 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
+            var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
 
-            //controladores = new Dictionary<string, ControladorBase>();
+            controladores = new Dictionary<string, ControladorBase>();
 
-            //controladores.Add("PessoaFisica", new ControladorTarefa(repositorioPessoaFisica));
+            controladores.Add("Pessoas Físicas", new ControladorPessoaFisica(repositorioPessoaFisica));
         }
 
         private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)

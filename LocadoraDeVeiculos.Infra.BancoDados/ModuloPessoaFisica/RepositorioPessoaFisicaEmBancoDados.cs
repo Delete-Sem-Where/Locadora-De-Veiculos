@@ -106,10 +106,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica
 			if (registroEncontradoCNPJ)
 			{
 				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CNPJ"));
+					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CPF"));
 				else if (registro.Id != 0)
 				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CNPJ"));
+					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CPF"));
 				}
 			}
 
