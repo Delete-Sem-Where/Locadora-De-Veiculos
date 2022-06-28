@@ -85,7 +85,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaJuridica
                 Email = "email1@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 1",
-                CNPJ = "12345678912345"
+                CNPJ = "74.539.395/0001-31"
             };
 
             repositorio.Inserir(pj1);
@@ -96,7 +96,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaJuridica
                 Email = "email2@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 2",
-                CNPJ = "12345678912346"
+                CNPJ = "74.539.395/0001-32"
             };
 
             repositorio.Inserir(pj2);
@@ -107,7 +107,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaJuridica
                 Email = "email3@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco 3",
-                CNPJ = "12345678912347"
+                CNPJ = "74.539.395/0001-33"
             };
 
             repositorio.Inserir(pj3);
@@ -129,7 +129,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloPessoaJuridica
                 Email = "email@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco",
-                CNPJ = "12345678912345"
+                CNPJ = "74.539.395/0001-31"
             };
         }
 

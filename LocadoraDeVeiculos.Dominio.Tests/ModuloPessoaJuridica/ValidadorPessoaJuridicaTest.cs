@@ -130,7 +130,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPessoaJuridica
         }
 
         [TestMethod]
-        public void CNPJ_deve_ter_tamanho_valido()
+        public void CNPJ_deve_ser_valido()
         {
             pessoaJuridica.CNPJ = "123456";
 

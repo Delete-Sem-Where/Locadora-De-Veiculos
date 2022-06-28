@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica
 
             RuleFor(x => x.CNPJ)
                 .NotNull().NotEmpty()
-                .MinimumLength(14);
+                .CNPJ();
         }
     }
 }
