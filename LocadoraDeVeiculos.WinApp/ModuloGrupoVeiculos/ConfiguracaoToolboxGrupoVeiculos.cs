@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
 {
-    public class ConfiguraçãoToolboxGrupoVeiculos : ConfiguracaoToolboxBase
+    public class ConfiguracaoToolboxGrupoVeiculos : ConfiguracaoToolboxBase
     {
         public override string TipoCadastro => "Controle de grupo de veículos";
 
