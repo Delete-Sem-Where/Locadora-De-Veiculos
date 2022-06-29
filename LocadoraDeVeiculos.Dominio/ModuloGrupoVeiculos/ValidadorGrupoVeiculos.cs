@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos
     {
         public ValidadorGrupoVeiculos()
         {
-            Regex regex = new Regex("^[a-z A-Z0-9]*$");
-
             RuleFor(x => x.Nome)
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
-                    .Matches(regex);
+                    .Nome();
         }
     }
 }

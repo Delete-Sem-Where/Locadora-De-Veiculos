@@ -21,6 +21,14 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
             return options;
         }
 
+        public static IRuleBuilder<T, string> Nome<T>(this IRuleBuilder<T, string> ruleBuilder)
+        {
+            var options = ruleBuilder
+                         .MinimumLength(2)
+                         .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
+            return options;
+        }
+
         public static IRuleBuilder<T, string> Endereco<T>(this IRuleBuilder<T, string> ruleBuilder)
         {
             var options = ruleBuilder

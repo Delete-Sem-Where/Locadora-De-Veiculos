@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloGrupoVeiculos
         }
 
         [TestMethod]
-        public void Deve_selecionar_grupó_de_veiculos_por_id()
+        public void Deve_selecionar_grupo_de_veiculos_por_id()
         {
             var grupoVeiculos = NovoGrupoVeiculos();
 
