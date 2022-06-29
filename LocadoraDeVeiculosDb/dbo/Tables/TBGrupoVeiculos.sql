@@ -1,5 +1,6 @@
-﻿CREATE TABLE [dbo].[TBGrupoVeiculos]
-(
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Nome] VARCHAR(50) NOT NULL
-)
+﻿CREATE TABLE [dbo].[TBGrupoVeiculos] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Nome] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
