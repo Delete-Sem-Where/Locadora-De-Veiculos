@@ -11,7 +11,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
     public class ControladorPessoaFisica : ControladorBase
     {
         private readonly IRepositorioPessoaFisica repositorioPessoaFisica;
-        private TabelaPessoaFisicaControl tabelaPessoaFisica;
+        private TabelaGrupoVeiculosControl tabelaPessoaFisica;
 
         public ControladorPessoaFisica(IRepositorioPessoaFisica repositorioPessoaFisica)
         {
