@@ -1,6 +1,6 @@
 ﻿namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
 {
-    partial class TabelaPessoaFisicaControl
+    partial class TabelaGrupoVeiculosControl
     {
         /// <summary> 
         /// Required designer variable.

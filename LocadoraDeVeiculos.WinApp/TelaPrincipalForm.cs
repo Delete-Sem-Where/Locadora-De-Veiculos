@@ -10,6 +10,8 @@ using LocadoraDeVeiculos.WinApp.ModuloTaxas;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -141,6 +143,7 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
             var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -148,6 +151,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
             controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
+            controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
