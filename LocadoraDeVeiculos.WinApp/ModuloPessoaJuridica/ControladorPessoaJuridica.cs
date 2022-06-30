@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloPessoaJuridica;
+using LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica
     {
         private readonly IRepositorioPessoaJuridica repositorioPessoaJuridica;
         private TabelaPessoaJuridicaControl tabelaPessoaJuridica;
+        private ServicoPessoaJuridica servicoPessoaJuridica;
 
-        public ControladorPessoaJuridica(IRepositorioPessoaJuridica repositorioPessoaJuridica)
+        public ControladorPessoaJuridica(IRepositorioPessoaJuridica repositorioPessoaJuridica, ServicoPessoaJuridica servicoPessoaJuridica)
         {
             this.repositorioPessoaJuridica = repositorioPessoaJuridica;
+            this.servicoPessoaJuridica = servicoPessoaJuridica;
         }
 
         public override void Inserir()
@@ -23,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica
             TelaCadastroPessoaJuridicaForm tela = new TelaCadastroPessoaJuridicaForm();
             tela.PessoaJuridica = new PessoaJuridica();
 
-            tela.GravarRegistro = repositorioPessoaJuridica.Inserir;
+            tela.GravarRegistro = servicoPessoaJuridica.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -47,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica
 
             tela.PessoaJuridica = pessoaJuridicaSelecionada.Clonar();
 
-            tela.GravarRegistro = repositorioPessoaJuridica.Editar;
+            tela.GravarRegistro = servicoPessoaJuridica.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

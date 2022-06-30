@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraDeVeiculos.Aplicacao.ModuloPessoaJuridica;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -147,11 +148,12 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoPessoaJuridica = new ServicoPessoaJuridica(repositorioPessoaJuridica);
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
-            //controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
+            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica, servicoPessoaJuridica));
             //controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
             //controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
             //controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
