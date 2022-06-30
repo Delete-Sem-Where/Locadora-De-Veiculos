@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
+using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -145,13 +146,15 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
+            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
-            controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-            controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
+            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            //controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
+            //controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
+            //controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
+            //controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
