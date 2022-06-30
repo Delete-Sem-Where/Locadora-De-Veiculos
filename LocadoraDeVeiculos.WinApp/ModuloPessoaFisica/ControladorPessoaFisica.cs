@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPessoaFisica;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloPessoaFisica;
+using LocadoraDeVeiculos.Dominio.ModuloPessoaFisica;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
     {
         private readonly IRepositorioPessoaFisica repositorioPessoaFisica;
         private TabelaPessoaFisicaControl tabelaPessoaFisica;
+        private readonly ServicoPessoaFisica servicoPessoaFisica;
 
-        public ControladorPessoaFisica(IRepositorioPessoaFisica repositorioPessoaFisica)
+        public ControladorPessoaFisica(IRepositorioPessoaFisica repositorioPessoaFisica, ServicoPessoaFisica servicoPessoaFisica)
         {
             this.repositorioPessoaFisica = repositorioPessoaFisica;
+            this.servicoPessoaFisica = servicoPessoaFisica;
         }
 
         public override void Inserir()
@@ -23,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
             TelaCadastroPessoaFisicaForm tela = new TelaCadastroPessoaFisicaForm();
             tela.PessoaFisica = new PessoaFisica();
 
-            tela.GravarRegistro = repositorioPessoaFisica.Inserir;
+            tela.GravarRegistro = servicoPessoaFisica.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -47,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
 
             tela.PessoaFisica = pessoaFisicaSelecionada.Clonar();
 
-            tela.GravarRegistro = repositorioPessoaFisica.Editar;
+            tela.GravarRegistro = servicoPessoaFisica.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

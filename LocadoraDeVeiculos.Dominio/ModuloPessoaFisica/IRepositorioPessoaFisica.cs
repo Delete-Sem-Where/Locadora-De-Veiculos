@@ -9,5 +9,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaFisica
 {
     public interface IRepositorioPessoaFisica : IRepositorio<PessoaFisica>
     {
+        PessoaFisica SelecionarPessoaFisicaPorNome(string nome);
+
+        PessoaFisica SelecionarPessoaFisicaPorCPF(string cpf);
     }
 }
