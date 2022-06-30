@@ -6,7 +6,7 @@
     <Name>LocadoraDeVeiculosDb</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{f090fc53-60a2-46e5-aa76-e56998a0cf60}</ProjectGuid>
+    <ProjectGuid>{26ce20a4-adf7-4c3b-b42c-68e6e3bcfb57}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -62,10 +62,10 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\TBTaxa.sql" />
     <Build Include="dbo\Tables\TBFuncionario.sql" />
-    <Build Include="dbo\Tables\TBPessoaFisica.sql" />
     <Build Include="dbo\Tables\TBPessoaJuridica.sql" />
-    <Build Include="dbo\Tables\TBGrupoVeiculos_1.sql" />
+    <Build Include="dbo\Tables\TBPessoaFisica.sql" />
+    <Build Include="dbo\Tables\TBTaxa.sql" />
+    <Build Include="dbo\Tables\TBGrupoVeiculos.sql" />
   </ItemGroup>
 </Project>

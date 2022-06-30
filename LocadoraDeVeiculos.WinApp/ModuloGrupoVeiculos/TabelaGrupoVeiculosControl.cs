@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,36 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
         public TabelaGrupoVeiculosControl()
         {
             InitializeComponent();
+            grid.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.Columns.AddRange(ObterColunas());
+        }
+
+        public DataGridViewColumn[] ObterColunas()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Número"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+            };
+
+            return colunas;
+        }
+
+        public int ObtemNumeroGrupoVeiculosSelecionado()
+        {
+            return grid.SelecionarNumero<int>();
+        }
+
+        public void AtualizarRegistros(List<GrupoVeiculos> pfs)
+        {
+            grid.Rows.Clear();
+
+            foreach (GrupoVeiculos gv in pfs)
+            {
+                grid.Rows.Add(gv.Id, gv.Nome);
+            }
         }
     }
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LocadoraDeVeiculos.WinApp": {
+      "commandName": "Project",
+      "sqlDebugging": false
+    }
+  }
+}

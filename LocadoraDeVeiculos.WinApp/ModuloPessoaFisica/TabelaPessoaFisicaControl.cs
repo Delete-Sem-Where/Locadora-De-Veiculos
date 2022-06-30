@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
 {
-    public partial class TabelaGrupoVeiculosControl : UserControl
+    public partial class TabelaPessoaFisicaControl : UserControl
     {
-        public TabelaGrupoVeiculosControl()
+        public TabelaPessoaFisicaControl()
         {
             InitializeComponent(); 
             grid.ConfigurarGridZebrado();

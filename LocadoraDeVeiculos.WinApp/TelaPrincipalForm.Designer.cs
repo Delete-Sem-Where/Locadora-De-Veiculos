@@ -34,6 +34,7 @@
             this.pessoaJurídicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pessoasFísicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grupoVeículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
@@ -52,7 +53,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.grupoVeículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -65,7 +65,8 @@
             this.cadastrosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1060, 24);
+            this.menu.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            this.menu.Size = new System.Drawing.Size(1211, 30);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
             // 
@@ -78,36 +79,43 @@
             this.taxasToolStripMenuItem,
             this.grupoVeículosToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // funcionárioToolStripMenuItem
             // 
             this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
-            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.funcionárioToolStripMenuItem.Text = "Funcionário";
             this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
             // 
             // pessoaJurídicaToolStripMenuItem
             // 
             this.pessoaJurídicaToolStripMenuItem.Name = "pessoaJurídicaToolStripMenuItem";
-            this.pessoaJurídicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pessoaJurídicaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pessoaJurídicaToolStripMenuItem.Text = "Pessoa Jurídica";
             this.pessoaJurídicaToolStripMenuItem.Click += new System.EventHandler(this.pessoaJurídicaToolStripMenuItem_Click);
             // 
             // pessoasFísicasToolStripMenuItem
             // 
             this.pessoasFísicasToolStripMenuItem.Name = "pessoasFísicasToolStripMenuItem";
-            this.pessoasFísicasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pessoasFísicasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pessoasFísicasToolStripMenuItem.Text = "Pessoa Física";
             this.pessoasFísicasToolStripMenuItem.Click += new System.EventHandler(this.pessoasFísicasToolStripMenuItem_Click);
             // 
             // taxasToolStripMenuItem
             // 
             this.taxasToolStripMenuItem.Name = "taxasToolStripMenuItem";
-            this.taxasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.taxasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.taxasToolStripMenuItem.Text = "Taxas";
             this.taxasToolStripMenuItem.Click += new System.EventHandler(this.taxasToolStripMenuItem_Click);
+            // 
+            // grupoVeículosToolStripMenuItem
+            // 
+            this.grupoVeículosToolStripMenuItem.Name = "grupoVeículosToolStripMenuItem";
+            this.grupoVeículosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.grupoVeículosToolStripMenuItem.Text = "Grupo Veículos";
+            this.grupoVeículosToolStripMenuItem.Click += new System.EventHandler(this.grupoVeículosToolStripMenuItem_Click);
             // 
             // toolbox
             // 
@@ -128,9 +136,9 @@
             this.btnAgrupar,
             this.toolStripSeparator4,
             this.labelTipoCadastro});
-            this.toolbox.Location = new System.Drawing.Point(0, 24);
+            this.toolbox.Location = new System.Drawing.Point(0, 30);
             this.toolbox.Name = "toolbox";
-            this.toolbox.Size = new System.Drawing.Size(1060, 41);
+            this.toolbox.Size = new System.Drawing.Size(1211, 41);
             this.toolbox.TabIndex = 1;
             this.toolbox.Text = "toolStrip1";
             // 
@@ -178,12 +186,12 @@
             // btnAdicionarItens
             // 
             this.btnAdicionarItens.Name = "btnAdicionarItens";
-            this.btnAdicionarItens.Size = new System.Drawing.Size(23, 38);
+            this.btnAdicionarItens.Size = new System.Drawing.Size(29, 38);
             // 
             // btnAtualizarItens
             // 
             this.btnAtualizarItens.Name = "btnAtualizarItens";
-            this.btnAtualizarItens.Size = new System.Drawing.Size(23, 38);
+            this.btnAtualizarItens.Size = new System.Drawing.Size(29, 38);
             // 
             // toolStripSeparator1
             // 
@@ -193,7 +201,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(23, 38);
+            this.btnFiltrar.Size = new System.Drawing.Size(29, 38);
             // 
             // toolStripSeparator3
             // 
@@ -203,7 +211,7 @@
             // btnVisualizar
             // 
             this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(23, 38);
+            this.btnVisualizar.Size = new System.Drawing.Size(29, 38);
             // 
             // toolStripSeparator5
             // 
@@ -213,7 +221,7 @@
             // btnAgrupar
             // 
             this.btnAgrupar.Name = "btnAgrupar";
-            this.btnAgrupar.Size = new System.Drawing.Size(23, 38);
+            this.btnAgrupar.Size = new System.Drawing.Size(29, 38);
             // 
             // toolStripSeparator4
             // 
@@ -224,7 +232,7 @@
             // 
             this.labelTipoCadastro.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.labelTipoCadastro.Name = "labelTipoCadastro";
-            this.labelTipoCadastro.Size = new System.Drawing.Size(90, 38);
+            this.labelTipoCadastro.Size = new System.Drawing.Size(121, 38);
             this.labelTipoCadastro.Text = "[tipoCadastro]";
             // 
             // statusStrip1
@@ -232,44 +240,40 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 785);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1029);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1060, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1211, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // labelRodape
             // 
             this.labelRodape.Name = "labelRodape";
-            this.labelRodape.Size = new System.Drawing.Size(52, 17);
+            this.labelRodape.Size = new System.Drawing.Size(67, 20);
             this.labelRodape.Text = "[rodapé]";
             // 
             // panelRegistros
             // 
             this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRegistros.Location = new System.Drawing.Point(0, 65);
+            this.panelRegistros.Location = new System.Drawing.Point(0, 71);
+            this.panelRegistros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(1060, 720);
+            this.panelRegistros.Size = new System.Drawing.Size(1211, 958);
             this.panelRegistros.TabIndex = 3;
-            // 
-            // grupoVeículosToolStripMenuItem
-            // 
-            this.grupoVeículosToolStripMenuItem.Name = "grupoVeículosToolStripMenuItem";
-            this.grupoVeículosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.grupoVeículosToolStripMenuItem.Text = "Grupo Veículos";
             // 
             // TelaPrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 807);
+            this.ClientSize = new System.Drawing.Size(1211, 1055);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1076, 846);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.MinimumSize = new System.Drawing.Size(1227, 1078);
             this.Name = "TelaPrincipalForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

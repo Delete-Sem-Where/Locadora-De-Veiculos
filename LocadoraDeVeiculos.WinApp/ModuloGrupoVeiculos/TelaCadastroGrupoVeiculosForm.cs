@@ -3,7 +3,6 @@ using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -18,7 +17,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
         public TelaCadastroGrupoVeiculosForm()
         {
             InitializeComponent();
-        }        
+        }
+
         public Func<GrupoVeiculos, ValidationResult> GravarRegistro { get; set; }
         
         private GrupoVeiculos grupoVeiculos;
@@ -31,6 +31,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
             }
             set
             {
+                grupoVeiculos = value;
+                txtNumero.Text = GrupoVeiculos.Id.ToString();
                 textBoxNomeGrupoVeiculos.Text = GrupoVeiculos.Nome;
             }
         }
@@ -45,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
             TelaPrincipalForm.Instancia.AtualizarRodape("");
         }
 
-        private void buttonGravarGrupoVeiculos_Click(object sender, EventArgs e)
+        private void buttonGravarGrupoVeiculos_Click_1(object sender, EventArgs e)
         {
             grupoVeiculos.Nome = textBoxNomeGrupoVeiculos.Text;
 
@@ -57,7 +59,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);
                 DialogResult = DialogResult.None;
             }
-
         }
     }
 }

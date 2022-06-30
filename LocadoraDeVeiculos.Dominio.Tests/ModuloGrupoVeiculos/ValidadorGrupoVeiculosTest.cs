@@ -1,5 +1,6 @@
-﻿using FluentValidation.TestHelper;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using FluentAssertions;
+using FluentValidation.TestHelper;
+using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,35 +21,34 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloGrupoVeiculos
             {
                 Nome = "Nome Teste"
             };
+
+            validadorGrupoVeiculos = new ValidadorGrupoVeiculos();
         }
-        validadorGrupoVeiculos = new ValidadorGrupoVeiculos();
-    }
-   
-    [TestMethod]
 
-    public void Nome_deve_ser_obrigatorio()
-    {
-        grupoVeiculos.Nome = null;
-        var res = validadorGrupoVeiculos.TestValidade(grupoVeiculos);
-        res.Should()HaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
-    }
+        [TestMethod]
+        public void Nome_deve_ser_obrigatorio()
+        {
+            grupoVeiculos.Nome = null;
+            var res = validadorGrupoVeiculos.TestValidate(grupoVeiculos);
+            res.ShouldHaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
+        }
 
-    [TestMethod]
-    public void Nome_deve_ser_valido()
-    {
-        grupoVeiculos.Nome "Sdad15ew";
+        [TestMethod]
+        public void Nome_deve_ser_valido()
+        {
+            grupoVeiculos.Nome = "Sdad15ew";
 
-        var res = validador.TestValidate(grupoVeiculos);
+            var res = validadorGrupoVeiculos.TestValidate(grupoVeiculos);
 
-        res.ShouldHaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
-    }
+            res.ShouldHaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
+        }
 
-    [TestMethod]
-    public void Nome_nao_deve_inserir_menos_de_2_caracteres()
-    {
-        grupoVeiculos.Nome = "g";
-        var res = validadorGrupoVeiculos.TestValidate(grupoVeiculos);
-        res.ShouldHaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
-    }
-
+        [TestMethod]
+        public void Nome_nao_deve_inserir_menos_de_2_caracteres()
+        {
+            grupoVeiculos.Nome = "g";
+            var res = validadorGrupoVeiculos.TestValidate(grupoVeiculos);
+            res.ShouldHaveValidationErrorFor(grupoVeiculos => grupoVeiculos.Nome);
+        }
+    }  
 }

@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
         public override void ConfigurarParametros(GrupoVeiculos novoGrupoVeiculos, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", novoGrupoVeiculos.Id);
-            comando.Parameters.AddWithValue("Nome", novoGrupoVeiculos.Nome);
+            comando.Parameters.AddWithValue("NOME", novoGrupoVeiculos.Nome);
         }
     }
 }
