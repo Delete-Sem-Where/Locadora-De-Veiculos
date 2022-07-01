@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                 condutor.Endereco.Equals(Endereco) &&
                 condutor.CPF.Equals(CPF) &&
                 condutor.CNH.Equals(CNH) &&
-                condutor.ValidadeCNH.Equals(ValidadeCNH);
+                condutor.ValidadeCNH.Date.Equals(ValidadeCNH.Date);
         }
     }
 }
