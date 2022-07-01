@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
             string endereco = Convert.ToString(leitorRegistro["CONDUTOR_ENDERECO"]);
             string cpf = Convert.ToString(leitorRegistro["CONDUTOR_CPF"]);
             string cnh = Convert.ToString(leitorRegistro["CONDUTOR_CNH"]);
-            int validade_cnh = Convert.ToInt32(leitorRegistro["CONDUTOR_VALIDADECNH"]);
+            DateTime validade_cnh = Convert.ToDateTime(leitorRegistro["CONDUTOR_VALIDADECNH"]);
 
             return new Condutor()
             {

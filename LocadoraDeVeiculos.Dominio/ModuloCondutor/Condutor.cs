@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public string Endereco { get; set; }
         public string CPF { get; set; }
         public string CNH { get; set; }
-        public int ValidadeCNH { get; set; }
+        public DateTime ValidadeCNH { get; set; }
 
         public Condutor Clonar()
         {
