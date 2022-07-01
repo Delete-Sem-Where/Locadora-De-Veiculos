@@ -83,7 +83,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloTaxa
             var t1 = new Taxa()
             {
                 Descricao = "recurso um",
-                Valor = 11                
+                Valor = 11,
+                TipoCalculo = TipoCalculo.Fixo
             };
 
             repositorio.Inserir(t1);
@@ -91,7 +92,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloTaxa
             var t2 = new Taxa()
             {
                 Descricao = "recurso dois",
-                Valor = 12
+                Valor = 12,
+                TipoCalculo = TipoCalculo.Fixo
             };
 
             repositorio.Inserir(t2);
@@ -99,7 +101,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloTaxa
             var t3 = new Taxa()
             {
                 Descricao = "recurso tres",
-                Valor = 13
+                Valor = 13,
+                TipoCalculo = TipoCalculo.Fixo
             };
 
             repositorio.Inserir(t3);
@@ -112,13 +115,32 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloTaxa
             taxas[2].Should().Be(t3);
         }
 
+        #region MÉTODOS PRIVADOS
+
         private Taxa NovaTaxa()
         {
-            return new Taxa()
-            {
-                Descricao = "GPS",
-                Valor = 10
-            };
+            var t = new Taxa();
+            t.Descricao = "Lavação do Veículo";
+            t.Valor = 100;
+            t.TipoCalculo = TipoCalculo.Fixo;
+
+            return t;
         }
+
+        private List<Taxa> NovasTaxas()
+        {
+            var t1 = new Taxa("Lavação do Veículo", 100, TipoCalculo.Fixo);
+            var t2 = new Taxa("Cadeira de Bebê", 90, TipoCalculo.Diario);
+            var t3 = new Taxa("Frigobar", 50, TipoCalculo.Diario);
+
+            var lista = new List<Taxa>();
+            lista.Add(t1);
+            lista.Add(t2);
+            lista.Add(t3);
+
+            return lista;
+        }
+
+        #endregion
     }
 }
