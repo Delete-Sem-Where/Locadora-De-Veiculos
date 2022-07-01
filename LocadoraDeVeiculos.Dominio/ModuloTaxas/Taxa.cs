@@ -11,10 +11,23 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxas
     {
         public string? Descricao { get; set; }
         public decimal Valor { get; set; }
+        public TipoCalculo TipoCalculo { get; set; }
+
+        public Taxa()
+        {
+
+        }
+
+        public Taxa(string descricao, decimal valor, TipoCalculo tipoCalculo)
+        {
+            Descricao = descricao;
+            Valor = valor;
+            TipoCalculo = tipoCalculo;
+        }
 
         public override string ToString()
         {
-            return $"Descrição: {Descricao}; Valor: {Valor};";
+            return $"Descrição: {Descricao}; Valor: {Valor}; Tipo de Cálculo: {TipoCalculo}";
         }
 
         public Taxa Clonar()
@@ -32,7 +45,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxas
             return
                 taxa.Id.Equals(Id) &&
                 taxa.Descricao.Equals(Descricao) &&
-                taxa.Valor.Equals(Valor);
+                taxa.Valor.Equals(Valor) &&
+                taxa.TipoCalculo.Equals(TipoCalculo);
         }
     }
 }
