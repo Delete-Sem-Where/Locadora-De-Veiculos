@@ -59,7 +59,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"SELECT 
 		            [ID], 
 		            [DESCRICAO],
-		            [VALOR]
+		            [VALOR],
+                    [TIPOCALCULO] 
+
 	            FROM 
 		            [TBTAXA]
 		        WHERE
