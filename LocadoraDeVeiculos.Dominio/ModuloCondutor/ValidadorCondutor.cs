@@ -25,7 +25,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                 .MinimumLength(11);
 
             RuleFor(x => x.ValidadeCNH)
-                .NotNull().NotEmpty();
+                .NotNull().NotEmpty()
+                .GreaterThan(DateTime.MinValue);
 
             RuleFor(x => x.Email)
                 .NotNull().NotEmpty()
