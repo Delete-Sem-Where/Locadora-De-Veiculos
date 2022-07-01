@@ -4,6 +4,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica
 {
     public class RepositorioPessoaJuridicaEmBancoDados :
-        RepositorioBase<PessoaJuridica, ValidadorPessoaJuridica, MapeadorPessoaJuridica>,
+        RepositorioBase<PessoaJuridica, MapeadorPessoaJuridica>,
         IRepositorioPessoaJuridica
     {
         protected override string sqlInserir =>
@@ -72,44 +73,40 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica
 			WHERE
 				[ID] = @ID";
 
-		public override ValidationResult Validar(PessoaJuridica registro)
-		{
-			var validador = new ValidadorPessoaJuridica();
+		private string sqlSelecionarPorNome =>
+			@"SELECT 
+				[ID] PESSOA_JURIDICA_ID, 
+				[NOME] PESSOA_JURIDICA_NOME, 
+				[EMAIL] PESSOA_JURIDICA_EMAIL,
+				[TELEFONE] PESSOA_JURIDICA_TELEFONE,
+				[ENDERECO] PESSOA_JURIDICA_ENDERECO,
+				[CNPJ] PESSOA_JURIDICA_CNPJ
+			FROM 
+				[TBPESSOAJURIDICA]
+			WHERE
+				[NOME] = @NOME";
 
-			var resultadoValidacao = validador.Validate(registro);
+		private string sqlSelecionarPorCNPJ =>
+			@"SELECT 
+				[ID] PESSOA_JURIDICA_ID, 
+				[NOME] PESSOA_JURIDICA_NOME, 
+				[EMAIL] PESSOA_JURIDICA_EMAIL,
+				[TELEFONE] PESSOA_JURIDICA_TELEFONE,
+				[ENDERECO] PESSOA_JURIDICA_ENDERECO,
+				[CNPJ] PESSOA_JURIDICA_CNPJ
+			FROM 
+				[TBPESSOAJURIDICA]
+			WHERE
+				[CNPJ] = @CNPJ";
 
-			if (resultadoValidacao.IsValid == false)
-				return resultadoValidacao;
+		public PessoaJuridica SelecionarPessoaJuridicaPorCNPJ(string cnpj)
+        {
+			return SelecionarPorParametro(sqlSelecionarPorCNPJ, new SqlParameter("CNPJ", cnpj));
+        }
 
-			var registroEncontradoNome = SelecionarTodos()
-				.Select(x => x.Nome.ToLower())
-				.Contains(registro.Nome.ToLower());
-
-			if (registroEncontradoNome)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Juridica já cadastrado com esse Nome"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Juridica já cadastrado com esse Nome"));
-				}
-			}
-
-			var registroEncontradoCNPJ = SelecionarTodos()
-				.Select(x => x.CNPJ.ToLower())
-				.Contains(registro.CNPJ.ToLower());
-
-			if (registroEncontradoCNPJ)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Juridica já cadastrado com esse CNPJ"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Juridica já cadastrado com esse CNPJ"));
-				}
-			}
-
-			return resultadoValidacao;
+        public PessoaJuridica SelecionarPessoaJuridicaPorNome(string nome)
+        {
+			return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
 		}
     }
 }

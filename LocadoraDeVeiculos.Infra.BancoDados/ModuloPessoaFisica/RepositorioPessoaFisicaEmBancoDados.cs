@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPessoaFisica;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica
 {
     public class RepositorioPessoaFisicaEmBancoDados :
-        RepositorioBase<PessoaFisica, ValidadorPessoaFisica, MapeadorPessoaFisica>,
+        RepositorioBase<PessoaFisica, MapeadorPessoaFisica>,
         IRepositorioPessoaFisica
     {
         protected override string sqlInserir =>
@@ -76,44 +77,42 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica
             WHERE
 	            [ID] = @ID";
 
-		public override ValidationResult Validar(PessoaFisica registro)
-		{
-			var validador = new ValidadorPessoaFisica();
+        private string sqlSelecionarPorNome =>
+            @"SELECT 
+	            [ID] PESSOA_FISICA_ID, 
+	            [NOME] PESSOA_FISICA_NOME, 
+	            [EMAIL] PESSOA_FISICA_EMAIL,
+	            [TELEFONE] PESSOA_FISICA_TELEFONE,
+	            [ENDERECO] PESSOA_FISICA_ENDERECO,
+	            [CPF] PESSOA_FISICA_CPF,
+	            [CNH] PESSOA_FISICA_CNH
+            FROM 
+	            [TBPESSOAFISICA]
+            WHERE
+	            [NOME] = @NOME";
 
-			var resultadoValidacao = validador.Validate(registro);
+        private string sqlSelecionarPorCPF =>
+            @"SELECT 
+	            [ID] PESSOA_FISICA_ID, 
+	            [NOME] PESSOA_FISICA_NOME, 
+	            [EMAIL] PESSOA_FISICA_EMAIL,
+	            [TELEFONE] PESSOA_FISICA_TELEFONE,
+	            [ENDERECO] PESSOA_FISICA_ENDERECO,
+	            [CPF] PESSOA_FISICA_CPF,
+	            [CNH] PESSOA_FISICA_CNH
+            FROM 
+	            [TBPESSOAFISICA]
+            WHERE
+	            [CPF] = @CPF";
 
-			if (resultadoValidacao.IsValid == false)
-				return resultadoValidacao;
+        public PessoaFisica SelecionarPessoaFisicaPorCPF(string cpf)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", cpf));
+        }
 
-			var registroEncontradoNome = SelecionarTodos()
-				.Select(x => x.Nome.ToLower())
-				.Contains(registro.Nome.ToLower());
-
-			if (registroEncontradoNome)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse Nome"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse Nome"));
-				}
-			}
-
-			var registroEncontradoCNPJ = SelecionarTodos()
-				.Select(x => x.CPF.ToLower())
-				.Contains(registro.CPF.ToLower());
-
-			if (registroEncontradoCNPJ)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CPF"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Pessoa Física já cadastrado com esse CPF"));
-				}
-			}
-
-			return resultadoValidacao;
-		}
-	}
+        public PessoaFisica SelecionarPessoaFisicaPorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
+        }
+    }
 }

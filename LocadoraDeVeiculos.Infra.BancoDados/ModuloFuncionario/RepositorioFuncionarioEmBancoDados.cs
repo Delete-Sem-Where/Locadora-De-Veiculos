@@ -1,8 +1,10 @@
 ﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario
 {
     public class RepositorioFuncionarioEmBancoDados :
-        RepositorioBase<Funcionario, ValidadorFuncionario, MapeadorFuncionario>,
+        RepositorioBase<Funcionario, MapeadorFuncionario>,
         IRepositorioFuncionario
     {
         protected override string sqlInserir =>
@@ -86,45 +88,46 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario
 			WHERE
 				[ID] = @ID";
 
-        public override ValidationResult Validar(Funcionario registro)
-        {
-			var validador = new ValidadorFuncionario();
+		private string sqlSelecionarPorNome =>
+				@"SELECT 
+				[ID] FUNCIONARIO_ID, 
+				[NOME] FUNCIONARIO_NOME, 
+				[EMAIL] FUNCIONARIO_EMAIL,
+				[TELEFONE] FUNCIONARIO_TELEFONE,
+				[ENDERECO] FUNCIONARIO_ENDERECO,
+				[LOGIN] FUNCIONARIO_LOGIN,
+				[SENHA] FUNCIONARIO_SENHA,
+				[SALARIO] FUNCIONARIO_SALARIO,
+				[DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO
+			FROM 
+				[TBFUNCIONARIO]
+            WHERE 
+                [NOME] = @NOME";
 
-			var resultadoValidacao = validador.Validate(registro);
+		private string sqlSelecionarPorUsuario =>
+			@"SELECT 
+				[ID] FUNCIONARIO_ID, 
+				[NOME] FUNCIONARIO_NOME, 
+				[EMAIL] FUNCIONARIO_EMAIL,
+				[TELEFONE] FUNCIONARIO_TELEFONE,
+				[ENDERECO] FUNCIONARIO_ENDERECO,
+				[LOGIN] FUNCIONARIO_LOGIN,
+				[SENHA] FUNCIONARIO_SENHA,
+				[SALARIO] FUNCIONARIO_SALARIO,
+				[DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO
+			FROM 
+				[TBFUNCIONARIO]
+            WHERE 
+                [LOGIN] = @LOGIN";
 
-			if (resultadoValidacao.IsValid == false)
-				return resultadoValidacao;
-
-			var registroEncontradoNome = SelecionarTodos()
-				.Select(x => x.Nome.ToLower())
-				.Contains(registro.Nome.ToLower());
-
-			if (registroEncontradoNome)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Funcionario já cadastrado com esse Nome"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Funcionario já cadastrado com esse Nome"));
-				}
-			}
-
-			var registroEncontradoLogin = SelecionarTodos()
-				.Select(x => x.Login.ToLower())
-				.Contains(registro.Login.ToLower());
-
-			if (registroEncontradoLogin)
-			{
-				if (registro.Id == 0)
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Funcionario já cadastrado com esse Login"));
-				else if (registro.Id != 0)
-				{
-					resultadoValidacao.Errors.Add(new ValidationFailure("", "Funcionario já cadastrado com esse Login"));
-				}
-			}
-
-			return resultadoValidacao;
+		public Funcionario SelecionarFuncionarioPorNome(string nome)
+		{
+			return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
 		}
 
+		public Funcionario SelecionarFuncionarioPorLogin(string login)
+		{
+			return SelecionarPorParametro(sqlSelecionarPorUsuario, new SqlParameter("LOGIN", login));
+		}
     }
 }

@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,9 @@ using System.Threading.Tasks;
 namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
 {
     public class RepositorioGrupoVeiculosEmBancoDados :
-        RepositorioBase<GrupoVeiculos, ValidadorGrupoVeiculos, MapeadorGrupoVeiculos>,
+        RepositorioBase<GrupoVeiculos, MapeadorGrupoVeiculos>,
         IRepositorioGrupoVeiculos
     {
-
-        #region Sql Queries
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS] 
                 (
@@ -43,7 +42,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
             @"SELECT 
 		            [ID], 
 		            [NOME]
-
 	            FROM 
 		            [TBGRUPOVEICULOS]";
 
@@ -51,38 +49,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
             @"SELECT 
 		            [ID], 
 		            [NOME]
-
 	            FROM 
 		            [TBGRUPOVEICULOS]
 		        WHERE
                     [ID] = @ID";
 
-        #endregion
-        public override ValidationResult Validar(GrupoVeiculos registro)
+        private string sqlSelecionarPorNome =>
+            @"SELECT 
+		            [ID], 
+		            [NOME]
+	            FROM 
+		            [TBGRUPOVEICULOS]
+		        WHERE
+                    [NOME] = @NOME";
+
+        public GrupoVeiculos SelecionarGrupoVeiculosPorNome(string nome)
         {
-            var validador = new ValidadorGrupoVeiculos();
-
-            var resultadoValidacao = validador.Validate(registro);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            var registroEncontradoNome = SelecionarTodos()
-                .Select(x => x.Nome?.ToLower())
-                .Contains(registro.Nome?.ToLower());
-
-            if (registroEncontradoNome)
-            {
-                if (registro.Id == 0)
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Agrupamento de veículos já cadastrado"));
-                else if (registro.Id != 0)
-                {
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Agrupamento de veículos já cadastrado"));
-                }
-            }
-
-            return resultadoValidacao;
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
         }
-
     }
 }

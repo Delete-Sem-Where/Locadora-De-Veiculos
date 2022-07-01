@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
     {
         private readonly IRepositorioFuncionario repositorioFuncionario;
         private TabelaFuncionariosControl tabelaFuncionarios;
+        private readonly ServicoFuncionario servicoFuncionario;
 
-        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario)
+        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario,
+            ServicoFuncionario servicoFuncionario)
         {
             this.repositorioFuncionario = repositorioFuncionario;
+            this.servicoFuncionario = servicoFuncionario;
         }
 
         public override void Inserir()
@@ -23,7 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             TelaCadastroFuncionariosForm tela = new TelaCadastroFuncionariosForm();
             tela.Funcionario = new Funcionario();
 
-            tela.GravarRegistro = repositorioFuncionario.Inserir;
+            tela.GravarRegistro = servicoFuncionario.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -38,8 +42,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um contato primeiro",
-                "Edição de Funcionarioss", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione um funcionário primeiro",
+                "Edição de Funcionários", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -47,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = funcionarioSelecionado.Clonar();
 
-            tela.GravarRegistro = repositorioFuncionario.Editar;
+            tela.GravarRegistro = servicoFuncionario.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -58,38 +62,27 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Excluir()
         {
-            Funcionario contatoSelecionado = ObtemFuncionarioSelecionado();
+            Funcionario funcionarioSelecionado = ObtemFuncionarioSelecionado();
 
-            if (contatoSelecionado == null)
+            if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um contato primeiro",
-                "Exclusão de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione um funcionário primeiro",
+                "Exclusão de Funcionários", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a contato?",
-                "Exclusão de Funcionarios", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o funcionário?",
+                "Exclusão de Funcionários", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.OK)
             {
-                repositorioFuncionario.Excluir(contatoSelecionado);
+                repositorioFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionarios();
             }
         }
 
-        //public override void Agrupar()
-        //{
-        //    TelaAgrupamentoContatoForm telaAgrupamento = new TelaAgrupamentoContatoForm();
-
-        //    if (telaAgrupamento.ShowDialog() == DialogResult.OK)
-        //    {
-        //        tabelaContatos.AgruparContatos(telaAgrupamento.TipoAgrupamento);
-        //    }
-        //}
-
         public override UserControl ObtemListagem()
         {
-            //if (tabelaContatos == null)
             tabelaFuncionarios = new TabelaFuncionariosControl();
 
             CarregarFuncionarios();
@@ -115,7 +108,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tabelaFuncionarios.AtualizarRegistros(funcionarios);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionarios.Count} contato(s)");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionarios.Count} funcionário(s)");
         }
     }
 }

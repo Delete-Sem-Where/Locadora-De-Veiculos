@@ -12,6 +12,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
+using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraDeVeiculos.Aplicacao.ModuloPessoaJuridica;
+using LocadoraDeVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Aplicacao.ModuloPessoaFisica;
+using LocadoraDeVeiculos.Aplicacao.ModuloTaxas;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -54,6 +59,16 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void grupoVeículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -145,23 +160,19 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
+            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoPessoaJuridica = new ServicoPessoaJuridica(repositorioPessoaJuridica);
+            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+            var servicoPessoaFisica = new ServicoPessoaFisica(repositorioPessoaFisica);
+            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
+
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica));
-            controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-            controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
-        }
-
-        private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void grupoVeículosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            controladores.Add("Funcionário", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica, servicoPessoaJuridica));
+            controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica, servicoPessoaFisica));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
         }
     }
 }

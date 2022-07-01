@@ -9,5 +9,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxas
 {
     public interface IRepositorioTaxa : IRepositorio<Taxa>
     {
+        Taxa SelecionarTaxaPorDescricao(string descricao);
     }
 }
