@@ -16,12 +16,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             int numero = Convert.ToInt32(leitorTaxa["ID"]);
             string? descricao = Convert.ToString(leitorTaxa["DESCRICAO"]);
             decimal valor = Convert.ToDecimal(leitorTaxa["VALOR"]);
+            var tipoCalculo = Convert.ToInt32(leitorTaxa["TIPOCALCULO"]);
+
 
             var taxa = new Taxa
             {
                 Id = numero,
                 Descricao = descricao,
                 Valor = valor,
+                TipoCalculo = (TipoCalculo)tipoCalculo
+
             };
 
             return taxa;
@@ -32,6 +36,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             comando.Parameters.AddWithValue("ID", novaTaxa.Id);
             comando.Parameters.AddWithValue("DESCRICAO", novaTaxa.Descricao);
             comando.Parameters.AddWithValue("VALOR", novaTaxa.Valor);
+            comando.Parameters.AddWithValue("TIPOCALCULO", novaTaxa.TipoCalculo);
+
         }
     }
 }
