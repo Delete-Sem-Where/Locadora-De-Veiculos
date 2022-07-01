@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 	            FROM 
 		            [TBTAXA]
 		        WHERE
-                    [NOME] = @NOME";
+                    [DESCRICAO] = @DESCRICAO";
 
         public Taxa SelecionarTaxaPorDescricao(string descricao)
         {
