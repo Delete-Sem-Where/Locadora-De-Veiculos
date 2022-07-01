@@ -46,7 +46,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloPessoaFisica
             if (NomeDuplicado(pessoaFisica))
                 resultadoValidacao.Errors.Add(new ValidationFailure("Nome", "Nome duplicado"));
 
-            if (UsuarioDuplicado(pessoaFisica))
+            if (CPFDuplicado(pessoaFisica))
                 resultadoValidacao.Errors.Add(new ValidationFailure("CPF", "CPF duplicado"));
 
             return resultadoValidacao;

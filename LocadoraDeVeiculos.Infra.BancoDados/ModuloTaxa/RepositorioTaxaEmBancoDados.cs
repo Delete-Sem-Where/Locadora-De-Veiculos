@@ -12,11 +12,9 @@ using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 {
     public class RepositorioTaxaEmBancoDados : 
-        RepositorioBase<Taxa, ValidadorTaxa, MapeadorTaxa>,        
+        RepositorioBase<Taxa, MapeadorTaxa>,        
         IRepositorioTaxa
     {
-        
-        #region Sql Queries
         protected override string sqlInserir =>
             @"INSERT INTO [TBTAXA] 
                 (
@@ -49,7 +47,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 		            [ID], 
 		            [DESCRICAO],
 		            [VALOR]
-
 	            FROM 
 		            [TBTAXA]";
 
@@ -58,38 +55,24 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
 		            [ID], 
 		            [DESCRICAO],
 		            [VALOR]
-
 	            FROM 
 		            [TBTAXA]
 		        WHERE
                     [ID] = @ID";
 
-        #endregion
-        public override ValidationResult Validar(Taxa registro)
+        private string sqlSelecionarPorNome =>
+            @"SELECT 
+		            [ID], 
+		            [DESCRICAO],
+		            [VALOR]
+	            FROM 
+		            [TBTAXA]
+		        WHERE
+                    [NOME] = @NOME";
+
+        public Taxa SelecionarTaxaPorDescricao(string descricao)
         {
-            var validador = new ValidadorTaxa();
-
-            var resultadoValidacao = validador.Validate(registro);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            var registroEncontradoNome = SelecionarTodos()
-                .Select(x => x.Descricao?.ToLower())
-                .Contains(registro.Descricao?.ToLower());
-
-            if (registroEncontradoNome)
-            {
-                if (registro.Id == 0)
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrada com esse Nome"));
-                else if (registro.Id != 0)
-                {
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Taxa já cadastrada com esse Nome"));
-                }
-            }
-
-            return resultadoValidacao;
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("DESCRICAO", descricao));
         }
-
     }
 }
