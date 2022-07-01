@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloFuncionario
 
         private bool UsuarioDuplicado(Funcionario funcionario)
         {
-            var funcionarioEncontrado = repositorioFuncionario.SelecionarFuncionarioPorUsuario(funcionario.Login);
+            var funcionarioEncontrado = repositorioFuncionario.SelecionarFuncionarioPorLogin(funcionario.Login);
 
             return funcionarioEncontrado != null &&
                    funcionarioEncontrado.Login == funcionario.Login &&

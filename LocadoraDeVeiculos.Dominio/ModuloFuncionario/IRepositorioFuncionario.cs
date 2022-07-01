@@ -11,6 +11,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
     {
         Funcionario SelecionarFuncionarioPorNome(string nome);
 
-        Funcionario SelecionarFuncionarioPorUsuario(string usuario);
+        Funcionario SelecionarFuncionarioPorLogin(string usuario);
     }
 }
