@@ -40,6 +40,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
                     txtUpDownValor.Value = 1;
                 else
                     txtUpDownValor.Value = taxa.Valor;
+
+                if (taxa.TipoCalculo == 0)
+                    radioButtonDiario.Checked = true;
+                else radioButtonFixo.Checked = true;
             }
         }
         
@@ -58,6 +62,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
         {
             taxa.Descricao = textBoxDescricaoTaxa.Text;
             taxa.Valor = txtUpDownValor.Value;
+
+            taxa.TipoCalculo = (TipoCalculo)(radioButtonDiario.Checked == true ? 0 : 1);
 
             var resultadoValidacao = GravarRegistro(taxa);
 
