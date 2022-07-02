@@ -54,6 +54,7 @@
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -79,7 +80,8 @@
             this.pessoasFísicasToolStripMenuItem,
             this.taxasToolStripMenuItem,
             this.grupoVeículosToolStripMenuItem,
-            this.clienteToolStripMenuItem});
+            this.clienteToolStripMenuItem,
+            this.condutorToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -271,6 +273,13 @@
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
+            // condutorToolStripMenuItem
+            // 
+            this.condutorToolStripMenuItem.Name = "condutorToolStripMenuItem";
+            this.condutorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.condutorToolStripMenuItem.Text = "Condutor";
+            this.condutorToolStripMenuItem.Click += new System.EventHandler(this.condutorToolStripMenuItem_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -326,5 +335,6 @@
         private ToolStripMenuItem taxasToolStripMenuItem;
         private ToolStripMenuItem grupoVeículosToolStripMenuItem;
         private ToolStripMenuItem clienteToolStripMenuItem;
+        private ToolStripMenuItem condutorToolStripMenuItem;
     }
 }
