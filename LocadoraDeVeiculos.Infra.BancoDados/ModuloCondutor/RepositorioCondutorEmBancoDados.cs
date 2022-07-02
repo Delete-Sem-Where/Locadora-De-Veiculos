@@ -22,7 +22,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO],
                 [CPF],
                 [CNH],
-                [VALIDADECNH]
+                [VALIDADECNH],
+                [CLIENTE_ID]
             )
             VALUES
             (
@@ -32,7 +33,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 @ENDERECO,
                 @CPF,
                 @CNH,
-                @VALIDADECNH
+                @VALIDADECNH,
+                @CLIENTE_ID
             ); SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
@@ -44,7 +46,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO] = @ENDERECO,
                 [CPF] = @CPF,
                 [CNH] = @CNH,
-                [VALIDADECNH] = @VALIDADECNH
+                [VALIDADECNH] = @VALIDADECNH,
+                [CLIENTE_ID] = @CLIENTE_ID
             WHERE
                 [ID] = @ID";
 
@@ -62,7 +65,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO] CONDUTOR_ENDERECO,
                 [CPF] CONDUTOR_CPF,
                 [CNH] CONDUTOR_CNH,
-                [VALIDADECNH] CONDUTOR_VALIDADECNH
+                [VALIDADECNH] CONDUTOR_VALIDADECNH,
+                [CLIENTE_ID] CONDUTOR_CLIENTE_ID
             FROM 
                 [TBCONDUTOR]";
 
@@ -75,7 +79,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO] CONDUTOR_ENDERECO,
                 [CPF] CONDUTOR_CPF,
                 [CNH] CONDUTOR_CNH,
-                [VALIDADECNH] CONDUTOR_VALIDADECNH
+                [VALIDADECNH] CONDUTOR_VALIDADECNH,
+                [CLIENTE_ID] CONDUTOR_CLIENTE_ID
             FROM 
                 [TBCONDUTOR]
             WHERE
@@ -90,7 +95,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO] CONDUTOR_ENDERECO,
                 [CPF] CONDUTOR_CPF,
                 [CNH] CONDUTOR_CNH,
-                [VALIDADECNH] CONDUTOR_VALIDADECNH
+                [VALIDADECNH] CONDUTOR_VALIDADECNH,
+                [CLIENTE_ID] CONDUTOR_CLIENTE_ID
             FROM 
                 [TBCONDUTOR]
             WHERE
@@ -105,7 +111,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 [ENDERECO] CONDUTOR_ENDERECO,
                 [CPF] CONDUTOR_CPF,
                 [CNH] CONDUTOR_CNH,
-                [VALIDADECNH] CONDUTOR_VALIDADECNH
+                [VALIDADECNH] CONDUTOR_VALIDADECNH,
+                [CLIENTE_ID] CONDUTOR_CLIENTE_ID
             FROM 
                 [TBCONDUTOR]
             WHERE

@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public string CPF { get; set; }
         public string CNH { get; set; }
         public DateTime ValidadeCNH { get; set; }
+        public int Cliente_Id { get; set; }
 
         public Condutor Clonar()
         {
@@ -37,7 +38,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                 condutor.Endereco.Equals(Endereco) &&
                 condutor.CPF.Equals(CPF) &&
                 condutor.CNH.Equals(CNH) &&
-                condutor.ValidadeCNH.Date.Equals(ValidadeCNH.Date);
+                condutor.ValidadeCNH.Date.Equals(ValidadeCNH.Date) &&
+                condutor.Cliente_Id.Equals(Cliente_Id);
         }
     }
 }
