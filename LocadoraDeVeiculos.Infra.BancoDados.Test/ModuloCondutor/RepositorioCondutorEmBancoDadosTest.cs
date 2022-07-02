@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Test.Compartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,11 +16,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
     [TestClass]
     public class RepositorioCondutorEmBancoDadosTest : IntegrationTestBase
     {
-        private RepositorioCondutorEmBancoDados repositorio;
+        private RepositorioCondutorEmBancoDados repositorioCondutor;
+        private RepositorioClienteEmBancoDados repositorioCliente;
 
         public RepositorioCondutorEmBancoDadosTest()
         {
-            repositorio = new RepositorioCondutorEmBancoDados();
+            repositorioCondutor = new RepositorioCondutorEmBancoDados();
+            repositorioCliente = new RepositorioClienteEmBancoDados();
         }
 
         [TestMethod]
@@ -26,9 +30,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
         {
             var condutor = NovoCondutor();
 
-            repositorio.Inserir(condutor);
+            repositorioCondutor.Inserir(condutor);
 
-            var condutorEncontrado = repositorio.SelecionarPorId(condutor.Id);
+            var condutorEncontrado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             condutorEncontrado.Should().NotBeNull();
             condutorEncontrado.Should().Be(condutor);
@@ -39,12 +43,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
         {
             var condutor = NovoCondutor();
 
-            repositorio.Inserir(condutor);
+            repositorioCondutor.Inserir(condutor);
 
             condutor.Nome = "nome alterado";
-            repositorio.Editar(condutor);
+            repositorioCondutor.Editar(condutor);
 
-            var condutorEncontrado = repositorio.SelecionarPorId(condutor.Id);
+            var condutorEncontrado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             condutorEncontrado.Should().NotBeNull();
             condutorEncontrado.Should().Be(condutor);
@@ -55,11 +59,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
         {
             var condutor = NovoCondutor();
 
-            repositorio.Inserir(condutor);
+            repositorioCondutor.Inserir(condutor);
 
-            repositorio.Excluir(condutor);
+            repositorioCondutor.Excluir(condutor);
 
-            repositorio.SelecionarPorId(condutor.Id)
+            repositorioCondutor.SelecionarPorId(condutor.Id)
                 .Should().BeNull();
         }
 
@@ -68,9 +72,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
         {
             var condutor = NovoCondutor();
 
-            repositorio.Inserir(condutor);
+            repositorioCondutor.Inserir(condutor);
 
-            var condutorEncontrado = repositorio.SelecionarPorId(condutor.Id);
+            var condutorEncontrado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             condutorEncontrado.Should().NotBeNull();
             condutorEncontrado.Should().Be(condutor);
@@ -79,6 +83,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
         [TestMethod]
         public void Deve_selecionar_todos_condutores()
         {
+            var cliente = NovoCliente();
+
+            repositorioCliente.Inserir(cliente);
+
+            var cliente_encontrado = repositorioCliente.SelecionarPorId(cliente.Id);
+
             var c1 = new Condutor()
             {
                 Nome = "nome um",
@@ -87,10 +97,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 Endereco = "endereco",
                 CPF = "123.123.123-11",
                 CNH = "12345678912",
-                ValidadeCNH = DateTime.Now
+                ValidadeCNH = DateTime.Now,
+                Cliente_Id = cliente_encontrado.Id,
             };
 
-            repositorio.Inserir(c1);
+            repositorioCondutor.Inserir(c1);
 
             var c2 = new Condutor()
             {
@@ -100,10 +111,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 Endereco = "endereco",
                 CPF = "123.123.123-12",
                 CNH = "12345678912",
-                ValidadeCNH = DateTime.Now
+                ValidadeCNH = DateTime.Now,
+                Cliente_Id = cliente_encontrado.Id,
             };
 
-            repositorio.Inserir(c2);
+            repositorioCondutor.Inserir(c2);
 
             var c3 = new Condutor()
             {
@@ -113,12 +125,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 Endereco = "endereco",
                 CPF = "123.123.123-13",
                 CNH = "12345678912",
-                ValidadeCNH = DateTime.Now
+                ValidadeCNH = DateTime.Now,
+                Cliente_Id = cliente_encontrado.Id,
             };
 
-            repositorio.Inserir(c3);
+            repositorioCondutor.Inserir(c3);
 
-            var condutores = repositorio.SelecionarTodos();
+            var condutores = repositorioCondutor.SelecionarTodos();
 
             condutores.Count.Should().Be(3);
 
@@ -129,6 +142,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
 
         private Condutor NovoCondutor()
         {
+            var cliente = NovoCliente();
+
+            repositorioCliente.Inserir(cliente);
+
+            var cliente_encontrado = repositorioCliente.SelecionarPorId(cliente.Id);
+
             return new Condutor()
             {
                 Nome = "nome",
@@ -137,8 +156,24 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 Endereco = "endereco",
                 CPF = "123.123.123-12",
                 CNH = "12345678912",
-                ValidadeCNH = DateTime.Now
+                ValidadeCNH = DateTime.Now,
+                Cliente_Id = cliente_encontrado.Id,
             };
         }
+
+        private Cliente NovoCliente()
+        {
+            return new Cliente()
+            {
+                Nome = "nome",
+                Email = "email@gmail.com",
+                Telefone = "(13)1656-1235",
+                Endereco = "endereco",
+                CPF = "123.123.123-12",
+                CNPJ = null,
+                TipoCliente = TipoCliente.PessoaFisica,
+            };
+        }
+
     }
 }
