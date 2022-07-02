@@ -20,6 +20,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica
             return MemberwiseClone() as PessoaJuridica;
         }
 
+        public override string ToString()
+        {
+            return $"{Nome} - CNPJ: {CNPJ}";
+        }
+
         public override bool Equals(object? obj)
         {
             PessoaJuridica funcionario = obj as PessoaJuridica;
