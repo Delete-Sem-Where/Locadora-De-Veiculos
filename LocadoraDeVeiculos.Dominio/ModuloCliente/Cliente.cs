@@ -36,7 +36,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 cliente.Telefone.Equals(Telefone) &&
                 cliente.Endereco.Equals(Endereco) &&
                 cliente.CPF.Equals(CPF) &&
-                cliente.CNH.Equals(CNH);
+                cliente.CNPJ.Equals(CNPJ) &&
+                cliente.TipoCliente.Equals(TipoCliente);
         }
     }
 }
