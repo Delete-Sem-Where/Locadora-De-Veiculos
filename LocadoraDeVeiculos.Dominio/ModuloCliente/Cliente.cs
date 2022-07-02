@@ -22,6 +22,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             return MemberwiseClone() as Cliente;
         }
 
+        public override string ToString()
+        {
+            if(TipoCliente == TipoCliente.PessoaJuridica)
+                return $"{Nome} - CNPJ: {CNPJ}";
+            else
+                return $"{Nome} - CPF: {CPF}";
+        }
+
         public override bool Equals(object? obj)
         {
             Cliente cliente = obj as Cliente;
