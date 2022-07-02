@@ -223,11 +223,13 @@
             // 
             // cmbClientes
             // 
+            this.cmbClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClientes.FormattingEnabled = true;
             this.cmbClientes.Location = new System.Drawing.Point(102, 73);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(294, 28);
             this.cmbClientes.TabIndex = 77;
+            this.cmbClientes.DropDownClosed += new System.EventHandler(this.cmbClientes_DropDownClosed);
             // 
             // checkClienteCondutor
             // 
