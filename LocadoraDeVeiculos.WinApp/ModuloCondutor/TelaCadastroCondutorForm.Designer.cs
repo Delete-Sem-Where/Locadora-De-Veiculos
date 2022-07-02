@@ -229,7 +229,7 @@
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(294, 28);
             this.cmbClientes.TabIndex = 77;
-            this.cmbClientes.DropDownClosed += new System.EventHandler(this.cmbClientes_DropDownClosed);
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
             // checkClienteCondutor
             // 
@@ -240,6 +240,7 @@
             this.checkClienteCondutor.TabIndex = 78;
             this.checkClienteCondutor.Text = "Cliente condutor?";
             this.checkClienteCondutor.UseVisualStyleBackColor = true;
+            this.checkClienteCondutor.CheckedChanged += new System.EventHandler(this.checkClienteCondutor_CheckedChanged);
             // 
             // TelaCadastroCondutorForm
             // 

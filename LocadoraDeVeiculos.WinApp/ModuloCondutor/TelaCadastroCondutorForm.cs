@@ -35,13 +35,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             var pessoasFisicas = repositorioPessoaFisica.SelecionarTodos();
             foreach (var item in pessoasFisicas)
             {
-                cmbClientes.Items.Add($"{item.Nome} - CPF: {item.CPF}");
+                cmbClientes.Items.Add(item);
             }
 
             var pessoasJuridicas = repositorioPessoaJuridica.SelecionarTodos();
             foreach (var item in pessoasJuridicas)
             {
-                cmbClientes.Items.Add($"{item.Nome} - CNPJ: {item.CNPJ}");
+                cmbClientes.Items.Add(item);
             }
         }
 
@@ -58,6 +58,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             set
             {
                 condutor = value;
+
+                VerificarAtributosDuranteEdicao();
+
                 txtNumero.Text = condutor.Id.ToString();
                 txtNome.Text = condutor.Nome;
                 txtCPF.Text = condutor.CPF;
@@ -101,15 +104,91 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             TelaPrincipalForm.Instancia.AtualizarRodape("");
         }
 
-        private void cmbClientes_DropDownClosed(object sender, EventArgs e)
+        private void checkClienteCondutor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkClienteCondutor.Checked)
+            {
+                LimparCampos();
+                CompletarCamposCliente();
+            }
+            else
+            {
+                LimparCampos();
+            }
+        }
+
+        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbClientes.SelectedItem.ToString().Contains("CNPJ"))
             {
                 checkClienteCondutor.Checked = false;
                 checkClienteCondutor.Enabled = false;
+                LimparCampos();
             }
             else
                 checkClienteCondutor.Enabled = true;
         }
+
+        private void LimparCampos()
+        {
+            txtNome.Text = String.Empty;
+            txtCPF.Text = String.Empty;
+            txtEmail.Text = String.Empty;
+            txtTelefone.Text = String.Empty;
+            txtEndereco.Text = String.Empty;
+            txtCNH.Text = String.Empty;
+            datePickerValidadeCNH.Value = DateTime.Now;
+        }
+
+        private void CompletarCamposCliente()
+        {
+            if (cmbClientes.SelectedItem != null && !VerificarSeCamposVazios())
+                return;
+
+            var pessoaSelecionada = (PessoaFisica)cmbClientes.SelectedItem;
+
+            txtNome.Text = pessoaSelecionada.Nome;
+            txtCPF.Text = pessoaSelecionada.CPF;
+            txtEmail.Text = pessoaSelecionada.Email;
+            txtTelefone.Text = pessoaSelecionada.Telefone;
+            txtEndereco.Text = pessoaSelecionada.Endereco;
+        }
+
+        private bool VerificarSeCamposVazios()
+        {
+            bool nomeVazio = String.IsNullOrEmpty(txtNome.Text);
+            bool cpfVazio = String.IsNullOrEmpty(txtNome.Text);
+            bool emailVazio = String.IsNullOrEmpty(txtNome.Text);
+            bool telefoneVazio = String.IsNullOrEmpty(txtNome.Text);
+            bool enderecoVazio = String.IsNullOrEmpty(txtNome.Text);
+
+            if (nomeVazio && cpfVazio && emailVazio && telefoneVazio && enderecoVazio)
+                return true;
+
+            return false;
+        }
+
+        private void VerificarAtributosDuranteEdicao()
+        {
+            CarregarItemComboboxSelecionado();
+
+            if (condutor.Id != 0)
+                checkClienteCondutor.Checked = true;
+        }
+
+        private void CarregarItemComboboxSelecionado()
+        {
+            string comparadorCondutor = $"{condutor.Nome} - CPF: {condutor.CPF}";
+
+            for (int i = 0; i < cmbClientes.Items.Count; i++)
+            {
+                if (comparadorCondutor == cmbClientes.Items[i].ToString())
+                {
+                    cmbClientes.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
     }
 }
