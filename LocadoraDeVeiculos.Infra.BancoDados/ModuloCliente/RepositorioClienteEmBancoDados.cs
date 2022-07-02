@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,5 +74,48 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
                 [TBCLIENTE]
             WHERE
                 [ID] = @ID";
+
+        private string sqlSelecionarPorNome =>
+            @"SELECT 
+                [ID] CLIENTE_ID,
+                [NOME] CLIENTE_NOME,
+                [DOCUMENTO] CLIENTE_DOCUMENTO,
+                [EMAIL] CLIENTE_EMAIL,
+                [TELEFONE] CLIENTE_TELEFONE,
+                [ENDERECO] CLIENTE_ENDERECO,
+                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE
+            FROM
+                [TBCLIENTE]
+            WHERE
+                [NOME] = @NOME";
+
+        private string sqlSelecionarPorDocumento => 
+            @"SELECT 
+                [ID] CLIENTE_ID,
+                [NOME] CLIENTE_NOME,
+                [DOCUMENTO] CLIENTE_DOCUMENTO,
+                [EMAIL] CLIENTE_EMAIL,
+                [TELEFONE] CLIENTE_TELEFONE,
+                [ENDERECO] CLIENTE_ENDERECO,
+                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE
+            FROM
+                [TBCLIENTE]
+            WHERE
+                [DOCUMENTO] = @DOCUMENTO";
+
+        public Cliente SelecionarClientePorCNPJ(string cnpj)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorDocumento, new SqlParameter("DOCUMENTO", cnpj));
+        }
+
+        public Cliente SelecionarClientePorCPF(string cpf)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorDocumento, new SqlParameter("DOCUMENTO", cpf));
+        }
+
+        public Cliente SelecionarClientePorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
+        }
     }
 }

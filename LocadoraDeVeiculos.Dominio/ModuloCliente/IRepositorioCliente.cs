@@ -9,5 +9,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public interface IRepositorioCliente : IRepositorio<Cliente>
     {
+        Cliente SelecionarClientePorNome(string nome);
+
+        Cliente SelecionarClientePorCPF(string cpf);
+
+        Cliente SelecionarClientePorCNPJ(string cnpj);
     }
 }
