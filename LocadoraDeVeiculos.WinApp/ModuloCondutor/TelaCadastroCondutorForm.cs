@@ -119,11 +119,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LimparCampos();
+            checkClienteCondutor.Checked = false;
+
             if (cmbClientes.SelectedItem.ToString().Contains("CNPJ"))
             {
                 checkClienteCondutor.Checked = false;
                 checkClienteCondutor.Enabled = false;
-                LimparCampos();
             }
             else
                 checkClienteCondutor.Enabled = true;
@@ -174,6 +176,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (condutor.Id != 0)
                 checkClienteCondutor.Checked = true;
+            else
+                checkClienteCondutor.Enabled = false;
         }
 
         private void CarregarItemComboboxSelecionado()
