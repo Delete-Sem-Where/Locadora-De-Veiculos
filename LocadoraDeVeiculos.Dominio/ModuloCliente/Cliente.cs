@@ -29,15 +29,24 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             if (cliente == null)
                 return false;
 
-            return
-                cliente.Id.Equals(Id) &&
-                cliente.Nome.Equals(Nome) &&
-                cliente.Email.Equals(Email) &&
-                cliente.Telefone.Equals(Telefone) &&
-                cliente.Endereco.Equals(Endereco) &&
-                cliente.CPF.Equals(CPF) &&
-                cliente.CNPJ.Equals(CNPJ) &&
-                cliente.TipoCliente.Equals(TipoCliente);
+            if(cliente.TipoCliente == TipoCliente.PessoaJuridica)
+                    return
+                        cliente.Id.Equals(Id) &&
+                        cliente.Nome.Equals(Nome) &&
+                        cliente.Email.Equals(Email) &&
+                        cliente.Telefone.Equals(Telefone) &&
+                        cliente.Endereco.Equals(Endereco) &&
+                        cliente.CNPJ.Equals(CNPJ) &&
+                        cliente.TipoCliente.Equals(TipoCliente);
+            else 
+                return
+                    cliente.Id.Equals(Id) &&
+                    cliente.Nome.Equals(Nome) &&
+                    cliente.Email.Equals(Email) &&
+                    cliente.Telefone.Equals(Telefone) &&
+                    cliente.Endereco.Equals(Endereco) &&
+                    cliente.CPF.Equals(CPF) &&
+                    cliente.TipoCliente.Equals(TipoCliente);
         }
     }
 }
