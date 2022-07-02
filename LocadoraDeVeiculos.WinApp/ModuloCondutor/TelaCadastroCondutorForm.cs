@@ -1,18 +1,7 @@
 ﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
-using LocadoraDeVeiculos.Dominio.ModuloPessoaFisica;
-using LocadoraDeVeiculos.Dominio.ModuloPessoaJuridica;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
@@ -25,21 +14,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             CarregarClientes();
         }
 
-        private readonly RepositorioPessoaFisicaEmBancoDados repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
-        private readonly RepositorioPessoaJuridicaEmBancoDados repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
+        private readonly RepositorioClienteEmBancoDados repositorioCliente = new RepositorioClienteEmBancoDados();
 
         private void CarregarClientes()
         {
             cmbClientes.Items.Clear();
 
-            var pessoasFisicas = repositorioPessoaFisica.SelecionarTodos();
-            foreach (var item in pessoasFisicas)
-            {
-                cmbClientes.Items.Add(item);
-            }
-
-            var pessoasJuridicas = repositorioPessoaJuridica.SelecionarTodos();
-            foreach (var item in pessoasJuridicas)
+            var clientes = repositorioCliente.SelecionarTodos();
+            foreach (var item in clientes)
             {
                 cmbClientes.Items.Add(item);
             }
@@ -83,6 +65,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             condutor.Endereco = txtEndereco.Text;
             condutor.CNH = txtCNH.Text;
             condutor.ValidadeCNH = datePickerValidadeCNH.Value;
+
+            var cliente_selecionado = (Cliente)cmbClientes.SelectedItem;
+            condutor.Cliente_Id = cliente_selecionado.Id;
 
             var resultadoValidacao = GravarRegistro(condutor);
 
@@ -147,13 +132,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             if (cmbClientes.SelectedItem != null && !VerificarSeCamposVazios())
                 return;
 
-            var pessoaSelecionada = (PessoaFisica)cmbClientes.SelectedItem;
+            var cliente = (Cliente)cmbClientes.SelectedItem;
 
-            txtNome.Text = pessoaSelecionada.Nome;
-            txtCPF.Text = pessoaSelecionada.CPF;
-            txtEmail.Text = pessoaSelecionada.Email;
-            txtTelefone.Text = pessoaSelecionada.Telefone;
-            txtEndereco.Text = pessoaSelecionada.Endereco;
+            txtNome.Text = cliente.Nome;
+            txtCPF.Text = cliente.CPF;
+            txtEmail.Text = cliente.Email;
+            txtTelefone.Text = cliente.Telefone;
+            txtEndereco.Text = cliente.Endereco;
         }
 
         private bool VerificarSeCamposVazios()
@@ -182,17 +167,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void CarregarItemComboboxSelecionado()
         {
-            string comparadorCondutor = $"{condutor.Nome} - CPF: {condutor.CPF}";
-
             for (int i = 0; i < cmbClientes.Items.Count; i++)
             {
-                if (comparadorCondutor == cmbClientes.Items[i].ToString())
+                var cliente_selecionado = (Cliente)cmbClientes.Items[i];
+                if (condutor.Cliente_Id == cliente_selecionado.Id)
                 {
                     cmbClientes.SelectedIndex = i;
                     break;
                 }
             }
         }
-
     }
 }

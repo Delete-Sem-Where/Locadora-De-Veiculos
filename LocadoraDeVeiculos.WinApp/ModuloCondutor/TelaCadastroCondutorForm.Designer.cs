@@ -57,7 +57,7 @@
             this.txtCNH.Mask = "00000000000";
             this.txtCNH.Name = "txtCNH";
             this.txtCNH.Size = new System.Drawing.Size(294, 27);
-            this.txtCNH.TabIndex = 73;
+            this.txtCNH.TabIndex = 5;
             // 
             // txtCPF
             // 
@@ -65,7 +65,7 @@
             this.txtCPF.Mask = "000.000.000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(294, 27);
-            this.txtCPF.TabIndex = 72;
+            this.txtCPF.TabIndex = 4;
             // 
             // txtTelefone
             // 
@@ -74,7 +74,7 @@
             this.txtTelefone.Mask = "(99) 00000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(294, 27);
-            this.txtTelefone.TabIndex = 71;
+            this.txtTelefone.TabIndex = 8;
             // 
             // txtNumero
             // 
@@ -102,7 +102,7 @@
             this.buttonCancelarPf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCancelarPf.Name = "buttonCancelarPf";
             this.buttonCancelarPf.Size = new System.Drawing.Size(94, 51);
-            this.buttonCancelarPf.TabIndex = 68;
+            this.buttonCancelarPf.TabIndex = 11;
             this.buttonCancelarPf.Text = "Cancelar";
             this.buttonCancelarPf.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +113,7 @@
             this.buttonGravarPf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonGravarPf.Name = "buttonGravarPf";
             this.buttonGravarPf.Size = new System.Drawing.Size(94, 51);
-            this.buttonGravarPf.TabIndex = 67;
+            this.buttonGravarPf.TabIndex = 10;
             this.buttonGravarPf.Text = "Gravar";
             this.buttonGravarPf.UseVisualStyleBackColor = true;
             this.buttonGravarPf.Click += new System.EventHandler(this.buttonGravarPf_Click);
@@ -124,7 +124,7 @@
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(294, 27);
-            this.txtEndereco.TabIndex = 66;
+            this.txtEndereco.TabIndex = 9;
             // 
             // txtEmail
             // 
@@ -132,7 +132,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(294, 27);
-            this.txtEmail.TabIndex = 65;
+            this.txtEmail.TabIndex = 7;
             // 
             // txtNome
             // 
@@ -140,7 +140,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(294, 27);
-            this.txtNome.TabIndex = 64;
+            this.txtNome.TabIndex = 3;
             // 
             // label6
             // 
@@ -210,7 +210,7 @@
             this.datePickerValidadeCNH.Location = new System.Drawing.Point(132, 284);
             this.datePickerValidadeCNH.Name = "datePickerValidadeCNH";
             this.datePickerValidadeCNH.Size = new System.Drawing.Size(264, 27);
-            this.datePickerValidadeCNH.TabIndex = 75;
+            this.datePickerValidadeCNH.TabIndex = 6;
             // 
             // label9
             // 
@@ -228,7 +228,7 @@
             this.cmbClientes.Location = new System.Drawing.Point(102, 73);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(294, 28);
-            this.cmbClientes.TabIndex = 77;
+            this.cmbClientes.TabIndex = 2;
             this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
             // checkClienteCondutor
@@ -237,7 +237,7 @@
             this.checkClienteCondutor.Location = new System.Drawing.Point(248, 22);
             this.checkClienteCondutor.Name = "checkClienteCondutor";
             this.checkClienteCondutor.Size = new System.Drawing.Size(148, 24);
-            this.checkClienteCondutor.TabIndex = 78;
+            this.checkClienteCondutor.TabIndex = 1;
             this.checkClienteCondutor.Text = "Cliente condutor?";
             this.checkClienteCondutor.UseVisualStyleBackColor = true;
             this.checkClienteCondutor.CheckedChanged += new System.EventHandler(this.checkClienteCondutor_CheckedChanged);
