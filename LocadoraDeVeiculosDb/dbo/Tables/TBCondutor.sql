@@ -6,6 +6,8 @@
     [Endereco]    VARCHAR (70) NOT NULL,
     [CPF]         VARCHAR (20) NOT NULL,
     [CNH]         VARCHAR (20) NOT NULL,
-    [ValidadeCNH] DATETIME     NOT NULL,
-    CONSTRAINT [PK_TBCondutor] PRIMARY KEY CLUSTERED ([Id] ASC)
+    [ValidadeCNH] DATE         NOT NULL,
+    [Cliente_Id]  INT          NOT NULL,
+    CONSTRAINT [PK_TBCondutor] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_TBCondutor_TBCliente] FOREIGN KEY ([Cliente_Id]) REFERENCES [dbo].[TBCliente] ([Id])
 );
