@@ -88,6 +88,10 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+        private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
@@ -196,5 +200,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Cliente", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Condutor", new ControladorCondutor(repositorioCondutor, servicoCondutor));
         }
+
+        
     }
 }
