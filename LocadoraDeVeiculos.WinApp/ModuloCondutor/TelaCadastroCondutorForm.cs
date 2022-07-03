@@ -66,6 +66,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             condutor.CNH = txtCNH.Text;
             condutor.ValidadeCNH = datePickerValidadeCNH.Value;
 
+            if (cmbClientes.SelectedItem == null)
+            {
+                string erro = "Não pode inserir um condutor sem selecionar um cliente";
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             var cliente_selecionado = (Cliente)cmbClientes.SelectedItem;
             condutor.Cliente_Id = cliente_selecionado.Id;
 
