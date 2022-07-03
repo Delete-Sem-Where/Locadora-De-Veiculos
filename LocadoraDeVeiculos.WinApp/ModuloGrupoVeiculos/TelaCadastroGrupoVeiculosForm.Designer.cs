@@ -43,7 +43,7 @@
             this.buttonGravarGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonGravarGrupoVeiculos.Name = "buttonGravarGrupoVeiculos";
             this.buttonGravarGrupoVeiculos.Size = new System.Drawing.Size(86, 31);
-            this.buttonGravarGrupoVeiculos.TabIndex = 0;
+            this.buttonGravarGrupoVeiculos.TabIndex = 2;
             this.buttonGravarGrupoVeiculos.Text = "Gravar";
             this.buttonGravarGrupoVeiculos.UseVisualStyleBackColor = true;
             this.buttonGravarGrupoVeiculos.Click += new System.EventHandler(this.buttonGravarGrupoVeiculos_Click_1);
@@ -55,7 +55,7 @@
             this.buttonCancelarGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCancelarGrupoVeiculos.Name = "buttonCancelarGrupoVeiculos";
             this.buttonCancelarGrupoVeiculos.Size = new System.Drawing.Size(86, 31);
-            this.buttonCancelarGrupoVeiculos.TabIndex = 1;
+            this.buttonCancelarGrupoVeiculos.TabIndex = 3;
             this.buttonCancelarGrupoVeiculos.Text = "Cancelar";
             this.buttonCancelarGrupoVeiculos.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@
             this.textBoxNomeGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxNomeGrupoVeiculos.Name = "textBoxNomeGrupoVeiculos";
             this.textBoxNomeGrupoVeiculos.Size = new System.Drawing.Size(230, 27);
-            this.textBoxNomeGrupoVeiculos.TabIndex = 3;
+            this.textBoxNomeGrupoVeiculos.TabIndex = 1;
             // 
             // txtNumero
             // 
@@ -82,6 +82,7 @@
             this.txtNumero.Location = new System.Drawing.Point(100, 6);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNumero.Name = "txtNumero";
+            this.txtNumero.ReadOnly = true;
             this.txtNumero.Size = new System.Drawing.Size(34, 27);
             this.txtNumero.TabIndex = 17;
             // 
@@ -107,8 +108,11 @@
             this.Controls.Add(this.buttonGravarGrupoVeiculos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroGrupoVeiculosForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Grupo Veiculos";
             this.ResumeLayout(false);

@@ -45,35 +45,37 @@
             // labelDescricaoTaxa
             // 
             this.labelDescricaoTaxa.AutoSize = true;
-            this.labelDescricaoTaxa.Location = new System.Drawing.Point(42, 62);
+            this.labelDescricaoTaxa.Location = new System.Drawing.Point(48, 83);
             this.labelDescricaoTaxa.Name = "labelDescricaoTaxa";
-            this.labelDescricaoTaxa.Size = new System.Drawing.Size(61, 15);
+            this.labelDescricaoTaxa.Size = new System.Drawing.Size(77, 20);
             this.labelDescricaoTaxa.TabIndex = 0;
             this.labelDescricaoTaxa.Text = "Descrição:";
             // 
             // labelValorTaxa
             // 
             this.labelValorTaxa.AutoSize = true;
-            this.labelValorTaxa.Location = new System.Drawing.Point(67, 97);
+            this.labelValorTaxa.Location = new System.Drawing.Point(77, 129);
             this.labelValorTaxa.Name = "labelValorTaxa";
-            this.labelValorTaxa.Size = new System.Drawing.Size(36, 15);
+            this.labelValorTaxa.Size = new System.Drawing.Size(46, 20);
             this.labelValorTaxa.TabIndex = 1;
             this.labelValorTaxa.Text = "Valor:";
             // 
             // textBoxDescricaoTaxa
             // 
-            this.textBoxDescricaoTaxa.Location = new System.Drawing.Point(121, 59);
+            this.textBoxDescricaoTaxa.Location = new System.Drawing.Point(138, 79);
+            this.textBoxDescricaoTaxa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxDescricaoTaxa.Name = "textBoxDescricaoTaxa";
-            this.textBoxDescricaoTaxa.Size = new System.Drawing.Size(230, 23);
-            this.textBoxDescricaoTaxa.TabIndex = 2;
+            this.textBoxDescricaoTaxa.Size = new System.Drawing.Size(262, 27);
+            this.textBoxDescricaoTaxa.TabIndex = 1;
             // 
             // buttonGravarTaxa
             // 
             this.buttonGravarTaxa.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravarTaxa.Location = new System.Drawing.Point(186, 184);
+            this.buttonGravarTaxa.Location = new System.Drawing.Point(213, 245);
+            this.buttonGravarTaxa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonGravarTaxa.Name = "buttonGravarTaxa";
-            this.buttonGravarTaxa.Size = new System.Drawing.Size(75, 23);
-            this.buttonGravarTaxa.TabIndex = 4;
+            this.buttonGravarTaxa.Size = new System.Drawing.Size(86, 31);
+            this.buttonGravarTaxa.TabIndex = 5;
             this.buttonGravarTaxa.Text = "Gravar";
             this.buttonGravarTaxa.UseVisualStyleBackColor = true;
             this.buttonGravarTaxa.Click += new System.EventHandler(this.buttonGravarTaxa_Click);
@@ -81,34 +83,38 @@
             // buttonCancelarTaxa
             // 
             this.buttonCancelarTaxa.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelarTaxa.Location = new System.Drawing.Point(267, 184);
+            this.buttonCancelarTaxa.Location = new System.Drawing.Point(314, 245);
+            this.buttonCancelarTaxa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCancelarTaxa.Name = "buttonCancelarTaxa";
-            this.buttonCancelarTaxa.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelarTaxa.TabIndex = 5;
+            this.buttonCancelarTaxa.Size = new System.Drawing.Size(86, 31);
+            this.buttonCancelarTaxa.TabIndex = 6;
             this.buttonCancelarTaxa.Text = "Cancelar";
             this.buttonCancelarTaxa.UseVisualStyleBackColor = true;
             // 
             // labelNumeroTaxa
             // 
             this.labelNumeroTaxa.AutoSize = true;
-            this.labelNumeroTaxa.Location = new System.Drawing.Point(49, 24);
+            this.labelNumeroTaxa.Location = new System.Drawing.Point(56, 32);
             this.labelNumeroTaxa.Name = "labelNumeroTaxa";
-            this.labelNumeroTaxa.Size = new System.Drawing.Size(54, 15);
+            this.labelNumeroTaxa.Size = new System.Drawing.Size(66, 20);
             this.labelNumeroTaxa.TabIndex = 6;
             this.labelNumeroTaxa.Text = "Número:";
             // 
             // textBoxNumeroTaxa
             // 
             this.textBoxNumeroTaxa.Enabled = false;
-            this.textBoxNumeroTaxa.Location = new System.Drawing.Point(121, 21);
+            this.textBoxNumeroTaxa.Location = new System.Drawing.Point(138, 28);
+            this.textBoxNumeroTaxa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxNumeroTaxa.Name = "textBoxNumeroTaxa";
-            this.textBoxNumeroTaxa.Size = new System.Drawing.Size(29, 23);
+            this.textBoxNumeroTaxa.ReadOnly = true;
+            this.textBoxNumeroTaxa.Size = new System.Drawing.Size(33, 27);
             this.textBoxNumeroTaxa.TabIndex = 7;
             // 
             // txtUpDownValor
             // 
             this.txtUpDownValor.DecimalPlaces = 2;
-            this.txtUpDownValor.Location = new System.Drawing.Point(121, 92);
+            this.txtUpDownValor.Location = new System.Drawing.Point(138, 123);
+            this.txtUpDownValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUpDownValor.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -120,8 +126,8 @@
             0,
             0});
             this.txtUpDownValor.Name = "txtUpDownValor";
-            this.txtUpDownValor.Size = new System.Drawing.Size(230, 23);
-            this.txtUpDownValor.TabIndex = 8;
+            this.txtUpDownValor.Size = new System.Drawing.Size(263, 27);
+            this.txtUpDownValor.TabIndex = 2;
             this.txtUpDownValor.ThousandsSeparator = true;
             this.txtUpDownValor.Value = new decimal(new int[] {
             1,
@@ -132,10 +138,11 @@
             // radioButtonFixo
             // 
             this.radioButtonFixo.AutoSize = true;
-            this.radioButtonFixo.Location = new System.Drawing.Point(186, 137);
+            this.radioButtonFixo.Location = new System.Drawing.Point(213, 183);
+            this.radioButtonFixo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButtonFixo.Name = "radioButtonFixo";
-            this.radioButtonFixo.Size = new System.Drawing.Size(47, 19);
-            this.radioButtonFixo.TabIndex = 11;
+            this.radioButtonFixo.Size = new System.Drawing.Size(57, 24);
+            this.radioButtonFixo.TabIndex = 4;
             this.radioButtonFixo.TabStop = true;
             this.radioButtonFixo.Text = "Fixo";
             this.radioButtonFixo.UseVisualStyleBackColor = true;
@@ -143,10 +150,11 @@
             // radioButtonDiario
             // 
             this.radioButtonDiario.AutoSize = true;
-            this.radioButtonDiario.Location = new System.Drawing.Point(121, 137);
+            this.radioButtonDiario.Location = new System.Drawing.Point(138, 183);
+            this.radioButtonDiario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButtonDiario.Name = "radioButtonDiario";
-            this.radioButtonDiario.Size = new System.Drawing.Size(56, 19);
-            this.radioButtonDiario.TabIndex = 10;
+            this.radioButtonDiario.Size = new System.Drawing.Size(71, 24);
+            this.radioButtonDiario.TabIndex = 3;
             this.radioButtonDiario.TabStop = true;
             this.radioButtonDiario.Text = "Diário";
             this.radioButtonDiario.UseVisualStyleBackColor = true;
@@ -154,17 +162,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 138);
+            this.label3.Location = new System.Drawing.Point(9, 184);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 15);
+            this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Tipo de Cálculo: ";
             // 
             // TelaCadastroTaxaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 221);
+            this.ClientSize = new System.Drawing.Size(426, 295);
             this.Controls.Add(this.radioButtonFixo);
             this.Controls.Add(this.radioButtonDiario);
             this.Controls.Add(this.label3);
@@ -176,7 +184,14 @@
             this.Controls.Add(this.textBoxDescricaoTaxa);
             this.Controls.Add(this.labelValorTaxa);
             this.Controls.Add(this.labelDescricaoTaxa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroTaxaForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Taxas";
             ((System.ComponentModel.ISupportInitialize)(this.txtUpDownValor)).EndInit();
             this.ResumeLayout(false);

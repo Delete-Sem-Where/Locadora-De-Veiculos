@@ -62,12 +62,13 @@
             // txtNumero
             // 
             this.txtNumero.BackColor = System.Drawing.Color.White;
+            this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(89, 13);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
             this.txtNumero.Size = new System.Drawing.Size(76, 27);
-            this.txtNumero.TabIndex = 44;
+            this.txtNumero.TabIndex = 1;
             // 
             // txtEmail
             // 
@@ -282,12 +283,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaCadastroFuncionariosForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Funcionários";
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).EndInit();
             this.ResumeLayout(false);
