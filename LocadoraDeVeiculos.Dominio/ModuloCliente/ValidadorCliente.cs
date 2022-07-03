@@ -16,18 +16,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty()
                 .Nomes();
 
-            RuleFor(x => x.Email)
-                .NotNull().NotEmpty()
-                .EmailAddress();
-
-            RuleFor(x => x.Telefone)
-                .NotNull().NotEmpty()
-                .Telefone();
-
-            RuleFor(x => x.Endereco)
-                .NotNull().NotEmpty()
-                .Endereco();
-
             When(x => x.TipoCliente == TipoCliente.PessoaJuridica, () =>
             {
                 RuleFor(x => x.CNPJ)
@@ -42,6 +30,18 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty()
                 .CPF();
             });
+
+            RuleFor(x => x.Email)
+                .NotNull().NotEmpty()
+                .EmailAddress();
+
+            RuleFor(x => x.Telefone)
+                .NotNull().NotEmpty()
+                .Telefone();
+
+            RuleFor(x => x.Endereco)
+                .NotNull().NotEmpty()
+                .Endereco();
         }
     }
 }
