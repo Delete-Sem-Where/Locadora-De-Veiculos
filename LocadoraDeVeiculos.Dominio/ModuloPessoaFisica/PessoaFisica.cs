@@ -21,6 +21,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPessoaFisica
             return MemberwiseClone() as PessoaFisica;
         }
 
+        public override string ToString()
+        {
+            return $"{Nome} - CPF: {CPF}";
+        }
+
         public override bool Equals(object? obj)
         {
             PessoaFisica pessoaFisica = obj as PessoaFisica;
