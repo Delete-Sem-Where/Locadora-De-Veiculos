@@ -19,13 +19,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"INSERT INTO [TBTAXA] 
                 (
                     [DESCRICAO],
-                    [VALOR]
+                    [VALOR],
+                    [TIPOCALCULO]
 
 	            )
 	            VALUES
                 (
                     @DESCRICAO,
-                    @VALOR
+                    @VALOR,
+                    @TIPOCALCULO
+
 
                 );SELECT SCOPE_IDENTITY();";
 
@@ -33,7 +36,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"UPDATE [TBTAXA]	
 		        SET
 			        [DESCRICAO] = @DESCRICAO,
-			        [VALOR] = @VALOR
+			        [VALOR] = @VALOR,
+                    [TIPOCALCULO] = @TIPOCALCULO
 		        WHERE
 			        [ID] = @ID";
 
@@ -46,7 +50,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"SELECT 
 		            [ID], 
 		            [DESCRICAO],
-		            [VALOR]
+		            [VALOR],
+                    [TIPOCALCULO] 
 	            FROM 
 		            [TBTAXA]";
 
@@ -54,7 +59,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"SELECT 
 		            [ID], 
 		            [DESCRICAO],
-		            [VALOR]
+		            [VALOR],
+                    [TIPOCALCULO] 
+
 	            FROM 
 		            [TBTAXA]
 		        WHERE
@@ -64,7 +71,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
             @"SELECT 
 		            [ID], 
 		            [DESCRICAO],
-		            [VALOR]
+		            [VALOR],
+                    [TIPOCALCULO]
 	            FROM 
 		            [TBTAXA]
 		        WHERE
