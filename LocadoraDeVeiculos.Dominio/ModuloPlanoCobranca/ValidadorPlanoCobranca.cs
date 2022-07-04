@@ -11,36 +11,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
     {
         public ValidadorPlanoCobranca()
         {
-            //RuleFor(x => x.Nome)
-            //    .NotNull().NotEmpty()
-            //    .Nomes();
 
-            //RuleFor(x => x.Email)
-            //    .NotNull().NotEmpty()
-            //    .EmailAddress();
-
-            //RuleFor(x => x.Telefone)
-            //    .NotNull().NotEmpty()
-            //    .Telefone();
-
-            //RuleFor(x => x.Endereco)
-            //    .NotNull().NotEmpty()
-            //    .Endereco();
-
-            //When(x => x.TipoPlanoCobranca == TipoPlanoCobranca.PessoaJuridica, () =>
-            //{
-            //    RuleFor(x => x.CNPJ)
-            //    .NotNull().NotEmpty()
-            //    .CNPJ();
-
-            //});
-
-            //When(x => x.TipoPlanoCobranca == TipoPlanoCobranca.PessoaFisica, () =>
-            //{
-            //    RuleFor(x => x.CPF)
-            //    .NotNull().NotEmpty()
-            //    .CPF();
-            //});
+            RuleFor(x => x.GrupoVeiculos)
+                .NotNull();
+            //não sei se precisa de validador, se as casas são todas numéricas e já estão limitadas em max e min...
         }
     }
 }

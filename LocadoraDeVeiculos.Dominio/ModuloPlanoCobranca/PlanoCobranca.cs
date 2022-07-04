@@ -20,7 +20,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         {
             return MemberwiseClone() as PlanoCobranca;
         }        
-
        
         public override bool Equals(object? obj)
         {
