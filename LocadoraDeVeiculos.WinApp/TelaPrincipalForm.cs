@@ -23,6 +23,9 @@ using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -85,6 +88,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void condutorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+        
+        private void veículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -177,6 +185,7 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
             var repositorioCliente = new RepositorioClienteEmBancoDados();
             var repositorioCondutor = new RepositorioCondutorEmBancoDados();
+            var repositorioVeiculos = new RepositorioVeiculosEmBancoDados();
 
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoPessoaJuridica = new ServicoPessoaJuridica(repositorioPessoaJuridica);
@@ -185,6 +194,7 @@ namespace LocadoraDeVeiculos.WinApp
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor);
+            var servicoVeiculos = new ServicoVeiculos(repositorioVeiculos);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -195,6 +205,9 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
             controladores.Add("Cliente", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Condutor", new ControladorCondutor(repositorioCondutor, servicoCondutor));
+            controladores.Add("Veículos", new ControladorVeiculos(repositorioVeiculos, servicoVeiculos));
         }
+
+        
     }
 }

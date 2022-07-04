@@ -39,11 +39,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos
             return grid.SelecionarNumero<int>();
         }
 
-        public void AtualizarRegistros(List<GrupoVeiculos> pfs)
+        public void AtualizarRegistros(List<GrupoVeiculos> gvs      )
         {
             grid.Rows.Clear();
 
-            foreach (GrupoVeiculos gv in pfs)
+            foreach (GrupoVeiculos gv in gvs)
             {
                 grid.Rows.Add(gv.Id, gv.Nome);
             }

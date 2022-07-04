@@ -27,4 +27,8 @@
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDados\LocadoraDeVeiculos.Infra.BancoDados.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModuloVeiculos\" />
+  </ItemGroup>
+
 </Project>
