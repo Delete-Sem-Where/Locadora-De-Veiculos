@@ -55,6 +55,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
+            this.planoDeCobrançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -81,9 +82,10 @@
             this.taxasToolStripMenuItem,
             this.grupoVeículosToolStripMenuItem,
             this.clienteToolStripMenuItem,
-            this.condutorToolStripMenuItem});
+            this.condutorToolStripMenuItem,
+            this.planoDeCobrançaToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // funcionárioToolStripMenuItem
@@ -280,9 +282,16 @@
             this.panelRegistros.Size = new System.Drawing.Size(1168, 464);
             this.panelRegistros.TabIndex = 3;
             // 
+            // planoDeCobrançaToolStripMenuItem
+            // 
+            this.planoDeCobrançaToolStripMenuItem.Name = "planoDeCobrançaToolStripMenuItem";
+            this.planoDeCobrançaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.planoDeCobrançaToolStripMenuItem.Text = "Plano de Cobrança";
+            this.planoDeCobrançaToolStripMenuItem.Click += new System.EventHandler(this.planoDeCobrançaToolStripMenuItem_Click);
+            // 
             // TelaPrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 561);
             this.Controls.Add(this.panelRegistros);
@@ -336,5 +345,6 @@
         private ToolStripMenuItem grupoVeículosToolStripMenuItem;
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem condutorToolStripMenuItem;
+        private ToolStripMenuItem planoDeCobrançaToolStripMenuItem;
     }
 }
