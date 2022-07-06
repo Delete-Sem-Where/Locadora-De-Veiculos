@@ -11,10 +11,20 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
     {
         public ValidadorPlanoCobranca()
         {
-
             RuleFor(x => x.GrupoVeiculos)
                 .NotNull();
-            //não sei se precisa de validador, se as casas são todas numéricas e já estão limitadas em max e min...
+
+            RuleFor(x => x.ValorDiaria)
+               .NotNull();
+
+            RuleFor(x => x.ValorKm)
+               .NotNull();
+
+            RuleFor(x => x.LimiteKm)
+               .NotNull();
+
+            RuleFor(x => x.ModalidadePlanoCobranca)
+               .NotNull();
         }
     }
 }
