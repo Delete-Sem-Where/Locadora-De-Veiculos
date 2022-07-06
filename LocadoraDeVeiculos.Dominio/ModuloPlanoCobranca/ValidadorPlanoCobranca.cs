@@ -14,17 +14,34 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             RuleFor(x => x.GrupoVeiculos)
                 .NotNull();
 
-            RuleFor(x => x.ValorDiaria)
-               .NotNull();
+            When(x => x.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Diario, () =>
+            {
+                RuleFor(x => x.ValorDiaria)
+               .GreaterThan(0);
 
-            RuleFor(x => x.ValorKm)
-               .NotNull();
+                RuleFor(x => x.ValorKm)
+                   .GreaterThan(0);
+            });
 
-            RuleFor(x => x.LimiteKm)
-               .NotNull();
+            When(x => x.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Livre, () =>
+            {
+                RuleFor(x => x.ValorDiaria)
+               .GreaterThan(0);
 
-            RuleFor(x => x.ModalidadePlanoCobranca)
-               .NotNull();
+            });
+
+            When(x => x.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Controle, () =>
+            {
+                RuleFor(x => x.ValorDiaria)
+                    .GreaterThan(0);
+
+                RuleFor(x => x.ValorKm)
+                    .GreaterThan(0);
+
+                RuleFor(x => x.LimiteKm)
+                    .GreaterThan(0);
+
+            });            
         }
     }
 }

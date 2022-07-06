@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
                     Nome = "SUV",
                 },
                 
-                ModalidadePlanoCobranca = ModalidadePlanoCobranca.Diario,
+                ModalidadePlanoCobranca = ModalidadePlanoCobranca.Controle,
                 ValorDiaria = 100,
                 ValorKm = 11,
                 LimiteKm = 10
@@ -62,7 +62,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
         public void ValorKm_Deve_Ser_Maior_Que_0()
         {
             // arrange
-            planoCobranca.ValorDiaria = 0;
+            planoCobranca.ValorKm = 0;
 
             // action
             var resultado = validador.TestValidate(planoCobranca);
@@ -75,7 +75,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
         public void LimiteKm_Deve_Ser_Maior_Que_0()
         {
             // arrange
-            planoCobranca.ValorDiaria = 0;
+            planoCobranca.LimiteKm = 0;
 
             // action
             var resultado = validador.TestValidate(planoCobranca);
