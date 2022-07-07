@@ -44,20 +44,20 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
 
         public ValidationResult Editar(Cliente cliente)
         {
-            Log.Logger.Debug("Tentando inserir cliente... \r\n{@cliente}", cliente);
+            Log.Logger.Debug("Tentando editar cliente... \r\n{@cliente}", cliente);
 
             ValidationResult resultadoValidacao = ValidarCliente(cliente);
 
             if (resultadoValidacao.IsValid)
             {
                 repositorioCliente.Editar(cliente);
-                Log.Logger.Debug("Cliente {ClienteNome} inserido com sucesso", cliente.Nome);
+                Log.Logger.Debug("Cliente {ClienteNome} editado com sucesso", cliente.Nome);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir Cliente {ClienteNome} - {Motivo}",
+                    Log.Logger.Warning("Falha ao tentar editar Cliente {ClienteNome} - {Motivo}",
                         cliente.Nome, erro.ErrorMessage);
                 }
             }
