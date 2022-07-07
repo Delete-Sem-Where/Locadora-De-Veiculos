@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,47 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca
 
         public ValidationResult Inserir(PlanoCobranca planoCobranca)
         {
+            Log.Logger.Debug("Tentando inserir Plano de Cobrança... \r\n{@grupoVeiculos}", planoCobranca.GrupoVeiculos.Nome);
+
             ValidationResult resultadoValidacao = Validar(planoCobranca);
 
-            if (resultadoValidacao.IsValid)
-                repositorioPlanoCobranca.Inserir(planoCobranca);
 
+            if (resultadoValidacao.IsValid)
+            {
+                repositorioPlanoCobranca.Inserir(planoCobranca);
+                Log.Logger.Debug("Plano de Cobrança para o Grupo {GrupoVeiculos} inserido com sucesso", planoCobranca.GrupoVeiculos.Nome);
+
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir Plano de Cobrança para o Grupo {GrupoVeiculos} - {Motivo}",
+                        planoCobranca.GrupoVeiculos.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(PlanoCobranca planoCobranca)
         {
+            Log.Logger.Debug("Tentando editar Plano de Cobrança... \r\n{@planoCobranca}", planoCobranca.GrupoVeiculos.Nome);
+
             ValidationResult resultadoValidacao = Validar(planoCobranca);
 
             if (resultadoValidacao.IsValid)
-                repositorioPlanoCobranca.Editar(planoCobranca);
+            {
+                    repositorioPlanoCobranca.Editar(planoCobranca);
+                    Log.Logger.Debug("Plano de Cobrança para o Grupo {GrupoVeiculos} editado com sucesso", planoCobranca.GrupoVeiculos.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar Plano de Cobrança para o Grupo {GrupoVeiculos} - {Motivo}",
+                        planoCobranca.GrupoVeiculos.Nome, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }
