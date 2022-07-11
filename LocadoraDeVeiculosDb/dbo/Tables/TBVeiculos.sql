@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TBVeiculos]
 (
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY (1,1), 
+	[Id] INT NOT NULL IDENTITY (1,1), 
     [Modelo] VARCHAR(70) NOT NULL, 
     [Marca] VARCHAR(20) NOT NULL, 
     [Ano] VARCHAR(4) NOT NULL, 

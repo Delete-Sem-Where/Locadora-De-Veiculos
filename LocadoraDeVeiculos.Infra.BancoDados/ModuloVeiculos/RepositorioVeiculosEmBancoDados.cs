@@ -64,42 +64,42 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-		       VEICULO.[ID],
-               VEICULO.[MODELO],
-               VEICULO.[MARCA],
-               VEICULO.[ANO],
-               VEICULO.[COR],
-               VEICULO.[PLACA],
-               VEICULO.[TIPO_COMBUSTIVEL],
-               VEICULO.[QUILOMETRO_PERCORRIDO],
-               VEICULO.[CAPACIDADE_TANQUE],
-               VEICULO.[GRUPOVEICULOS_ID],
+		       VEICULOS.[ID],
+               VEICULOS.[MODELO],
+               VEICULOS.[MARCA],
+               VEICULOS.[ANO],
+               VEICULOS.[COR],
+               VEICULOS.[PLACA],
+               VEICULOS.[TIPO_COMBUSTIVEL],
+               VEICULOS.[QUILOMETRO_PERCORRIDO],
+               VEICULOS.[CAPACIDADE_TANQUE],
+               VEICULOS.[GRUPOVEICULOS_ID],
                
                GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULO] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULO
 
             INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
                 ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID";
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-		        VEICULO.[ID],
-                VEICULO.[MODELO],
-                VEICULO.[MARCA],
-                VEICULO.[ANO],
-                VEICULO.[COR],
-                VEICULO.[PLACA],
-                VEICULO.[TIPO_COMBUSTIVEL],
-                VEICULO.[QUILOMETRO_PERCORRIDO],
-                VEICULO.[CAPACIDADE_TANQUE],
-                VEICULO.[GRUPOVEICULOS_ID],
+		        VEICULOS.[ID],
+                VEICULOS.[MODELO],
+                VEICULOS.[MARCA],
+                VEICULOS.[ANO],
+                VEICULOS.[COR],
+                VEICULOS.[PLACA],
+                VEICULOS.[TIPO_COMBUSTIVEL],
+                VEICULOS.[QUILOMETRO_PERCORRIDO],
+                VEICULOS.[CAPACIDADE_TANQUE],
+                VEICULOS.[GRUPOVEICULOS_ID],
 
                 GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                 GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULO] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULO
 
                 INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
                                             ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID
@@ -108,21 +108,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
 
         private string sqlSelecionarPorPlaca =>
             @"SELECT 
-		       VEICULO.[ID],
-               VEICULO.[MODELO],
-               VEICULO.[MARCA],
-               VEICULO.[ANO],
-               VEICULO.[COR],
-               VEICULO.[PLACA],
-               VEICULO.[TIPO_COMBUSTIVEL],
-               VEICULO.[QUILOMETRO_PERCORRIDO],
-               VEICULO.[CAPACIDADE_TANQUE],
-               VEICULO.[ID_GRUPO_VEICULOS],
+		       VEICULOS.[ID],
+               VEICULOS.[MODELO],
+               VEICULOS.[MARCA],
+               VEICULOS.[ANO],
+               VEICULOS.[COR],
+               VEICULOS.[PLACA],
+               VEICULOS.[TIPO_COMBUSTIVEL],
+               VEICULOS.[QUILOMETRO_PERCORRIDO],
+               VEICULOS.[CAPACIDADE_TANQUE],
+               VEICULOS.[ID_GRUPO_VEICULOS],
 
                GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULO] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULO
 
             INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
                 ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID
