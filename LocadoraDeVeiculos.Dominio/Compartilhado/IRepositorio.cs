@@ -1,13 +1,4 @@
-﻿using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
-using FluentValidation.Results;
-
-namespace LocadoraDeVeiculos.Dominio.Compartilhado
+﻿namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
     public interface IRepositorio<T> where T : EntidadeBase<T>
     {
@@ -19,6 +10,6 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
 
         List<T> SelecionarTodos();
 
-        T SelecionarPorId(int id);
+        T SelecionarPorId(Guid id);
     }
 }
