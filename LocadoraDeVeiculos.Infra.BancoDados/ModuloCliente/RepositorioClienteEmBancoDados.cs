@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
         protected override string sqlInserir =>
             @"INSERT INTO [TBCLIENTE]
             (
+                [ID],
                 [NOME],
                 [DOCUMENTO],
                 [EMAIL],
@@ -25,13 +26,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
             )
             VALUES
             (
+                @ID,
                 @NOME, 
                 @DOCUMENTO, 
                 @EMAIL,
                 @TELEFONE,
                 @ENDERECO,
                 @TIPO_CLIENTE
-            );SELECT SCOPE_IDENTITY();";
+            );";
 
         protected override string sqlEditar =>
             @"UPDATE [TBCLIENTE]
