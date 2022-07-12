@@ -12,6 +12,7 @@ using FluentAssertions;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloVeiculos
 {
+    [TestClass]
     public class RepositorioVeiculosEmBancoDadosTest : IntegrationTestBase
     {
         private RepositorioVeiculosEmBancoDados repositorioVeiculos;

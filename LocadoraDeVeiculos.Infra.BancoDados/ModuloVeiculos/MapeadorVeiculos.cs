@@ -52,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
             comando.Parameters.AddWithValue("QUILOMETRO_PERCORRIDO", novoVeiculo.QuilometroPercorrido);
             comando.Parameters.AddWithValue("CAPACIDADE_TANQUE", novoVeiculo.CapacidadeTanque);
             comando.Parameters.AddWithValue("TIPO_COMBUSTIVEL", novoVeiculo.TipoCombustivel);
-            comando.Parameters.AddWithValue("GRUPO_VEICULOS_ID", novoVeiculo.GrupoVeiculos_Id);
+            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", novoVeiculo.GrupoVeiculos_Id);
 
 
         }

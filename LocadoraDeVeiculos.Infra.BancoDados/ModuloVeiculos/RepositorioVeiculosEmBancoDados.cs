@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULOS] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULOS
 
             INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
                 ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID";
@@ -99,12 +99,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                 GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                 GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULOS] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULOS
 
                 INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
-                                            ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID
+                                            ON GRUPOVEICULOS.ID = VEICULOS.GRUPOVEICULOS_ID
 
-            WHERE VEICULO.ID = @ID";
+            WHERE VEICULOS.ID = @ID";
 
         private string sqlSelecionarPorPlaca =>
             @"SELECT 
@@ -117,17 +117,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                VEICULOS.[TIPO_COMBUSTIVEL],
                VEICULOS.[QUILOMETRO_PERCORRIDO],
                VEICULOS.[CAPACIDADE_TANQUE],
-               VEICULOS.[ID_GRUPO_VEICULOS],
+               VEICULOS.[GRUPOVEICULOS_ID],
 
                GRUPOVEICULOS.[ID] GRUPOVEICULOS_ID,
                GRUPOVEICULOS.[NOME] GRUPOVEICULOS_NOME
 
-            FROM [TBVEICULOS] AS VEICULO
+            FROM [TBVEICULOS] AS VEICULOS
 
             INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
-                ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID
+                ON GRUPOVEICULOS.ID = VEICULOS.GRUPOVEICULOS_ID
 
-            WHERE VEICULO.PLACA = @PLACA
+            WHERE VEICULOS.PLACA = @PLACA
             ";
 
 

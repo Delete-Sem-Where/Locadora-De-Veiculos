@@ -22,6 +22,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
                     .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
+           
+            RuleFor(x => x.Placa)
+                    .NotNull().NotEmpty()
+                    .MinimumLength(7)
+                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
 
             RuleFor(x => x.Cor)
                     .NotNull().NotEmpty()
