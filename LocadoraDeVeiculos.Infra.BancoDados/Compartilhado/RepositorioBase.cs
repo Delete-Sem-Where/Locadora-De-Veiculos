@@ -4,9 +4,7 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
@@ -14,10 +12,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         where T : EntidadeBase<T>
         where TMapeador : MapeadorBase<T>, new()
     {
-        protected string enderecoBanco =
-            @"Data Source=(localdb)\MSSQLLocalDB;
-            Initial Catalog=LocadoraDeVeiculosDb;
-            Integrated Security=True;";
+        private readonly string enderecoBanco;
+
+        public RepositorioBase()
+        {
+            var configuracao = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("ConfiguracaoAplicacao.json")
+                .Build();
+
+            enderecoBanco = configuracao.GetConnectionString("SqlServer");
+        }
 
         protected abstract string sqlInserir { get; }
         protected abstract string sqlEditar { get; }
