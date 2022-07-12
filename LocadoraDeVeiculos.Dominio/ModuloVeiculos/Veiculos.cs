@@ -19,7 +19,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
         public string QuilometroPercorrido { get; set; }
         public string CapacidadeTanque { get; set; }
         public int GrupoVeiculos_Id { get; set; }
-       // public byte[] Foto { get; set; }
+       
+        // public byte[] Foto { get; set; }
 
         //public override string ToString()
         //{
