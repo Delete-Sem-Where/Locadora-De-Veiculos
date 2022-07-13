@@ -17,13 +17,13 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                 .NotNull().NotEmpty()
                 .Nomes();
 
-            RuleFor(x => x.Email)
-                .NotNull().NotEmpty()
-                .EmailAddress();
-
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty()
                 .Telefone();
+
+            RuleFor(x => x.Email)
+                .NotNull().NotEmpty()
+                .EmailAddress();
 
             RuleFor(x => x.Endereco)
                 .NotNull().NotEmpty()

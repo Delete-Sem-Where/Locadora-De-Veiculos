@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,46 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
 
         public ValidationResult Inserir(Cliente cliente)
         {
-            var resultadoValidacao = ValidarCliente(cliente);
+            Log.Logger.Debug("Tentando inserir cliente... \r\n{@cliente}", cliente);
+
+            ValidationResult resultadoValidacao = ValidarCliente(cliente);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioCliente.Inserir(cliente);
+                Log.Logger.Debug("Cliente {ClienteNome} inserido com sucesso", cliente.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir Cliente {ClienteNome} - {Motivo}",
+                        cliente.Nome, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(Cliente cliente)
         {
-            var resultadoValidacao = ValidarCliente(cliente);
+            Log.Logger.Debug("Tentando editar cliente... \r\n{@cliente}", cliente);
+
+            ValidationResult resultadoValidacao = ValidarCliente(cliente);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioCliente.Editar(cliente);
+                Log.Logger.Debug("Cliente {ClienteNome} editado com sucesso", cliente.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar Cliente {ClienteNome} - {Motivo}",
+                        cliente.Nome, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }

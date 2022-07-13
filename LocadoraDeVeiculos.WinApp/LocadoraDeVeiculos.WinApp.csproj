@@ -19,7 +19,7 @@
     <ProjectReference Include="..\LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDados.Test\LocadoraDeVeiculos.Infra.BancoDados.Test.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDados\LocadoraDeVeiculos.Infra.BancoDados.csproj" />
-    <ProjectReference Include="..\LocadoraDeVeiculosDb\LocadoraDeVeiculosDb.sqlproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.Infra.Logging\LocadoraDeVeiculos.Infra.Logging.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +35,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ConfiguracaoAplicacao.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
