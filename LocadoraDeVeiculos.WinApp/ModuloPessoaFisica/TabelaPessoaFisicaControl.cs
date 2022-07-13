@@ -44,9 +44,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaFisica
             return colunas;
         }
 
-        public int ObtemNumeroPessoaFisicaSelecionada()
+        public Guid ObtemNumeroPessoaFisicaSelecionada()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
         public void AtualizarRegistros(List<PessoaFisica> pfs)
