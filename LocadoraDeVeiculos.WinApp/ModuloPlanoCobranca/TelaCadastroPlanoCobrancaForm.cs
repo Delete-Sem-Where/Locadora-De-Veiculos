@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             set
             {
                 planoCobranca = value;
-                if (planoCobranca.Id != 0)
+                if (planoCobranca.Id != Guid.Empty)
                 {
                     PreencherDadosNaTela();
                 }
