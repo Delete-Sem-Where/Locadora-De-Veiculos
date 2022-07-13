@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            pessoaJuridica.Id = Convert.ToInt32(txtNumero.Text);
+            pessoaJuridica.Id = Guid.Parse(txtNumero.Text);
             pessoaJuridica.Nome = txtNome.Text;
             pessoaJuridica.Email = txtEmail.Text;
             pessoaJuridica.Telefone = txtTelefone.Text;
