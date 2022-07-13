@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCliente
     {
         private RepositorioClienteEmBancoDados repositorio;
 
-        public RepositorioClienteEmBancoDadosTest()
+        public RepositorioClienteEmBancoDadosTest() : base()
         {
             repositorio = new RepositorioClienteEmBancoDados();
         }
