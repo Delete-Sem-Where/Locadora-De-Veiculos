@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             mapeador.ConfigurarParametros(registro, comandoInsercao);
 
             conexaoComBanco.Open();
-            var id = comandoInsercao.ExecuteNonQuery();
+            comandoInsercao.ExecuteNonQuery();
 
             conexaoComBanco.Close();
         }

@@ -1,13 +1,21 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
     public static class Db
     {
-        private static string enderecoBanco =
-            @"Data Source=(localdb)\MSSQLLocalDB;
-            Initial Catalog=LocadoraDeVeiculosDb;
-            Integrated Security=True;";
+        private static readonly string enderecoBanco;
+
+        static Db()
+        {
+            var configuracao = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("ConfiguracaoAplicacao.json")
+                .Build();
+
+            enderecoBanco = configuracao.GetConnectionString("SqlServer");
+        }
 
         public static void ExecutarSql(string sql)
         {
