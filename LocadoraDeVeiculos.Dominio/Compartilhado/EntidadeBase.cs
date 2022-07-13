@@ -1,4 +1,6 @@
-﻿namespace LocadoraDeVeiculos.Dominio.Compartilhado
+﻿using Taikandi;
+
+namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
     public abstract class EntidadeBase<T>
     {
@@ -6,7 +8,7 @@
 
         public EntidadeBase()
         {
-            Id = Guid.NewGuid();
+            Id = SequentialGuid.NewGuid();
         }
     }
 }
