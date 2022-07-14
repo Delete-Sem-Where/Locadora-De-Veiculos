@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica
 
         public override PessoaFisica ConverterRegistro(SqlDataReader leitorRegistro)
         {
-            int id = Convert.ToInt32(leitorRegistro["PESSOA_FISICA_ID"]);
+            Guid id = Guid.Parse(leitorRegistro["PESSOA_FISICA_ID"].ToString());
             string nome = Convert.ToString(leitorRegistro["PESSOA_FISICA_NOME"]);
             string email = Convert.ToString(leitorRegistro["PESSOA_FISICA_EMAIL"]);
             string telefone = Convert.ToString(leitorRegistro["PESSOA_FISICA_TELEFONE"]);

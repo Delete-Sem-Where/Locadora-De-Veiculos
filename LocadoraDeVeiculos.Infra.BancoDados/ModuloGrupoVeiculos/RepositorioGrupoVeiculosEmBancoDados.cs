@@ -17,14 +17,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS] 
                 (
+                    [ID],
                     [NOME]
-
 	            )
 	            VALUES
                 (
+                    @ID,
                     @NOME
-
-                );SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @"UPDATE [TBGRUPOVEICULOS]	

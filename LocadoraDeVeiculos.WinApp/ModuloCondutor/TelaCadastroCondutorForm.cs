@@ -167,7 +167,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             CarregarItemComboboxSelecionado();
 
-            if (condutor.Id != 0)
+            if (condutor.Id != Guid.Empty)
                 checkClienteCondutor.Checked = true;
             else
                 checkClienteCondutor.Enabled = false;

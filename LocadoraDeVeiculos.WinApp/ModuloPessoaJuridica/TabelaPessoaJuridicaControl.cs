@@ -41,9 +41,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica
             return colunas;
         }
 
-        public int ObtemNumeroPessoaJuridicaSelecionado()
+        public Guid ObtemNumeroPessoaJuridicaSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
         public void AtualizarRegistros(List<PessoaJuridica> pessoasJuridicas)

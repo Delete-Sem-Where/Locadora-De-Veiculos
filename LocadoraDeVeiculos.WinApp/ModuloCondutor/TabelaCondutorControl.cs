@@ -40,9 +40,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             return colunas;
         }
 
-        public int ObtemNumeroCondutorSelecionado()
+        public Guid ObtemNumeroCondutorSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
         public void AtualizarRegistros(List<Condutor> cds)

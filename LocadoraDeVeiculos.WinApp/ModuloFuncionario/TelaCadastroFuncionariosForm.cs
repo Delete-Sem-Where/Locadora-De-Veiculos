@@ -45,7 +45,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            funcionario.Id = Convert.ToInt32(txtNumero.Text);
             funcionario.Nome = txtNome.Text;
             funcionario.Email = txtEmail.Text;
             funcionario.Telefone = txtTelefone.Text;

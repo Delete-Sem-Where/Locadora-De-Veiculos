@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             set
             {
                 cliente = value;
-                if (cliente.Id != 0)
+                if (cliente.Id != Guid.Empty)
                     PreencherDadosNaTela();
                 else
                 {
@@ -87,6 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void PreencherDadosNaTela()
         {
+            txtNumero.Text = cliente.Id.ToString();
             txtNome.Text = cliente.Nome;
             txtEmail.Text = cliente.Email;
             txtTelefone.Text = cliente.Telefone;

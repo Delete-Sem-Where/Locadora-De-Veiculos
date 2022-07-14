@@ -1,8 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
@@ -41,8 +37,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             mapeador.ConfigurarParametros(registro, comandoInsercao);
 
             conexaoComBanco.Open();
-            var id = comandoInsercao.ExecuteScalar();
-            registro.Id = Convert.ToInt32(id);
+            comandoInsercao.ExecuteNonQuery();
 
             conexaoComBanco.Close();
         }
@@ -75,7 +70,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexaoComBanco.Close();
         }
 
-        public virtual T SelecionarPorId(int id)
+        public virtual T SelecionarPorId(Guid id)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
