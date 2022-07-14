@@ -1,12 +1,8 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+﻿using LocadoraDeVeiculos.Aplicacao;
 using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {

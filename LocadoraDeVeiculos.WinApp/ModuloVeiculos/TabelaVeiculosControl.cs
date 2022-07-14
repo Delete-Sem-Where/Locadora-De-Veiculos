@@ -17,6 +17,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
         public TabelaVeiculosControl()
         {
             InitializeComponent();
+            grid.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.Columns.AddRange(ObterColunas());
         }
         public DataGridViewColumn[] ObterColunas()
         {
@@ -46,9 +49,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             return colunas;
         }
 
-        public int ObtemNumeroVeiculoSelecionado()
+        public Guid ObtemNumeroVeiculoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
         public void AtualizarRegistros(List<Veiculos> veiculos)

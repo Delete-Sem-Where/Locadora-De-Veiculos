@@ -13,7 +13,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
     {
         public override Veiculos ConverterRegistro(SqlDataReader leitorRegistro)
         {
-            int id = Convert.ToInt32(leitorRegistro["ID"]);
+            Guid id = Guid.Parse(leitorRegistro["ID"].ToString());
             string modelo = Convert.ToString(leitorRegistro["MODELO"]);
             string marca = Convert.ToString(leitorRegistro["MARCA"]);
             string ano = Convert.ToString(leitorRegistro["ANO"]);
@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
             string placa = Convert.ToString(leitorRegistro["PLACA"]);
             string quilometroPercorrido = Convert.ToString(leitorRegistro["QUILOMETRO_PERCORRIDO"]);
             string capacidadeTanque = Convert.ToString(leitorRegistro["CAPACIDADE_TANQUE"]);
-            int grupoVeiculos_Id = Convert.ToInt32(leitorRegistro["GRUPOVEICULOS_ID"]);
+            Guid grupoVeiculos_Id = Guid.Parse(leitorRegistro["GRUPOVEICULOS_ID"].ToString());
             string tipoCombustivel = Convert.ToString(leitorRegistro["TIPO_COMBUSTIVEL"]);
 
             var veiculos = new Veiculos

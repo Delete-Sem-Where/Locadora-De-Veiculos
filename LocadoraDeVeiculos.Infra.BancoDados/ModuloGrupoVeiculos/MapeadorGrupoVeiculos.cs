@@ -13,8 +13,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
     {
         public override GrupoVeiculos ConverterRegistro(SqlDataReader leitor)
         {
-            Guid id = Guid.Parse(leitorTaxa["ID"].ToString());
-            string? nome = Convert.ToString(leitorTaxa["NOME"]);
+            Guid id = Guid.Parse(leitor["ID"].ToString());
+            string? nome = Convert.ToString(leitor["NOME"]);
 
             var grupoVeiculos = new GrupoVeiculos
             {

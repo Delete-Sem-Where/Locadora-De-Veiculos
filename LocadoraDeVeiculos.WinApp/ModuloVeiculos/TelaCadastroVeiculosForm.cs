@@ -51,7 +51,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             {
                 veiculos = value;
 
-
                 txtNumero.Text = veiculos.Id.ToString();
                 txtModelo.Text = veiculos.Modelo;
                 txtPlaca.Text = veiculos.Placa;
