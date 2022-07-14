@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
             FROM [TBVEICULOS] AS VEICULOS
 
             INNER JOIN [TBGRUPOVEICULOS] AS GRUPOVEICULOS
-                ON GRUPOVEICULOS.ID = VEICULO.GRUPOVEICULOS_ID";
+                ON GRUPOVEICULOS.ID = VEICULOS.GRUPOVEICULOS_ID";
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
