@@ -26,7 +26,7 @@ using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+using LocadoraDeVeiculos.Aplicacao;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
 
