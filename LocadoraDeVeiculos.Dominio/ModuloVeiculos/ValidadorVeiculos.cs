@@ -47,12 +47,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
 
             RuleFor(x => x.GrupoVeiculos_Id)
                     .NotNull().NotEmpty();
-
-            //RuleFor(x => x.Foto)
-            //        .NotNull().NotEmpty();
-
-            //Pode ocorrer de não haver uma boa foto no momento de cadastro e o operator preferir deixar para cadastrar dps...
-
         }
     }
 }

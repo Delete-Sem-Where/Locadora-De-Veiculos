@@ -1,5 +1,4 @@
-﻿using LocadoraDeVeiculos.Aplicacao;
-using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 
@@ -27,17 +26,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             DialogResult resultado = tela.ShowDialog();
 
-            if (resultado == DialogResult.OK)
-            {
-                CarregarVeiculos();
-            }
+            if (resultado == DialogResult.OK)            
+                CarregarVeiculos();           
         }
 
         public override void Editar()
         {
-            Veiculos VeiculosSelecionado = ObtemVeiculosSelecionado();
+            Veiculos veiculosSelecionado = ObtemVeiculosSelecionado();
 
-            if (VeiculosSelecionado == null)
+            if (veiculosSelecionado == null)
             {
                 MessageBox.Show("Selecione um veículo",
                 "Edição de um  veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -46,35 +43,33 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             TelaCadastroVeiculosForm tela = new TelaCadastroVeiculosForm();
 
-            tela.Veiculos = VeiculosSelecionado.Clonar();
+            tela.Veiculos = veiculosSelecionado.Clonar();
 
             tela.GravarRegistro = servicoVeiculos.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
-            if (resultado == DialogResult.OK)
-            {
-                CarregarVeiculos();
-            }
+            if (resultado == DialogResult.OK)            
+                CarregarVeiculos();          
         }
 
         public override void Excluir()
         {
-            Veiculos VeiculosSelecionado = ObtemVeiculosSelecionado();
+            Veiculos veiculosSelecionado = ObtemVeiculosSelecionado();
 
-            if (VeiculosSelecionado == null)
+            if (veiculosSelecionado == null)
             {
                 MessageBox.Show("Selecione um veiculo",
-                "Exclusão de um Veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                "Exclusão de veículo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir esse veículo?",
-                "Exclusão de um Veiculo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir este veículo?",
+                "Exclusão de veículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.OK)
             {
-                repositorioVeiculos.Excluir(VeiculosSelecionado);
+                repositorioVeiculos.Excluir(veiculosSelecionado);
                 CarregarVeiculos();
             }
         }
@@ -86,28 +81,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
         public override UserControl ObtemListagem()
         {
-            if (tabelaVeiculos == null)
-                tabelaVeiculos = new TabelaVeiculosControl();
+            tabelaVeiculos = new TabelaVeiculosControl();
 
             CarregarVeiculos();
 
             return tabelaVeiculos;
         }
-
-        public void CarregarVeiculos()
-        {
-            List<Veiculos> Veiculos = repositorioVeiculos.SelecionarTodos();
-
-            tabelaVeiculos.AtualizarRegistros(Veiculos);
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {Veiculos.Count} veiculos");
-        }
-
         public Veiculos ObtemVeiculosSelecionado()
         {
             var id = tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
 
             return repositorioVeiculos.SelecionarPorId(id);
         }
+        public void CarregarVeiculos()
+        {
+            List<Veiculos> veiculos = repositorioVeiculos.SelecionarTodos();
 
+            tabelaVeiculos.AtualizarRegistros(veiculos);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {veiculos.Count} veiculo(s)");
+        }
     }
 }

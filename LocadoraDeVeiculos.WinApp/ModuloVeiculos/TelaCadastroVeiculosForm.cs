@@ -1,18 +1,7 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {
@@ -31,10 +20,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             cmbGrupoVeiculos.Items.Clear();
 
             var grupoVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
+           
             foreach (var item in grupoVeiculos)
-            {
-                cmbGrupoVeiculos.Items.Add(item);
-            }
+                cmbGrupoVeiculos.Items.Add(item);          
         }
 
         public Func<Veiculos, ValidationResult> GravarRegistro { get; set; }
@@ -75,11 +63,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             veiculos.CapacidadeTanque = txtCapacidadeTanque.Text;
             veiculos.TipoCombustivel = txtTipoCombustivel.Text;
 
+            if (cmbGrupoVeiculos.SelectedItem == null)
+            {
+                string erro = "Não pode inserir um veículo sem selecionar seu grupo veicular";
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                DialogResult = DialogResult.None;
+                return;
+            }
 
-            var grupoVeiculos_selecionado = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
-            veiculos.GrupoVeiculos_Id = grupoVeiculos_selecionado.Id;
+            var grupoVeiculos_Selecionado = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
+            veiculos.GrupoVeiculos_Id = grupoVeiculos_Selecionado.Id;
 
             var resultadoValidacao = GravarRegistro(veiculos);
+
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
@@ -88,6 +84,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             }
         }
 
+        private void TelaCadastroVeiculosForm_Load(object sender, EventArgs e)
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape("");
+        }
+
+        private void TelaCadastroCondutorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape("");
+        }
 
         private void btnSelecionarFoto_Click(object sender, EventArgs e)
         {
@@ -120,6 +125,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             */
 
          }
-     }     
+
+
+    }     
  }
 

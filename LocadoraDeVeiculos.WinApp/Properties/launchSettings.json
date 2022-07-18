@@ -2,6 +2,7 @@
   "profiles": {
     "LocadoraDeVeiculos.WinApp": {
       "commandName": "Project",
+      "workingDirectory": "C:\\Users\\gfrei\\Downloads\\Locadora-De-Veiculos\\Locadora-De-Veiculos\\LocadoraDeVeiculos.Infra.BancoDados",
       "sqlDebugging": false
     }
   }

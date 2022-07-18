@@ -1,10 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
 {
@@ -18,17 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
         public string TipoCombustivel { get; set; }
         public string QuilometroPercorrido { get; set; }
         public string CapacidadeTanque { get; set; }
-        public Guid GrupoVeiculos_Id { get; set; }
-       
-        // public byte[] Foto { get; set; }
-
-        //public override string ToString()
-        //{
-        //    return $" Modelo: {Modelo}, Marca: {Marca}, Ano: {Ano}, " +
-        //            $"Cor: {Cor}, Placa: {Placa}, TipoCombustivel: {TipoCombustivel}, " +
-        //            $"Km: {QuilometroPercorrido}, Capacidade Tanque: {CapacidadeTanque}, " +
-        //            $"Grupo Veicular: {GrupoVeiculos};";
-        //}
+        public Guid GrupoVeiculos_Id { get; set; }       
 
         public Veiculos Clonar()
         {

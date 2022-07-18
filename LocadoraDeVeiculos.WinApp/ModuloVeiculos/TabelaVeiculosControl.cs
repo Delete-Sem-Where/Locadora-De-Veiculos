@@ -1,14 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {
@@ -41,9 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "KmPercorridos", HeaderText = "Quilometros Percorrido"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "CapacidadeTanque", HeaderText = "Capacidade do Tanque"},
-
-             //TODO   new DataGridViewTextBoxColumn { DataPropertyName = "GrupoVeiculos_Id", HeaderText = "Grupo de Veiculos"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "CapacidadeTanque", HeaderText = "Capacidade do Tanque"}
             };
 
             return colunas;
