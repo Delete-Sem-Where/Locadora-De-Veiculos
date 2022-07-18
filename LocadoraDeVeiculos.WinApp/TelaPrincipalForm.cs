@@ -26,24 +26,25 @@ using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 
 namespace LocadoraDeVeiculos.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private Dictionary<string, ControladorBase> controladores;
+        private IServiceLocator serviceLocator;
 
-        public TelaPrincipalForm()
+        public TelaPrincipalForm(IServiceLocator serviceLocator)
         {
             InitializeComponent();
+
+            this.serviceLocator = serviceLocator;
 
             Instancia = this;
 
             labelRodape.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
-
-            InicializarControladores();
         }
 
         public static TelaPrincipalForm Instancia
@@ -59,41 +60,41 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorFuncionario>());
         }
 
         private void pessoaJurídicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorPessoaJuridica>());
         }
 
         private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorPessoaFisica>());
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorTaxa>());
         }
 
         private void grupoVeículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorGrupoVeiculos>());
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCliente>());
         }
 
         private void condutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCondutor>());
         }
         private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorPlanoCobranca>());
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -135,11 +136,9 @@ namespace LocadoraDeVeiculos.WinApp
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
 
-        private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
+        private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
-            var tipo = opcaoSelecionada.Text;
-
-            controlador = controladores[tipo];
+            this.controlador = controlador;
 
             ConfigurarToolbox();
 
@@ -173,40 +172,6 @@ namespace LocadoraDeVeiculos.WinApp
             listagemControl.Dock = DockStyle.Fill;
 
             panelRegistros.Controls.Add(listagemControl);
-        }
-
-        private void InicializarControladores()
-        {
-            var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
-            var repositorioPessoaJuridica = new RepositorioPessoaJuridicaEmBancoDados();
-            var repositorioPessoaFisica = new RepositorioPessoaFisicaEmBancoDados();
-            var repositorioTaxa = new RepositorioTaxaEmBancoDados();
-            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
-            var repositorioCliente = new RepositorioClienteEmBancoDados();
-            var repositorioCondutor = new RepositorioCondutorEmBancoDados();
-            var repositorioPlanoCobranca = new RepositorioPlanoCobrancaEmBancoDados();
-
-            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
-            var servicoPessoaJuridica = new ServicoPessoaJuridica(repositorioPessoaJuridica);
-            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
-            var servicoPessoaFisica = new ServicoPessoaFisica(repositorioPessoaFisica);
-            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
-            var servicoCliente = new ServicoCliente(repositorioCliente);
-            var servicoCondutor = new ServicoCondutor(repositorioCondutor);
-            var servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
-
-            controladores = new Dictionary<string, ControladorBase>();
-
-            controladores.Add("Funcionário", new ControladorFuncionario(servicoFuncionario));
-            controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica, servicoPessoaJuridica));
-            controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica, servicoPessoaFisica));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
-            controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
-            controladores.Add("Cliente", new ControladorCliente(servicoCliente));
-            controladores.Add("Condutor", new ControladorCondutor(servicoCondutor));
-            controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
-        }
-
-        
+        }        
     }
 }
