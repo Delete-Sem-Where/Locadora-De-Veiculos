@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using System;
@@ -22,14 +22,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             InitializeComponent();
             CarregarGrupos(grupos);
         }
-        public Func<PlanoCobranca, ValidationResult> GravarRegistro { get; set; }
+        public Func<PlanoCobranca, Result<PlanoCobranca>> GravarRegistro { get; set; }
 
         private void CarregarGrupos(List<GrupoVeiculos> grupos)
-        {           
+        {
             cmbGrupoVeiculos.Items.Clear();
 
             foreach (var item in grupos)
-            {                
+            {
                 cmbGrupoVeiculos.Items.Add(item);
             }
         }
@@ -43,14 +43,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             set
             {
                 planoCobranca = value;
-                if (planoCobranca.Id != Guid.Empty)
+                if (planoCobranca.Id == Guid.Empty)
                 {
                     PreencherDadosNaTela();
                 }
             }
         }
 
-        
+
 
         private void TelaCadastroPlanoCobrancaForm_Load(object sender, EventArgs e)
         {
@@ -62,7 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             TelaPrincipalForm.Instancia.AtualizarRodape("");
         }
 
-        
+
 
         private void buttonGravarPlanoCobranca_Click(object sender, EventArgs e)
         {
@@ -112,6 +112,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void GravarInformacoesTab1()
         {
+
             planoCobranca.GrupoVeiculos = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
             planoCobranca.ModalidadePlanoCobranca = ModalidadePlanoCobranca.Diario;
             planoCobranca.ValorDiaria = txtValorDiaria_tab1.Value;
@@ -120,17 +121,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             //zerando atributos q ele nao tem
             planoCobranca.LimiteKm = 0;
 
-            var resultadoValidacao = GravarRegistro(planoCobranca);
+            ValidarDadosAoClicarGravar();
 
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
-            }
         }
+
+
+
         private void GravarInformacoesTab2()
         {
+
             planoCobranca.GrupoVeiculos = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
             planoCobranca.ModalidadePlanoCobranca = ModalidadePlanoCobranca.Livre;
             planoCobranca.ValorDiaria = txtValorDiaria_tab2.Value;
@@ -139,17 +138,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             planoCobranca.LimiteKm = 0;
             planoCobranca.ValorKm = 0;
 
-            var resultadoValidacao = GravarRegistro(planoCobranca);
+            ValidarDadosAoClicarGravar();
+            //var resultadoValidacao = GravarRegistro(planoCobranca);
 
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
-            }
+            //if (resultadoValidacao.IsFailed)
+            //{
+            //    string erro = resultadoValidacao.Errors[0].Message;
+            //    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+            //    DialogResult = DialogResult.None;
+            //}
         }
         private void GravarInformacoesTab3()
         {
+
             planoCobranca.GrupoVeiculos = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
 
             planoCobranca.ModalidadePlanoCobranca = ModalidadePlanoCobranca.Controle;
@@ -157,18 +158,31 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             planoCobranca.ValorKm = txtValorKm_tab3.Value;
             planoCobranca.LimiteKm = txtLimiteKm_tab3.Value;
 
-            var resultadoValidacao = GravarRegistro(planoCobranca);
+            ValidarDadosAoClicarGravar();
+            //var resultadoValidacao = GravarRegistro(planoCobranca);
 
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
-            }
+            //if (resultadoValidacao.IsFailed)
+            //{
+            //    string erro = resultadoValidacao.Errors[0].Message;
+            //    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+            //    DialogResult = DialogResult.None;
+            //}
         }
         private void cmbGrupoVeiculos_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabControl.Enabled = true;
+        }
+
+        private void ValidarDadosAoClicarGravar()
+        {
+            var resultadoValidacao = GravarRegistro(planoCobranca);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                DialogResult = DialogResult.None;
+            }
         }
         #endregion 
     }
