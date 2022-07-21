@@ -66,6 +66,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void buttonGravarPlanoCobranca_Click(object sender, EventArgs e)
         {
+            if (cmbGrupoVeiculos.SelectedItem == null)
+            {
+                string erro = "Não pode inserir um plano de cobrança sem selecionar um grupo de veículos";
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             if (tabControl.SelectedTab == tabPage1)
             {
                 GravarInformacoesTab1();
