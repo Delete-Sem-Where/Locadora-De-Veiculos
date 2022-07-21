@@ -169,7 +169,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca
         {
             var planoEncontrado = repositorioPlanoCobranca.SelecionarPlanoPorGrupo_E_Modalidade(planoCobranca.GrupoVeiculos.Id, planoCobranca.ModalidadePlanoCobranca);
 
-            return planoEncontrado != null;
+            return planoEncontrado != null &&
+                   planoEncontrado.Id != planoCobranca.Id;
         }
     }
 }
