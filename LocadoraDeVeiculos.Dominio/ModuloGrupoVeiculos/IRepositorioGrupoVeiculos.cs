@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos
 {
-    public interface IRepositorioGrupoVeiculos: IRepositorio<GrupoVeiculos>
+    public interface IRepositorioGrupoVeiculos : IRepositorio<GrupoVeiculos>
     {
         GrupoVeiculos SelecionarGrupoVeiculosPorNome(string nome);
     }

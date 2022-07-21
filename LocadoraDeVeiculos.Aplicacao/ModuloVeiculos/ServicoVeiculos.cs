@@ -1,13 +1,9 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Aplicacao
+
+namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
 {
     public class ServicoVeiculos
     {
@@ -29,14 +25,10 @@ namespace LocadoraDeVeiculos.Aplicacao
                 repositorioVeiculos.Inserir(veiculo);
                 Log.Logger.Debug("Veículo {VeículoModelo} inserido com sucesso", veiculo.Modelo);
             }
-            else
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao tentar inserir o Veículo {VeículoModelo} - {Motivo}",
-                        veiculo.Modelo, erro.ErrorMessage);
-                }
-            }
+            else      
+               foreach (var erro in resultadoValidacao.Errors)           
+                         Log.Logger.Warning("Falha ao tentar inserir o veículo {VeículoModelo} - {Motivo}",
+                            veiculo.Modelo, erro.ErrorMessage);                       
 
             return resultadoValidacao;
         }
@@ -53,13 +45,9 @@ namespace LocadoraDeVeiculos.Aplicacao
                 Log.Logger.Debug("Veículo {VeiculoModelo} editado com sucesso", veiculo.Modelo);
             }
             else
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
+                foreach (var erro in resultadoValidacao.Errors)          
                     Log.Logger.Warning("Falha ao tentar editar veículo {VeiculoModelo} - {Motivo}",
                         veiculo.Modelo, erro.ErrorMessage);
-                }
-            }
 
             return resultadoValidacao;
         }
