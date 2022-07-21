@@ -200,11 +200,11 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionário", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica, servicoPessoaJuridica));
             controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica, servicoPessoaFisica));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
             controladores.Add("Cliente", new ControladorCliente(servicoCliente));
             controladores.Add("Condutor", new ControladorCondutor(servicoCondutor));
-            controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
+            controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca));
         }
 
         
