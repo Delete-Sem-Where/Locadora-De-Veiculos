@@ -27,32 +27,32 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
                     .NotNull().NotEmpty()
                     .MinimumLength(7)
                     .MaximumLength(7)
-                    .Matches(@"^[^0-9a-zA-Z]+$");
+                    .Matches(@"^[0-9a-zA-Z]+$");
 
             RuleFor(x => x.Cor)
                     .NotNull().NotEmpty()
                     .MinimumLength(3);
-
-            RuleFor(x => x.Ano)
-                    .NotNull()
-                    .NotEmpty()
-                    .MinimumLength(4)
-                    .MaximumLength(4)
-                    .Matches(@"^[^0-9]")
-            // TODO .GreaterThanOrEqualTo(2000)
-                    ;
-
-            RuleFor(x => x.QuilometroPercorrido)
-                    .NotNull().NotEmpty();
 
             RuleFor(x => x.TipoCombustivel)
                     .NotNull().NotEmpty();
 
             RuleFor(x => x.CapacidadeTanque)
                     .NotNull().NotEmpty()
-                    .Matches(@"^[^0-9]")
+                    .Matches(@"^[0-9]")
              //TODO .GreaterThan(0);
                     ;
+
+            RuleFor(x => x.Ano)
+                    .NotNull()
+                    .NotEmpty()
+                    .MinimumLength(4)
+                    .MaximumLength(4)
+                    .Matches(@"^[0-9]")
+            // TODO .GreaterThanOrEqualTo(2000)
+                    ;
+
+            RuleFor(x => x.QuilometroPercorrido)
+                .NotNull().NotEmpty();
 
             RuleFor(x => x.GrupoVeiculos_Id)
                     .NotNull().NotEmpty();

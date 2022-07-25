@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
+using FluentResults;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {
@@ -20,12 +21,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             cmbGrupoVeiculos.Items.Clear();
 
             var grupoVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
-           
+
             foreach (var item in grupoVeiculos)
-                cmbGrupoVeiculos.Items.Add(item);          
+                cmbGrupoVeiculos.Items.Add(item);
         }
 
-        public Func<Veiculos, ValidationResult> GravarRegistro { get; set; }
+        public Func<Veiculos, Result<Veiculos>> GravarRegistro { get; set; }
 
         private Veiculos veiculos;
 
@@ -86,14 +87,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             var resultadoValidacao = GravarRegistro(veiculos);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed == false)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Veículo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    DialogResult = DialogResult.None;
+                }
             }
-
         }
-    }     
- }
-
+    }
+}
+        

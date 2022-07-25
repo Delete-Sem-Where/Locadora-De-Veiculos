@@ -102,7 +102,7 @@
             this.txtPlaca.Location = new System.Drawing.Point(96, 142);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(151, 23);
-            this.txtPlaca.TabIndex = 71;
+            this.txtPlaca.TabIndex = 90;
             // 
             // txtModelo
             // 
@@ -159,7 +159,7 @@
             this.txtCor.Location = new System.Drawing.Point(327, 142);
             this.txtCor.Name = "txtCor";
             this.txtCor.Size = new System.Drawing.Size(151, 23);
-            this.txtCor.TabIndex = 82;
+            this.txtCor.TabIndex = 100;
             // 
             // label2
             // 
@@ -175,7 +175,7 @@
             this.txtKmPercorrido.Location = new System.Drawing.Point(327, 230);
             this.txtKmPercorrido.Name = "txtKmPercorrido";
             this.txtKmPercorrido.Size = new System.Drawing.Size(151, 23);
-            this.txtKmPercorrido.TabIndex = 88;
+            this.txtKmPercorrido.TabIndex = 140;
             // 
             // label5
             // 
@@ -191,14 +191,14 @@
             this.txtFoto.Location = new System.Drawing.Point(96, 266);
             this.txtFoto.Name = "txtFoto";
             this.txtFoto.Size = new System.Drawing.Size(151, 23);
-            this.txtFoto.TabIndex = 84;
+            this.txtFoto.TabIndex = 150;
             // 
             // txtAno
             // 
             this.txtAno.Location = new System.Drawing.Point(96, 230);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(151, 23);
-            this.txtAno.TabIndex = 83;
+            this.txtAno.TabIndex = 130;
             // 
             // label8
             // 
@@ -223,7 +223,7 @@
             this.txtCapacidadeTanque.Location = new System.Drawing.Point(327, 185);
             this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
             this.txtCapacidadeTanque.Size = new System.Drawing.Size(151, 23);
-            this.txtCapacidadeTanque.TabIndex = 94;
+            this.txtCapacidadeTanque.TabIndex = 120;
             // 
             // label10
             // 
@@ -239,7 +239,7 @@
             this.txtTipoCombustivel.Location = new System.Drawing.Point(97, 185);
             this.txtTipoCombustivel.Name = "txtTipoCombustivel";
             this.txtTipoCombustivel.Size = new System.Drawing.Size(151, 23);
-            this.txtTipoCombustivel.TabIndex = 91;
+            this.txtTipoCombustivel.TabIndex = 110;
             // 
             // label11
             // 
@@ -258,7 +258,6 @@
             this.btnSelecionarFoto.TabIndex = 95;
             this.btnSelecionarFoto.Text = "Selecionar Foto";
             this.btnSelecionarFoto.UseVisualStyleBackColor = true;
-            this.btnSelecionarFoto.Click += new System.EventHandler(this.btnSelecionarFoto_Click);
             // 
             // pb_foto
             // 

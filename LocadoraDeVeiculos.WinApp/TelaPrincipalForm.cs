@@ -213,7 +213,8 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Cliente", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Condutor", new ControladorCondutor(repositorioCondutor, servicoCondutor));
             controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
-            controladores.Add("Veículos", new ControladorVeiculos(repositorioVeiculos, servicoVeiculos));
+            controladores.Add("Veículos", new ControladorVeiculos(servicoVeiculos));
+
         }
 
         
