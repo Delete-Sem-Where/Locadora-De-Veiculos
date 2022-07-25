@@ -16,8 +16,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
             RuleFor(x => x.Modelo)
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
-           
+                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ0-9 ]+$");
+
             RuleFor(x => x.Marca)
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
@@ -26,15 +26,21 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
             RuleFor(x => x.Placa)
                     .NotNull().NotEmpty()
                     .MinimumLength(7)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
+                    .MaximumLength(7)
+                    .Matches(@"^[^0-9a-zA-Z]+$");
 
             RuleFor(x => x.Cor)
                     .NotNull().NotEmpty()
-                    .MinimumLength(3)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
+                    .MinimumLength(3);
 
             RuleFor(x => x.Ano)
-                    .NotNull().NotEmpty();
+                    .NotNull()
+                    .NotEmpty()
+                    .MinimumLength(4)
+                    .MaximumLength(4)
+                    .Matches(@"^[^0-9]")
+            // TODO .GreaterThanOrEqualTo(2000)
+                    ;
 
             RuleFor(x => x.QuilometroPercorrido)
                     .NotNull().NotEmpty();
@@ -43,7 +49,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
                     .NotNull().NotEmpty();
 
             RuleFor(x => x.CapacidadeTanque)
-                    .NotNull().NotEmpty();
+                    .NotNull().NotEmpty()
+                    .Matches(@"^[^0-9]")
+             //TODO .GreaterThan(0);
+                    ;
 
             RuleFor(x => x.GrupoVeiculos_Id)
                     .NotNull().NotEmpty();

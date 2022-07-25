@@ -52,7 +52,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             }
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
+        private void TelaCadastroVeiculosForm_Load(object sender, EventArgs e)
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape("");
+        }
+
+        private void TelaCadastroCondutorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape("");
+        }
+
+        private void btnGravar_Click_1(object sender, EventArgs e)
         {
             veiculos.Modelo = txtModelo.Text;
             veiculos.Placa = txtPlaca.Text;
@@ -82,51 +92,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);
                 DialogResult = DialogResult.None;
             }
+
         }
-
-        private void TelaCadastroVeiculosForm_Load(object sender, EventArgs e)
-        {
-            TelaPrincipalForm.Instancia.AtualizarRodape("");
-        }
-
-        private void TelaCadastroCondutorForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            TelaPrincipalForm.Instancia.AtualizarRodape("");
-        }
-
-        private void btnSelecionarFoto_Click(object sender, EventArgs e)
-        {
-            /*
-            string origemCompleto = "";
-            string foto = "";
-            string pastaDestino = Fotos.enderecoFotos;
-            string destinoCompleto = "";
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                origemCompleto = openFileDialog1.FileName;
-                foto = openFileDialog1.SafeFileName;
-                destinoCompleto = pastaDestino + foto;
-
-                if (File.Exists(destinoCompleto))
-                {
-                    if (MessageBox.Show("Arquivo com esse nome já existe, deseja substituir?", "Substituir",
-                        MessageBoxButtons.YesNo) == DialogResult.No)
-
-                        return;
-                }
-                System.IO.File.Copy(origemCompleto, destinoCompleto, true);
-
-                if (File.Exists(destinoCompleto))
-                    pb_foto.ImageLocation = origemCompleto;
-
-                else
-                    MessageBox.Show("Arquivo não copiado");
-            */
-
-         }
-
-
     }     
  }
 

@@ -22,16 +22,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
         }
         public override Veiculos ConverterRegistro(SqlDataReader leitorRegistro)
         {
-            Guid id = Guid.Parse(leitorRegistro["ID"].ToString());
-            string modelo = Convert.ToString(leitorRegistro["MODELO"]);
-            string marca = Convert.ToString(leitorRegistro["MARCA"]);
-            string ano = Convert.ToString(leitorRegistro["ANO"]);
-            string cor = Convert.ToString(leitorRegistro["COR"]);
-            string placa = Convert.ToString(leitorRegistro["PLACA"]);
-            string quilometroPercorrido = Convert.ToString(leitorRegistro["QUILOMETRO_PERCORRIDO"]);
-            string capacidadeTanque = Convert.ToString(leitorRegistro["CAPACIDADE_TANQUE"]);
-            string tipoCombustivel = Convert.ToString(leitorRegistro["TIPO_COMBUSTIVEL"]);
-            Guid grupoVeiculos_Id = Guid.Parse(leitorRegistro["GRUPOVEICULOS_ID"].ToString());
+            Guid id = Guid.Parse(leitorRegistro["VEICULO_ID"].ToString());
+            string modelo = Convert.ToString(leitorRegistro["VEICULO_MODELO"]);
+            string marca = Convert.ToString(leitorRegistro["VEICULO_MARCA"]);
+            string ano = Convert.ToString(leitorRegistro["VEICULO_ANO"]);
+            string cor = Convert.ToString(leitorRegistro["VEICULO_COR"]);
+            string placa = Convert.ToString(leitorRegistro["VEICULO_PLACA"]);
+            string quilometroPercorrido = Convert.ToString(leitorRegistro["VEICULO_QUILOMETRO_PERCORRIDO"]);
+            string capacidadeTanque = Convert.ToString(leitorRegistro["VEICULO_CAPACIDADE_TANQUE"]);
+            string tipoCombustivel = Convert.ToString(leitorRegistro["VEICULO_TIPO_COMBUSTIVEL"]);
+            Guid grupoVeiculos_Id = Guid.Parse(leitorRegistro["VEICULO_GRUPOVEICULOS_ID"].ToString());
 
             return new Veiculos()
             {
