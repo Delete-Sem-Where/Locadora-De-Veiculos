@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Orm.Compartilhado
 {
-    public class MigradorBancoLocadoraDeVeiculos
+    public class MigradorBancoDadosLocadoraDeVeiculos
     {
         public static void AtualizarBancoDados()
         {
