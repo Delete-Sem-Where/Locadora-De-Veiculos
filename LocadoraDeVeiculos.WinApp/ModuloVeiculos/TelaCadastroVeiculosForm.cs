@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             var resultadoValidacao = GravarRegistro(veiculos);
 
-            if (resultadoValidacao.IsFailed == false)
+            if (resultadoValidacao.IsFailed)
             {
                 string erro = resultadoValidacao.Errors[0].Message;
 

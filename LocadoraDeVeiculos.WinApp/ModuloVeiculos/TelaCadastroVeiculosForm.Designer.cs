@@ -102,14 +102,14 @@
             this.txtPlaca.Location = new System.Drawing.Point(96, 142);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(151, 23);
-            this.txtPlaca.TabIndex = 90;
+            this.txtPlaca.TabIndex = 4;
             // 
             // txtModelo
             // 
             this.txtModelo.Location = new System.Drawing.Point(97, 104);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(151, 23);
-            this.txtModelo.TabIndex = 70;
+            this.txtModelo.TabIndex = 2;
             // 
             // label6
             // 
@@ -152,14 +152,14 @@
             this.txtMarca.Location = new System.Drawing.Point(327, 105);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(151, 23);
-            this.txtMarca.TabIndex = 80;
+            this.txtMarca.TabIndex = 3;
             // 
             // txtCor
             // 
             this.txtCor.Location = new System.Drawing.Point(327, 142);
             this.txtCor.Name = "txtCor";
             this.txtCor.Size = new System.Drawing.Size(151, 23);
-            this.txtCor.TabIndex = 100;
+            this.txtCor.TabIndex = 5;
             // 
             // label2
             // 
@@ -175,7 +175,7 @@
             this.txtKmPercorrido.Location = new System.Drawing.Point(327, 230);
             this.txtKmPercorrido.Name = "txtKmPercorrido";
             this.txtKmPercorrido.Size = new System.Drawing.Size(151, 23);
-            this.txtKmPercorrido.TabIndex = 140;
+            this.txtKmPercorrido.TabIndex = 9;
             // 
             // label5
             // 
@@ -198,7 +198,7 @@
             this.txtAno.Location = new System.Drawing.Point(96, 230);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(151, 23);
-            this.txtAno.TabIndex = 130;
+            this.txtAno.TabIndex = 8;
             // 
             // label8
             // 
@@ -223,7 +223,7 @@
             this.txtCapacidadeTanque.Location = new System.Drawing.Point(327, 185);
             this.txtCapacidadeTanque.Name = "txtCapacidadeTanque";
             this.txtCapacidadeTanque.Size = new System.Drawing.Size(151, 23);
-            this.txtCapacidadeTanque.TabIndex = 120;
+            this.txtCapacidadeTanque.TabIndex = 7;
             // 
             // label10
             // 
@@ -239,7 +239,7 @@
             this.txtTipoCombustivel.Location = new System.Drawing.Point(97, 185);
             this.txtTipoCombustivel.Name = "txtTipoCombustivel";
             this.txtTipoCombustivel.Size = new System.Drawing.Size(151, 23);
-            this.txtTipoCombustivel.TabIndex = 110;
+            this.txtTipoCombustivel.TabIndex = 6;
             // 
             // label11
             // 
@@ -255,7 +255,7 @@
             this.btnSelecionarFoto.Location = new System.Drawing.Point(259, 269);
             this.btnSelecionarFoto.Name = "btnSelecionarFoto";
             this.btnSelecionarFoto.Size = new System.Drawing.Size(219, 23);
-            this.btnSelecionarFoto.TabIndex = 95;
+            this.btnSelecionarFoto.TabIndex = 10;
             this.btnSelecionarFoto.Text = "Selecionar Foto";
             this.btnSelecionarFoto.UseVisualStyleBackColor = true;
             // 
@@ -282,7 +282,7 @@
             this.cmbGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGrupoVeiculos.Name = "cmbGrupoVeiculos";
             this.cmbGrupoVeiculos.Size = new System.Drawing.Size(207, 23);
-            this.cmbGrupoVeiculos.TabIndex = 97;
+            this.cmbGrupoVeiculos.TabIndex = 1;
             // 
             // TelaCadastroVeiculosForm
             // 

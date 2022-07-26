@@ -3,31 +3,32 @@ using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPessoaFisica;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
-using LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor;
-
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.WinApp.ModuloPessoaFisica;
 using LocadoraDeVeiculos.WinApp.ModuloTaxas;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
-using LocadoraDeVeiculos.WinApp.ModuloCliente;
-using LocadoraDeVeiculos.WinApp.ModuloCondutor;
-using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
-
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Aplicacao.ModuloPessoaJuridica;
 using LocadoraDeVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Aplicacao.ModuloPessoaFisica;
 using LocadoraDeVeiculos.Aplicacao.ModuloTaxas;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
 using LocadoraDeVeiculos.Aplicacao.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
 using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -93,11 +94,13 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+
         private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }    
-        private void veiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        }
+
+        private void veículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -208,15 +211,13 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionário", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Pessoa Jurídica", new ControladorPessoaJuridica(repositorioPessoaJuridica, servicoPessoaJuridica));
             controladores.Add("Pessoa Física", new ControladorPessoaFisica(repositorioPessoaFisica, servicoPessoaFisica));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Grupo Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
-            controladores.Add("Cliente", new ControladorCliente(repositorioCliente, servicoCliente));
-            controladores.Add("Condutor", new ControladorCondutor(repositorioCondutor, servicoCondutor));
-            controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(repositorioPlanoCobranca, servicoPlanoCobranca));
+            controladores.Add("Cliente", new ControladorCliente(servicoCliente));
+            controladores.Add("Condutor", new ControladorCondutor(servicoCondutor));
+            controladores.Add("Plano de Cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca));
             controladores.Add("Veículos", new ControladorVeiculos(servicoVeiculos));
 
         }
-
-        
     }
 }

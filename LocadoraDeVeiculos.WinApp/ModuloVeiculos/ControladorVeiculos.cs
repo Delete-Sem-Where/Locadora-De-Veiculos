@@ -39,7 +39,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione um veículo",
-                "Edição de um  veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                "Edição de veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -98,7 +98,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
                 else
                     MessageBox.Show(resultadoExclusao.Errors[0].Message,
                         "Exclusão de veículo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
@@ -128,11 +127,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {veiculos.Count} veiculo(s)");
             }
-            else
-            {
+            else        
                 MessageBox.Show(resultado.Errors[0].Message, "Listagem de Veículo",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
     }
 }

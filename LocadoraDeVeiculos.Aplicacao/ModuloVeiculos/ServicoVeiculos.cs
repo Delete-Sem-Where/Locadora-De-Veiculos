@@ -23,9 +23,9 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
             if (resultadoValidacao.IsFailed)
             {
                 foreach (var erro in resultadoValidacao.Errors)
-                {
-                    repositorioVeiculos.Inserir(veiculo);
-                    Log.Logger.Debug("Falha ao tentar inserir o Veículo {VeículoModelo} - {Motivo}", veiculo.Modelo, erro.Message);
+                {                   
+                    Log.Logger.Warning("Falha ao tentar inserir o Veículo {VeículoModelo} - {Motivo}",
+                        veiculo.Id, erro.Message);
                 }
                 return Result.Fail(resultadoValidacao.Errors);
             }
@@ -136,7 +136,7 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
                 return Result.Fail(msgErro);
             }
         }
-        private Result<Veiculos> ValidarVeiculo(Veiculos veiculo)
+        private Result ValidarVeiculo(Veiculos veiculo)
         {
             var validador = new ValidadorVeiculos();
 

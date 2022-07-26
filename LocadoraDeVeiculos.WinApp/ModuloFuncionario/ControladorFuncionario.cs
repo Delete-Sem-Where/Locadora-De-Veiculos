@@ -61,7 +61,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.GravarRegistro = servicoFuncionario.Editar;
 
-            if (tela.DialogResult == DialogResult.OK)
+            DialogResult resultadoTela = tela.ShowDialog();
+
+            if (resultadoTela == DialogResult.OK)
                 CarregarFuncionarios();
         }
 
@@ -127,7 +129,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             }
             else
             {
-                MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Funcionário",
+                MessageBox.Show(resultado.Errors[0].Message, "Listagem de Funcionário",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
