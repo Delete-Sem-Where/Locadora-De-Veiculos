@@ -17,12 +17,14 @@ using LocadoraDeVeiculos.Infra.BancoDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxas;
+using Microsoft.Extensions.Configuration;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -34,6 +36,15 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             var builder = new ContainerBuilder();
 
+            var configuracao = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("ConfiguracaoAplicacao.json")
+                 .Build();
+
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+
+            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
+
             builder.RegisterType<RepositorioClienteEmBancoDados>().As<IRepositorioCliente>();
             builder.RegisterType<ServicoCliente>().AsSelf();
             builder.RegisterType<ControladorCliente>().AsSelf();
@@ -43,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ControladorGrupoVeiculos>().AsSelf();
 
             builder.RegisterType<RepositorioFuncionarioEmBancoDados>().As<IRepositorioFuncionario>();
-            builder.RegisterType<ServicoFuncionario>().AsSelf();
+            builder.RegisterType<ServicoFuncionario>().AsSelf().WithParameter("contextoPersistencia", contextoDadosOrm);
             builder.RegisterType<ControladorFuncionario>().AsSelf();
 
             builder.RegisterType<RepositorioCondutorEmBancoDados>().As<IRepositorioCondutor>();
