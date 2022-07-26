@@ -14,9 +14,9 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
 {
     public class ServicoCliente
     {
-        private RepositorioClienteEmBancoDados repositorioCliente;
+        private IRepositorioCliente repositorioCliente;
 
-        public ServicoCliente(RepositorioClienteEmBancoDados repositorioCliente)
+        public ServicoCliente(IRepositorioCliente repositorioCliente)
         {
             this.repositorioCliente = repositorioCliente;
         }

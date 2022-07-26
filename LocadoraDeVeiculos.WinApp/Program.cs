@@ -1,4 +1,5 @@
 using LocadoraDeVeiculos.Infra.Logging;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -12,7 +13,10 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             ApplicationConfiguration.Initialize();
-            Application.Run(new TelaPrincipalForm());
+
+            var serviceLocatorAutofac = new ServiceLocatorAutofac();
+
+            Application.Run(new TelaPrincipalForm(serviceLocatorAutofac));
         }
     }
 }
