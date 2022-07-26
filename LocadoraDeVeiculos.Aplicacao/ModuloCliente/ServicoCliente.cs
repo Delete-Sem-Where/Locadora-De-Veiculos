@@ -15,10 +15,12 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
     public class ServicoCliente
     {
         private IRepositorioCliente repositorioCliente;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoCliente(IRepositorioCliente repositorioCliente)
+        public ServicoCliente(IRepositorioCliente repositorioCliente, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioCliente = repositorioCliente;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<Cliente> Inserir(Cliente cliente)
@@ -41,6 +43,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Inserir(cliente);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Cliente {ClienteId} inserido com sucesso", cliente.Id);
 
@@ -77,6 +81,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             {
                 repositorioCliente.Editar(cliente);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Cliente {ClienteId} editado com sucesso", cliente.Id);
 
                 return Result.Ok(cliente);
@@ -98,6 +104,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Excluir(cliente);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Cliente {ClienteId} excluído com sucesso", cliente.Id);
 

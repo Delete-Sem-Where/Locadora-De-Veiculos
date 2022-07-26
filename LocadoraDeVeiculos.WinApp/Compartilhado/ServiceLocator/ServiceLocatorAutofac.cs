@@ -46,7 +46,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
 
             builder.RegisterType<RepositorioClienteEmBancoDados>().As<IRepositorioCliente>();
-            builder.RegisterType<ServicoCliente>().AsSelf();
+            builder.RegisterType<ServicoCliente>().AsSelf().WithParameter("contextoPersistencia", contextoDadosOrm);
             builder.RegisterType<ControladorCliente>().AsSelf();
 
             builder.RegisterType<RepositorioGrupoVeiculosEmBancoDados>().As<IRepositorioGrupoVeiculos>();

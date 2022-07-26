@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public string CPF { get; set; }
         public string CNPJ { get; set; }
         public TipoCliente TipoCliente { get; set; }
+        public string Documento { get; set; }
 
         public Cliente Clonar()
         {

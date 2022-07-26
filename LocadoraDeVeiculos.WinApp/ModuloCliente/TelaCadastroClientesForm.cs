@@ -76,6 +76,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             cliente.Endereco = txtEndereco.Text;
             cliente.TipoCliente = ObterTipoCliente();
 
+            if (cliente.TipoCliente == TipoCliente.PessoaFisica)
+                cliente.Documento = cliente.CPF;
+            else
+                cliente.Documento = cliente.CNPJ;
+
             var resultadoValidacao = GravarRegistro(cliente);
 
             if (resultadoValidacao.IsFailed)
