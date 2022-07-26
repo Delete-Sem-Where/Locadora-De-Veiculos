@@ -13,7 +13,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca
         RepositorioBase<PlanoCobranca, MapeadorPlanoCobranca>,
         IRepositorioPlanoCobranca
     {
-        //METER OS INNER JOIN
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANOCOBRANCA]
                 (
@@ -73,41 +72,24 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca
 	            FROM 
 		            [TBPLANOCOBRANCA]";
 
-        private string sqlSelecionarPorGrupo =>
+        private string sqlSelecionarPorGrupo_E_Modalidade =>
             @"SELECT
-                    [ID],
-		            [GRUPOVEICULOS_ID],       
-                    [MODALIDADEPLANOCOBRANCA], 
-                    [VALORDIARIA],
-                    [LIMITEKM],                    
-                    [VALORKM]   
-	            FROM 
-		            [TBPLANOCOBRANCA]
-                WHERE 
-                    [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID";
+                [ID],
+                [GRUPOVEICULOS_ID],       
+                [MODALIDADEPLANOCOBRANCA], 
+                [VALORDIARIA],
+                [LIMITEKM],                    
+                [VALORKM]   
+            FROM 
+                [TBPLANOCOBRANCA]
+            WHERE 
+                [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
+            AND
+                [MODALIDADEPLANOCOBRANCA] = @MODALIDADEPLANOCOBRANCA";
 
-        private string sqlSelecionarPorModalidadePlano =>
-            @"SELECT
-                    [ID],
-		            [GRUPOVEICULOS_ID],       
-                    [MODALIDADEPLANOCOBRANCA], 
-                    [VALORDIARIA],
-                    [LIMITEKM],                    
-                    [VALORKM]   
-	            FROM 
-		            [TBPLANOCOBRANCA]
-                WHERE 
-                    [MODALIDADEPLANOCOBRANCA] = @MODALIDADEPLANOCOBRANCA";
-
-
-        public PlanoCobranca SelecionarPlanoPorGrupo(Guid id)
+        public PlanoCobranca SelecionarPlanoPorGrupo_E_Modalidade(Guid id, ModalidadePlanoCobranca tipoPlano)
         {
-            return SelecionarPorParametro(sqlSelecionarPorGrupo, new SqlParameter("GRUPOVEICULOS_ID", id));
-        }
-
-        public PlanoCobranca SelecionarPlanoPorTipoPlano(ModalidadePlanoCobranca tipoPlano)
-        {
-            return SelecionarPorParametro(sqlSelecionarPorModalidadePlano, new SqlParameter("MODALIDADEPLANOCOBRANCA", tipoPlano));
+            return SelecionarPorVariosParametro(sqlSelecionarPorGrupo_E_Modalidade, new SqlParameter("GRUPOVEICULOS_ID", id), new SqlParameter("MODALIDADEPLANOCOBRANCA", tipoPlano));
         }
     }
 }

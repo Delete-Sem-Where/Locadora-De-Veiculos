@@ -64,7 +64,7 @@
             // 
             this.cmbGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupoVeiculos.FormattingEnabled = true;
-            this.cmbGrupoVeiculos.Location = new System.Drawing.Point(127, 33);
+            this.cmbGrupoVeiculos.Location = new System.Drawing.Point(134, 33);
             this.cmbGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGrupoVeiculos.Name = "cmbGrupoVeiculos";
             this.cmbGrupoVeiculos.Size = new System.Drawing.Size(187, 23);
@@ -74,7 +74,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 36);
+            this.label9.Location = new System.Drawing.Point(23, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(105, 15);
             this.label9.TabIndex = 78;
@@ -86,7 +86,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Enabled = false;
-            this.tabControl.Location = new System.Drawing.Point(14, 92);
+            this.tabControl.Location = new System.Drawing.Point(21, 92);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(302, 235);
@@ -334,7 +334,7 @@
             // buttonCancelarPf
             // 
             this.buttonCancelarPf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelarPf.Location = new System.Drawing.Point(232, 352);
+            this.buttonCancelarPf.Location = new System.Drawing.Point(239, 352);
             this.buttonCancelarPf.Name = "buttonCancelarPf";
             this.buttonCancelarPf.Size = new System.Drawing.Size(82, 38);
             this.buttonCancelarPf.TabIndex = 4;
@@ -344,7 +344,7 @@
             // buttonGravarPlanoCobranca
             // 
             this.buttonGravarPlanoCobranca.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravarPlanoCobranca.Location = new System.Drawing.Point(139, 352);
+            this.buttonGravarPlanoCobranca.Location = new System.Drawing.Point(146, 352);
             this.buttonGravarPlanoCobranca.Name = "buttonGravarPlanoCobranca";
             this.buttonGravarPlanoCobranca.Size = new System.Drawing.Size(82, 38);
             this.buttonGravarPlanoCobranca.TabIndex = 3;
@@ -356,13 +356,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 409);
+            this.ClientSize = new System.Drawing.Size(345, 411);
             this.Controls.Add(this.buttonCancelarPf);
             this.Controls.Add(this.buttonGravarPlanoCobranca);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cmbGrupoVeiculos);
             this.Controls.Add(this.label9);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroPlanoCobrancaForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Planos de Cobranças";
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

@@ -26,6 +26,9 @@ using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
+using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 
 namespace LocadoraDeVeiculos.WinApp
@@ -92,9 +95,15 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCondutor>());
         }
+
         private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorPlanoCobranca>());
+        }
+
+        private void veículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorVeiculos>());
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
