@@ -14,11 +14,11 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca
 {
     public class ServicoPlanoCobranca
     {
-        private RepositorioPlanoCobrancaEmBancoDados repositorioPlanoCobranca;
+        private IRepositorioPlanoCobranca repositorioPlanoCobranca;
         private IContextoPersistencia contextoPersistencia;
 
 
-        public ServicoPlanoCobranca(RepositorioPlanoCobrancaEmBancoDados repositorioPlanoCobranca, IContextoPersistencia contextoPersistencia)
+        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
             this.contextoPersistencia = contextoPersistencia;
