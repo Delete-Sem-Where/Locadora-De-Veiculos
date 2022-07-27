@@ -17,8 +17,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
 
         public RepositorioCondutorOrm(LocadoraDeVeiculosDbContext dbContext)
         {
-            this.dbContext = (LocadoraDeVeiculosDbContext)dbContext;
-            condutores = this.dbContext.Set<Condutor>();
+            condutores = dbContext.Set<Condutor>();
+            this.dbContext = dbContext;
         }
 
         public void Inserir(Condutor novoRegistro)

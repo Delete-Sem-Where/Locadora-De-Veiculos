@@ -17,8 +17,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
 
         public RepositorioClienteOrm(LocadoraDeVeiculosDbContext dbContext)
         {
-            this.dbContext = (LocadoraDeVeiculosDbContext) dbContext;
-            clientes = this.dbContext.Set<Cliente>();
+            clientes = dbContext.Set<Cliente>();
+            this.dbContext = dbContext;
         }
 
         public void Inserir(Cliente novoRegistro)
