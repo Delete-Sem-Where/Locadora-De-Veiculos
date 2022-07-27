@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa
         }
         public override Taxa ConverterRegistro(SqlDataReader leitorTaxa)
         {
-            int numero = Convert.ToInt32(leitorTaxa["ID"]);
+            var numero = Guid.Parse(leitorTaxa["ID"].ToString());
             string? descricao = Convert.ToString(leitorTaxa["DESCRICAO"]);
             decimal valor = Convert.ToDecimal(leitorTaxa["VALOR"]);
             var tipoCalculo = Convert.ToInt32(leitorTaxa["TIPOCALCULO"]);

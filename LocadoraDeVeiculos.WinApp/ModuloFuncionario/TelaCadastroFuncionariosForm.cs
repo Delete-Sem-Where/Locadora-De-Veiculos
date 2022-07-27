@@ -1,14 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
@@ -24,7 +15,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private Funcionario funcionario;
 
-        public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
+        public Func<Funcionario, Result<Funcionario>> GravarRegistro { get; set; }
 
         public Funcionario Funcionario
         {
@@ -45,7 +36,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            funcionario.Id = Convert.ToInt32(txtNumero.Text);
             funcionario.Nome = txtNome.Text;
             funcionario.Email = txtEmail.Text;
             funcionario.Telefone = txtTelefone.Text;
@@ -56,13 +46,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             var resultadoValidacao = GravarRegistro(funcionario);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
-                DialogResult = DialogResult.None;
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 

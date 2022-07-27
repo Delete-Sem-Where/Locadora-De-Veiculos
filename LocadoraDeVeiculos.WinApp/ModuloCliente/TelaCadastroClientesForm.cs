@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             InitializeComponent();
         }
 
-        public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
+        public Func<Cliente, Result<Cliente>> GravarRegistro { get; set; }
 
         private Cliente cliente;
 
@@ -32,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             set
             {
                 cliente = value;
-                if (cliente.Id != 0)
+                if (cliente.Id != Guid.Empty)
                     PreencherDadosNaTela();
                 else
                 {
@@ -77,16 +78,27 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             var resultadoValidacao = GravarRegistro(cliente);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 
         private void PreencherDadosNaTela()
         {
+            txtNumero.Text = cliente.Id.ToString();
             txtNome.Text = cliente.Nome;
             txtEmail.Text = cliente.Email;
             txtTelefone.Text = cliente.Telefone;

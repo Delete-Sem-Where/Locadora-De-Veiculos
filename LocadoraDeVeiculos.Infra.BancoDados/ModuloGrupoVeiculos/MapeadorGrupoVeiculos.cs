@@ -11,10 +11,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos
 {
     public class MapeadorGrupoVeiculos : MapeadorBase<GrupoVeiculos>
     {
-        public override GrupoVeiculos ConverterRegistro(SqlDataReader leitorTaxa)
+        public override GrupoVeiculos ConverterRegistro(SqlDataReader leitor)
         {
-            int id = Convert.ToInt32(leitorTaxa["ID"]);
-            string? nome = Convert.ToString(leitorTaxa["NOME"]);
+            Guid id = Guid.Parse(leitor["ID"].ToString());
+            string? nome = Convert.ToString(leitor["NOME"]);
 
             var grupoVeiculos = new GrupoVeiculos
             {

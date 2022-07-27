@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
     {
         public TabelaPlanoCobrancaControl()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
             grid.Columns.AddRange(ObterColunas());
@@ -35,17 +35,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                 new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiaria", HeaderText = "Diária"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "ValorKm", HeaderText = "Preço/KM"},
-                
-                new DataGridViewTextBoxColumn { DataPropertyName = "LimiteKm", HeaderText = "Km Limite"},                
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "LimiteKm", HeaderText = "Km Limite"},
 
             };
 
             return colunas;
         }
 
-        public int ObtemNumeroPlanoSelecionado()
+        public Guid ObtemNumeroPlanoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.SelecionarNumero<Guid>();
         }
 
         internal void AtualizarRegistros(List<PlanoCobranca> planos)
@@ -55,12 +55,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             {
                 grid.Rows.Add(plano.Id,
                     plano.GrupoVeiculos,
-                    plano.ModalidadePlanoCobranca,               
+                    plano.ModalidadePlanoCobranca,
                     plano.ValorDiaria,
                     plano.ValorKm,
                     plano.LimiteKm);
-            }            
-            
+            }
         }
     }
 }

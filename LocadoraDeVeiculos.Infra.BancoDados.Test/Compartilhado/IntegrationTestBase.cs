@@ -11,14 +11,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.Compartilhado
     {
         public IntegrationTestBase()
         {
-            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO; DBCC CHECKIDENT(TBFUNCIONARIO, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBPESSOAJURIDICA; DBCC CHECKIDENT (TBPESSOAJURIDICA, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBPESSOAFISICA; DBCC CHECKIDENT (TBPESSOAFISICA, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT(TBTAXA, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBPLANOCOBRANCA; DBCC CHECKIDENT(TBPLANOCOBRANCA, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT(TBGRUPOVEICULOS, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBCONDUTOR; DBCC CHECKIDENT(TBCONDUTOR, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT(TBCLIENTE, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO;");
+            Db.ExecutarSql("DELETE FROM TBPESSOAJURIDICA;");
+            Db.ExecutarSql("DELETE FROM TBPESSOAFISICA;");
+            Db.ExecutarSql("DELETE FROM TBTAXA;");
+            Db.ExecutarSql("DELETE FROM TBPLANOCOBRANCA;");
+            Db.ExecutarSql("DELETE FROM TBVEICULOS;");
+            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
+            Db.ExecutarSql("DELETE FROM TBCONDUTOR;");
+            Db.ExecutarSql("DELETE FROM TBCLIENTE;");           
         }
     }
 }

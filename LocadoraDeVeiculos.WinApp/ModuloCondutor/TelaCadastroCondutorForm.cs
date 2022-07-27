@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
@@ -27,7 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             }
         }
 
-        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
+        public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
 
         private Condutor condutor;
 
@@ -79,11 +80,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             var resultadoValidacao = GravarRegistro(condutor);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Condutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 
@@ -167,7 +178,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             CarregarItemComboboxSelecionado();
 
-            if (condutor.Id != 0)
+            if (condutor.Cliente_Id != Guid.Empty)
                 checkClienteCondutor.Checked = true;
             else
                 checkClienteCondutor.Enabled = false;

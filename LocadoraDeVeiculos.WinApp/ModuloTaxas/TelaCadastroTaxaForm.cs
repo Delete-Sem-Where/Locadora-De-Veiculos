@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxas;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
 
         }
 
-        public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
+        public Func<Taxa, Result<Taxa>> GravarRegistro { get; set; }
 
         public Taxa Taxa
         {
@@ -35,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
                 taxa = value;
                 textBoxNumeroTaxa.Text = taxa.Id.ToString();
                 textBoxDescricaoTaxa.Text = taxa.Descricao;
-                
+
                 if (taxa.Valor == 0)
                     txtUpDownValor.Value = 1;
                 else
@@ -46,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
                 else radioButtonFixo.Checked = true;
             }
         }
-        
+
 
         private void TelaCadastroTaxaForm_Load(object sender, EventArgs e)
         {
@@ -67,13 +68,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
 
             var resultadoValidacao = GravarRegistro(taxa);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-                DialogResult = DialogResult.None;
-            }
+                string erro = resultadoValidacao.Errors[0].Message;
 
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    DialogResult = DialogResult.None;
+                }
+            }
         }
     }
 }

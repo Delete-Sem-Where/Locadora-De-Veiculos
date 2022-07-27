@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="07e7afd9-11f8-42f0-95e9-c1d9c5abc262" ChangeDateTime="07/04/2022 10:28:20">
+    <Property Name="ElementName" Value="[dbo].[TBVeiculos].[Capacidade_tanque]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBVeiculos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Capacidade_Tanque" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="04fe57c5-890b-45c8-8f6b-3f70ad243b81" ChangeDateTime="07/04/2022 10:29:18">
+    <Property Name="ElementName" Value="[dbo].[TBVeiculos].[Id_Grupo_Veiculos]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBVeiculos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Grupo_Veiculos_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="14db3b1e-dc12-46b7-ae9a-afc63290d533" ChangeDateTime="07/04/2022 10:29:24">
+    <Property Name="ElementName" Value="[dbo].[TBVeiculos].[Grupo_Veiculos_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBVeiculos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Grupo_Veiculos_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e22c84c1-859b-4973-9c40-aed23f7a1222" ChangeDateTime="07/04/2022 10:34:27">
+    <Property Name="ElementName" Value="[dbo].[TBVeiculos].[Grupo_Veiculos_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBVeiculos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GrupoVeiculos_Id" />
+  </Operation>
+</Operations>
