@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxas;
 using Serilog;
 using System;
@@ -13,10 +14,13 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
     public class ServicoTaxa
     {
         private IRepositorioTaxa repositorioTaxa;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoTaxa(IRepositorioTaxa repositorioTaxa)
+
+        public ServicoTaxa(IRepositorioTaxa repositorioTaxa, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioTaxa = repositorioTaxa;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<Taxa> Inserir(Taxa taxa)
@@ -39,6 +43,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
             try
             {
                 repositorioTaxa.Inserir(taxa);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Taxa {TaxaDescricao} inserida com sucesso", taxa.Descricao);
 
@@ -75,6 +81,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
             {
                 repositorioTaxa.Editar(taxa);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Taxa {TaxaDescricao} editada com sucesso", taxa.Descricao);
 
                 return Result.Ok(taxa);
@@ -97,6 +105,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
             try
             {
                 repositorioTaxa.Excluir(taxa);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Taxa {TaxaDescricao} excluída com sucesso", taxa.Descricao);
 

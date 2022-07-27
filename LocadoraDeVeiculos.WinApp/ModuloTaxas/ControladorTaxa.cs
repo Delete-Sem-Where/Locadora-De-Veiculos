@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxas
 
             TelaCadastroTaxaForm tela = new TelaCadastroTaxaForm();
 
-            tela.Taxa = taxaSelecionada.Clonar();
+            tela.Taxa = taxaSelecionada;
 
             tela.GravarRegistro = servicoTaxa.Editar;
 
