@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
             }
 
             var grupoVeiculos_Selecionado = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
-            veiculos.GrupoVeiculos_Id = grupoVeiculos_Selecionado.Id;
+            veiculos.GrupoVeiculos = grupoVeiculos_Selecionado;
 
             var resultadoValidacao = GravarRegistro(veiculos);
 

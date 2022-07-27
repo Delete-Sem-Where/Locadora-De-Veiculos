@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
 {
@@ -12,7 +13,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
         public string TipoCombustivel { get; set; }
         public string QuilometroPercorrido { get; set; }
         public string CapacidadeTanque { get; set; }
-        public Guid GrupoVeiculos_Id { get; set; }       
+        public GrupoVeiculos GrupoVeiculos { get; set; }       
 
         public Veiculos Clonar()
         {
@@ -36,7 +37,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
                 veiculos.TipoCombustivel.Equals(TipoCombustivel) &&
                 veiculos.QuilometroPercorrido.Equals(QuilometroPercorrido) &&
                 veiculos.CapacidadeTanque.Equals(CapacidadeTanque) &&
-                veiculos.GrupoVeiculos_Id.Equals(GrupoVeiculos_Id);
+                veiculos.GrupoVeiculos.Equals(GrupoVeiculos);
         }
     }
 }
