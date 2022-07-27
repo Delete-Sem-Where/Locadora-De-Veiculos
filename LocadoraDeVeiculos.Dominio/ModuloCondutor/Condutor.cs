@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public string CPF { get; set; }
         public string CNH { get; set; }
         public DateTime ValidadeCNH { get; set; }
-        public Guid Cliente_Id { get; set; }
+        public Cliente Cliente { get; set; }
 
         public Condutor Clonar()
         {
@@ -39,7 +40,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                 condutor.CPF.Equals(CPF) &&
                 condutor.CNH.Equals(CNH) &&
                 condutor.ValidadeCNH.Date.Equals(ValidadeCNH.Date) &&
-                condutor.Cliente_Id.Equals(Cliente_Id);
+                condutor.Cliente.Equals(Cliente);
         }
     }
 }

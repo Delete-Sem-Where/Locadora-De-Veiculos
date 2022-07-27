@@ -1,4 +1,4 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -7,20 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
+namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
 {
-    public class MapeadorClienteOrm : IEntityTypeConfiguration<Cliente>
+    public class MapeadorCondutorOrm : IEntityTypeConfiguration<Condutor>
     {
-        public void Configure(EntityTypeBuilder<Cliente> builder)
+        public void Configure(EntityTypeBuilder<Condutor> builder)
         {
-            builder.ToTable("TBCliente");
+            builder.ToTable("TBCondutor");
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.Property(x => x.Nome).HasColumnType("varchar(100)").IsRequired();
-            builder.Property(x => x.Documento).HasColumnType("varchar(30)").IsRequired();
             builder.Property(x => x.Email).HasColumnType("varchar(100)").IsRequired();
             builder.Property(x => x.Telefone).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.Endereco).HasColumnType("varchar(100)").IsRequired();
-            builder.Property(x => x.TipoCliente).HasColumnType("int").IsRequired().HasConversion<int>().HasColumnName("Tipo_Cliente");
+            builder.Property(x => x.CPF).HasColumnType("varchar(20)").IsRequired();
+            builder.Property(x => x.CNH).HasColumnType("varchar(20)").IsRequired();
+            builder.Property(x => x.ValidadeCNH).HasColumnType("date").IsRequired();
+            builder.HasOne(x => x.Cliente);
         }
     }
 }

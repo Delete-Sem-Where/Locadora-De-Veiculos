@@ -17,8 +17,10 @@ namespace LocadoraDeVeiculos.WinApp
             ApplicationConfiguration.Initialize();
 
             var serviceLocatorAutofac = new ServiceLocatorAutofac();
+            var serviceLocatorManual = new ServiceLocatorManual();
 
-            Application.Run(new TelaPrincipalForm(serviceLocatorAutofac));
+            //Application.Run(new TelaPrincipalForm(serviceLocatorAutofac));
+            Application.Run(new TelaPrincipalForm(serviceLocatorManual));
         }
     }
 }

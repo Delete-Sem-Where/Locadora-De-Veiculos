@@ -8,23 +8,27 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
     public partial class TelaCadastroCondutorForm : Form
     {
-        public TelaCadastroCondutorForm()
+        List<Cliente> clientes;
+
+        public TelaCadastroCondutorForm(List<Cliente> clientes)
         {
             InitializeComponent();
 
+            this.clientes = clientes;
+
             CarregarClientes();
         }
-
-        private readonly RepositorioClienteEmBancoDados repositorioCliente = new RepositorioClienteEmBancoDados();
 
         private void CarregarClientes()
         {
             cmbClientes.Items.Clear();
 
-            var clientes = repositorioCliente.SelecionarTodos();
-            foreach (var item in clientes)
+            if(clientes.Count > 0)
             {
-                cmbClientes.Items.Add(item);
+                foreach (var item in clientes)
+                {
+                    cmbClientes.Items.Add(item);
+                }
             }
         }
 
@@ -76,7 +80,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             }
 
             var cliente_selecionado = (Cliente)cmbClientes.SelectedItem;
-            condutor.Cliente_Id = cliente_selecionado.Id;
+            condutor.Cliente = cliente_selecionado;
 
             var resultadoValidacao = GravarRegistro(condutor);
 
@@ -154,7 +158,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             var cliente = (Cliente)cmbClientes.SelectedItem;
 
             txtNome.Text = cliente.Nome;
-            txtCPF.Text = cliente.CPF;
+            txtCPF.Text = cliente.Documento;
             txtEmail.Text = cliente.Email;
             txtTelefone.Text = cliente.Telefone;
             txtEndereco.Text = cliente.Endereco;
@@ -178,7 +182,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             CarregarItemComboboxSelecionado();
 
-            if (condutor.Cliente_Id != Guid.Empty)
+            if (condutor.Cliente != null)
                 checkClienteCondutor.Checked = true;
             else
                 checkClienteCondutor.Enabled = false;
@@ -189,7 +193,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             for (int i = 0; i < cmbClientes.Items.Count; i++)
             {
                 var cliente_selecionado = (Cliente)cmbClientes.Items[i];
-                if (condutor.Cliente_Id == cliente_selecionado.Id)
+                if (condutor.Cliente == cliente_selecionado)
                 {
                     cmbClientes.SelectedIndex = i;
                     break;

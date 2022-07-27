@@ -5,6 +5,7 @@ using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Aplicacao.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Aplicacao.ModuloTaxas;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
@@ -18,6 +19,9 @@ using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
@@ -45,19 +49,21 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
             var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
 
-            builder.RegisterType<RepositorioClienteEmBancoDados>().As<IRepositorioCliente>();
-            builder.RegisterType<ServicoCliente>().AsSelf().WithParameter("contextoPersistencia", contextoDadosOrm);
+            builder.RegisterType<LocadoraDeVeiculosDbContext>().As<IContextoPersistencia>().WithParameter("connectionString", connectionString);
+
+            builder.RegisterType<RepositorioClienteOrm>().As<IRepositorioCliente>();
+            builder.RegisterType<ServicoCliente>().AsSelf();
             builder.RegisterType<ControladorCliente>().AsSelf();
 
             builder.RegisterType<RepositorioGrupoVeiculosEmBancoDados>().As<IRepositorioGrupoVeiculos>();
             builder.RegisterType<ServicoGrupoVeiculos>().AsSelf();
             builder.RegisterType<ControladorGrupoVeiculos>().AsSelf();
 
-            builder.RegisterType<RepositorioFuncionarioEmBancoDados>().As<IRepositorioFuncionario>();
-            builder.RegisterType<ServicoFuncionario>().AsSelf().WithParameter("contextoPersistencia", contextoDadosOrm);
+            builder.RegisterType<RepositorioFuncionarioOrm>().As<IRepositorioFuncionario>();
+            builder.RegisterType<ServicoFuncionario>().AsSelf();
             builder.RegisterType<ControladorFuncionario>().AsSelf();
 
-            builder.RegisterType<RepositorioCondutorEmBancoDados>().As<IRepositorioCondutor>();
+            builder.RegisterType<RepositorioCondutorOrm>().As<IRepositorioCondutor>();
             builder.RegisterType<ServicoCondutor>().AsSelf();
             builder.RegisterType<ControladorCondutor>().AsSelf();
 

@@ -176,11 +176,11 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
                 erros.Add(new Error("Nome duplicado"));
 
             if (cliente.TipoCliente == TipoCliente.PessoaJuridica)
-                if (CNPJDuplicado(cliente))
+                if (DocumentoDuplicado(cliente))
                 erros.Add(new Error("CNPJ duplicado"));
 
             if (cliente.TipoCliente == TipoCliente.PessoaFisica)
-                if (CPFDuplicado(cliente))
+                if (DocumentoDuplicado(cliente))
                     erros.Add(new Error("CPF duplicado"));
 
             if (erros.Any())
@@ -198,21 +198,12 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
                    clienteEncontrado.Id != cliente.Id;
         }
 
-        private bool CNPJDuplicado(Cliente cliente)
+        private bool DocumentoDuplicado(Cliente cliente)
         {
-            var clienteEncontrado = repositorioCliente.SelecionarClientePorCNPJ(cliente.CNPJ);
+            var clienteEncontrado = repositorioCliente.SelecionarClientePorDocumento(cliente.Documento);
 
             return clienteEncontrado != null &&
-                   clienteEncontrado.CNPJ == cliente.CNPJ &&
-                   clienteEncontrado.Id != cliente.Id;
-        }
-
-        private bool CPFDuplicado(Cliente cliente)
-        {
-            var clienteEncontrado = repositorioCliente.SelecionarClientePorCPF(cliente.CPF);
-
-            return clienteEncontrado != null &&
-                   clienteEncontrado.CPF == cliente.CPF &&
+                   clienteEncontrado.Documento == cliente.Documento &&
                    clienteEncontrado.Id != cliente.Id;
         }
 
