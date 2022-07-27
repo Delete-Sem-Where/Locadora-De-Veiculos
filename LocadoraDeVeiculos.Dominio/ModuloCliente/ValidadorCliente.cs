@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
             When(x => x.TipoCliente == TipoCliente.PessoaJuridica, () =>
             {
-                RuleFor(x => x.CNPJ)
+                RuleFor(x => x.Documento)
                 .NotNull().NotEmpty()
                 .CNPJ();
 
@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
             When(x => x.TipoCliente == TipoCliente.PessoaFisica, () =>
             {
-                RuleFor(x => x.CPF)
+                RuleFor(x => x.Documento)
                 .NotNull().NotEmpty()
                 .CPF();
             });

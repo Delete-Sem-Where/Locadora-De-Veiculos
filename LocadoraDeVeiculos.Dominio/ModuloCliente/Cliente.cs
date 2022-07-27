@@ -13,8 +13,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string Endereco { get; set; }
-        public string CPF { get; set; }
-        public string CNPJ { get; set; }
         public TipoCliente TipoCliente { get; set; }
         public string Documento { get; set; }
 
@@ -26,9 +24,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public override string ToString()
         {
             if(TipoCliente == TipoCliente.PessoaJuridica)
-                return $"{Nome} - CNPJ: {CNPJ}";
+                return $"{Nome} - CNPJ: {Documento}";
             else
-                return $"{Nome} - CPF: {CPF}";
+                return $"{Nome} - CPF: {Documento}";
         }
 
         public override bool Equals(object? obj)
@@ -38,24 +36,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             if (cliente == null)
                 return false;
 
-            if(cliente.TipoCliente == TipoCliente.PessoaJuridica)
-                    return
-                        cliente.Id.Equals(Id) &&
-                        cliente.Nome.Equals(Nome) &&
-                        cliente.Email.Equals(Email) &&
-                        cliente.Telefone.Equals(Telefone) &&
-                        cliente.Endereco.Equals(Endereco) &&
-                        cliente.CNPJ.Equals(CNPJ) &&
-                        cliente.TipoCliente.Equals(TipoCliente);
-            else 
-                return
-                    cliente.Id.Equals(Id) &&
-                    cliente.Nome.Equals(Nome) &&
-                    cliente.Email.Equals(Email) &&
-                    cliente.Telefone.Equals(Telefone) &&
-                    cliente.Endereco.Equals(Endereco) &&
-                    cliente.CPF.Equals(CPF) &&
-                    cliente.TipoCliente.Equals(TipoCliente);
+            return
+                cliente.Id.Equals(Id) &&
+                cliente.Nome.Equals(Nome) &&
+                cliente.Email.Equals(Email) &&
+                cliente.Telefone.Equals(Telefone) &&
+                cliente.Endereco.Equals(Endereco) &&
+                cliente.Documento.Equals(Documento) &&
+                cliente.TipoCliente.Equals(TipoCliente);
         }
     }
 }

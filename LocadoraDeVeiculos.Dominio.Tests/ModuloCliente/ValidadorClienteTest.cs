@@ -119,47 +119,35 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void CPF_deve_ser_obrigatorio()
+        public void Documento_deve_ser_obrigatorio()
+        {
+            cliente.Documento = null;
+
+            var resultado = validador.TestValidate(cliente);
+
+            resultado.ShouldHaveValidationErrorFor(cliente => cliente.Documento);
+        }
+
+        [TestMethod]
+        public void Documento_PF_deve_ser_valido()
         {
             cliente.TipoCliente = TipoCliente.PessoaFisica;
-            cliente.CPF = null;
+            cliente.Documento = "123456";
 
             var resultado = validador.TestValidate(cliente);
 
-            resultado.ShouldHaveValidationErrorFor(cliente => cliente.CPF);
+            resultado.ShouldHaveValidationErrorFor(cliente => cliente.Documento);
         }
 
         [TestMethod]
-        public void CPF_deve_ser_valido()
-        {
-            cliente.TipoCliente = TipoCliente.PessoaFisica;
-            cliente.CPF = "123456";
-
-            var resultado = validador.TestValidate(cliente);
-
-            resultado.ShouldHaveValidationErrorFor(cliente => cliente.CPF);
-        }
-
-        [TestMethod]
-        public void CNPJ_deve_ser_obrigatorio()
+        public void Documento_PJ_deve_ser_valido()
         {
             cliente.TipoCliente = TipoCliente.PessoaJuridica;
-            cliente.CNPJ = null;
+            cliente.Documento = "123456";
 
             var resultado = validador.TestValidate(cliente);
 
-            resultado.ShouldHaveValidationErrorFor(cliente => cliente.CNPJ);
-        }
-
-        [TestMethod]
-        public void CNPJ_deve_ser_valido()
-        {
-            cliente.TipoCliente = TipoCliente.PessoaJuridica;
-            cliente.CNPJ = "123456";
-
-            var resultado = validador.TestValidate(cliente);
-
-            resultado.ShouldHaveValidationErrorFor(cliente => cliente.CNPJ);
+            resultado.ShouldHaveValidationErrorFor(cliente => cliente.Documento);
         }
     }
 }

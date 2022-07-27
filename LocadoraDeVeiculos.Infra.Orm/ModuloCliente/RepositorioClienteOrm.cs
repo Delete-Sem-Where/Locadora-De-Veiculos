@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,8 +17,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
 
         public RepositorioClienteOrm(LocadoraDeVeiculosDbContext dbContext)
         {
-            clientes = dbContext.Set<Cliente>();
-            this.dbContext = dbContext;
+            this.dbContext = (LocadoraDeVeiculosDbContext) dbContext;
+            clientes = this.dbContext.Set<Cliente>();
         }
 
         public void Inserir(Cliente novoRegistro)
@@ -50,14 +51,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCliente
             return clientes.FirstOrDefault(x => x.Nome == nome);
         }
 
-        public Cliente SelecionarClientePorCPF(string cpf)
+        public Cliente SelecionarClientePorDocumento(string documento)
         {
-            return clientes.FirstOrDefault(x => x.CPF == cpf);
-        }
-
-        public Cliente SelecionarClientePorCNPJ(string cnpj)
-        {
-            return clientes.FirstOrDefault(x => x.CNPJ == cnpj);
+            return clientes.FirstOrDefault(x => x.Documento == documento);
         }
     }
 }
