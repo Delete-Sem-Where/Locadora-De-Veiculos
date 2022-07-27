@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             var planoSelecionada = resultado.Value;
 
-            tela.PlanoCobranca = planoSelecionada.Clonar();
+            tela.PlanoCobranca = planoSelecionada;
 
             tela.GravarRegistro = servicoPlanoCobranca.Editar;
 
