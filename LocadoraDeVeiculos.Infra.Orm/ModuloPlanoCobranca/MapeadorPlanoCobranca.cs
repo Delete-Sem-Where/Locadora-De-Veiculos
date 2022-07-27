@@ -19,7 +19,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca
             builder.Property(x => x.ValorDiaria).HasColumnType("decimal(8,2)").IsRequired();
             builder.Property(x => x.LimiteKm).HasColumnType("decimal(8,2)").IsRequired();
             builder.Property(x => x.ValorKm).HasColumnType("decimal(8,2)").IsRequired();
-            builder.HasOne(x => x.GrupoVeiculos);
+            builder.HasOne(x => x.GrupoVeiculos)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
