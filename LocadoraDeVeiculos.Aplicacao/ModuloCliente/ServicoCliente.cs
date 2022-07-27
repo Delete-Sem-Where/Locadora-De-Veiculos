@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -114,6 +115,26 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             catch (NaoPodeExcluirEsteRegistroException ex)
             {
                 string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
 
                 Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
 

@@ -22,7 +22,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloCondutor
             builder.Property(x => x.CPF).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.CNH).HasColumnType("varchar(20)").IsRequired();
             builder.Property(x => x.ValidadeCNH).HasColumnType("date").IsRequired();
-            builder.HasOne(x => x.Cliente);
+            builder.HasOne(x => x.Cliente)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
