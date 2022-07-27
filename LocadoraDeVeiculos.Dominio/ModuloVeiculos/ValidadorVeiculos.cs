@@ -16,34 +16,49 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
             RuleFor(x => x.Modelo)
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
-           
+                    .MaximumLength(65)
+                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ0-9 ]+$");
+
             RuleFor(x => x.Marca)
                     .NotNull().NotEmpty()
                     .MinimumLength(2)
+                    .MaximumLength(20)
                     .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
            
             RuleFor(x => x.Placa)
                     .NotNull().NotEmpty()
                     .MinimumLength(7)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
+                    .MaximumLength(7)
+                    .Matches(@"^[0-9a-zA-Z]+$");
 
             RuleFor(x => x.Cor)
                     .NotNull().NotEmpty()
-                    .MinimumLength(3)
-                    .Matches(@"^[a-zA-Zà-úÀ-ÚçÇ ]+$");
-
-            RuleFor(x => x.Ano)
-                    .NotNull().NotEmpty();
-
-            RuleFor(x => x.QuilometroPercorrido)
-                    .NotNull().NotEmpty();
+                    .MaximumLength(40)
+                    .MinimumLength(3);
 
             RuleFor(x => x.TipoCombustivel)
-                    .NotNull().NotEmpty();
+                    .NotNull().NotEmpty()
+                    .MaximumLength(30);
 
             RuleFor(x => x.CapacidadeTanque)
-                    .NotNull().NotEmpty();
+                    .NotNull().NotEmpty()
+                    .Matches(@"^[0-9]")
+                    .MaximumLength(8)
+                    //TODO .GreaterThan(0);
+                    ;
+
+            RuleFor(x => x.Ano)
+                    .NotNull()
+                    .NotEmpty()
+                    .MinimumLength(4)
+                    .MaximumLength(4)
+                    .Matches(@"^[0-9]")
+            // TODO .GreaterThanOrEqualTo(2000)
+                    ;
+
+            RuleFor(x => x.QuilometroPercorrido)
+                .NotNull().NotEmpty()
+                .MaximumLength(8);
 
             RuleFor(x => x.GrupoVeiculos_Id)
                     .NotNull().NotEmpty();

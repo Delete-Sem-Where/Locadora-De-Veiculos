@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                  [TIPO_COMBUSTIVEL] VEICULO_TIPO_COMBUSTIVEL,
                  [QUILOMETRO_PERCORRIDO] VEICULO_QUILOMETRO_PERCORRIDO,
                  [CAPACIDADE_TANQUE] VEICULO_CAPACIDADE_TANQUE,
-                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULO_ID            
+                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULOS_ID            
             FROM 
                 [TBVEICULOS]";
 
@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                  [TIPO_COMBUSTIVEL] VEICULO_TIPO_COMBUSTIVEL,
                  [QUILOMETRO_PERCORRIDO] VEICULO_QUILOMETRO_PERCORRIDO,
                  [CAPACIDADE_TANQUE] VEICULO_CAPACIDADE_TANQUE,
-                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULO_ID              
+                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULOS_ID              
             FROM 
                 [TBVEICULOS]
             WHERE 
@@ -100,7 +100,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                  [TIPO_COMBUSTIVEL] VEICULO_TIPO_COMBUSTIVEL,
                  [QUILOMETRO_PERCORRIDO] VEICULO_QUILOMETRO_PERCORRIDO,
                  [CAPACIDADE_TANQUE] VEICULO_CAPACIDADE_TANQUE,
-                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULO_ID              
+                 [GRUPOVEICULOS_ID] VEICULO_GRUPOVEICULOS_ID              
             FROM 
                 [TBVEICULOS]
             WHERE 
