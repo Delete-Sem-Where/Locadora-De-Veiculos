@@ -19,6 +19,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public DateTime ValidadeCNH { get; set; }
         public Cliente Cliente { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Nome} - CPF: {CPF}";
+        }
+
         public Condutor Clonar()
         {
             return MemberwiseClone() as Condutor;

@@ -15,7 +15,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public Decimal ValorDiaria { get; set; }
         public Decimal LimiteKm { get; set; }
         public Decimal ValorKm { get; set; }
-        
+
+        public override string ToString()
+        {
+            return $"{ModalidadePlanoCobranca}";
+        }
+
         public PlanoCobranca Clonar()
         {
             return MemberwiseClone() as PlanoCobranca;

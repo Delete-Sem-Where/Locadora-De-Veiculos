@@ -13,7 +13,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
         public string TipoCombustivel { get; set; }
         public string QuilometroPercorrido { get; set; }
         public string CapacidadeTanque { get; set; }
-        public GrupoVeiculos GrupoVeiculos { get; set; }       
+        public GrupoVeiculos GrupoVeiculos { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Modelo}";
+        }
 
         public Veiculos Clonar()
         {
