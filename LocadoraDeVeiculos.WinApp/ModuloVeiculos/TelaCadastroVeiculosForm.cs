@@ -8,21 +8,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {
     public partial class TelaCadastroVeiculosForm : Form
     {
-        public TelaCadastroVeiculosForm()
+        public TelaCadastroVeiculosForm(List<GrupoVeiculos> grupos)
         {
             InitializeComponent();
 
-            CarregarGrupoVeiculos();
+            CarregarGrupoVeiculos(grupos);
         }
 
-        private readonly RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
-        private void CarregarGrupoVeiculos()
+        private void CarregarGrupoVeiculos(List<GrupoVeiculos> grupos)
         {
             cmbGrupoVeiculos.Items.Clear();
 
-            var grupoVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
-
-            foreach (var item in grupoVeiculos)
+            foreach (var item in grupos)
                 cmbGrupoVeiculos.Items.Add(item);
         }
 

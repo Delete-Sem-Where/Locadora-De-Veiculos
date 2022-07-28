@@ -9,7 +9,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 {
     public class ControladorPlanoCobranca : ControladorBase
     {
-
         private TabelaPlanoCobrancaControl tabelaPlanoCobranca;
         private ServicoPlanoCobranca servicoPlanoCobranca;
         private ServicoGrupoVeiculos servicoGrupoVeiculos;
