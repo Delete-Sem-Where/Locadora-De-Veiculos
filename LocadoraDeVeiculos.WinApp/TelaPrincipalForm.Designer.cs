@@ -35,6 +35,7 @@
             this.pessoasFísicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupoVeículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.veículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.condutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planoDeCobrançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.veículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -85,7 +86,8 @@
             this.veículosToolStripMenuItem,
             this.clienteToolStripMenuItem,
             this.condutorToolStripMenuItem,
-            this.planoDeCobrançaToolStripMenuItem});
+            this.planoDeCobrançaToolStripMenuItem,
+            this.locaçãoToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -124,6 +126,13 @@
             this.grupoVeículosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.grupoVeículosToolStripMenuItem.Text = "Grupo Veículos";
             this.grupoVeículosToolStripMenuItem.Click += new System.EventHandler(this.grupoVeículosToolStripMenuItem_Click);
+            // 
+            // veículosToolStripMenuItem
+            // 
+            this.veículosToolStripMenuItem.Name = "veículosToolStripMenuItem";
+            this.veículosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.veículosToolStripMenuItem.Text = "Veículos";
+            this.veículosToolStripMenuItem.Click += new System.EventHandler(this.veículosToolStripMenuItem_Click);
             // 
             // clienteToolStripMenuItem
             // 
@@ -291,12 +300,12 @@
             this.panelRegistros.Size = new System.Drawing.Size(1335, 649);
             this.panelRegistros.TabIndex = 3;
             // 
-            // veículosToolStripMenuItem
+            // locaçãoToolStripMenuItem
             // 
-            this.veículosToolStripMenuItem.Name = "veículosToolStripMenuItem";
-            this.veículosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.veículosToolStripMenuItem.Text = "Veículos";
-            this.veículosToolStripMenuItem.Click += new System.EventHandler(this.veículosToolStripMenuItem_Click);
+            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
+            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.locaçãoToolStripMenuItem.Text = "Locação";
+            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locacaoToolStripMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 
@@ -356,5 +365,6 @@
         private ToolStripMenuItem condutorToolStripMenuItem;
         private ToolStripMenuItem planoDeCobrançaToolStripMenuItem;
         private ToolStripMenuItem veículosToolStripMenuItem;
+        private ToolStripMenuItem locaçãoToolStripMenuItem;
     }
 }

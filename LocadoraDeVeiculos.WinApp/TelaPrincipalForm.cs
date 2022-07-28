@@ -30,6 +30,7 @@ using LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos;
 using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
+using LocadoraDeVeiculos.WinApp.ModuloLocacao;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -104,6 +105,11 @@ namespace LocadoraDeVeiculos.WinApp
         private void veículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorVeiculos>());
+        }
+
+        private void locacaoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorLocacao>());
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -181,6 +187,6 @@ namespace LocadoraDeVeiculos.WinApp
             listagemControl.Dock = DockStyle.Fill;
 
             panelRegistros.Controls.Add(listagemControl);
-        }        
+        }
     }
 }
