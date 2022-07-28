@@ -20,15 +20,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
     public partial class TelaCadastroLocacaoForm : Form
     {
+        List<Condutor> condutores;
+        List<Veiculos> veiculos;
+        List<PlanoCobranca> planosCobrancas;
+
+        PlanoCobranca planoCobrancaSelecionado;
+        decimal valorTaxasSelecionadas = 0;
+        int qtdDiasLocacao = 0;
+
         public TelaCadastroLocacaoForm(List<Cliente> clientes, List<Condutor> condutores, List<GrupoVeiculos> gruposVeiculos, List<Veiculos> veiculos, List<PlanoCobranca> planosCobrancas, List<Taxa> taxas)
         {
             InitializeComponent();
 
+            this.condutores = condutores;
+            this.veiculos = veiculos;
+            this.planosCobrancas = planosCobrancas;
+
             CarregarClientes(clientes);
-            CarregarCondutores(condutores);
             CarregarGrupoVeiculos(gruposVeiculos);
-            CarregarVeiculos(veiculos);
-            CarregarPlanoCobranca(planosCobrancas);
+            CarregarTaxas(taxas);
         }
 
         private void CarregarClientes(List<Cliente> clientes)
@@ -44,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
-        private void CarregarCondutores(List<Condutor> condutores)
+        private void CarregarCondutoresDoCliente(List<Condutor> condutores, Cliente clienteSelecionado)
         {
             cmbCondutores.Items.Clear();
 
@@ -52,7 +62,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 foreach (var item in condutores)
                 {
-                    cmbCondutores.Items.Add(item);
+                    if(item.Cliente == clienteSelecionado)
+                        cmbCondutores.Items.Add(item);
                 }
             }
         }
@@ -70,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
-        private void CarregarVeiculos(List<Veiculos> veiculos)
+        private void CarregarVeiculosDoGrupo(List<Veiculos> veiculos, GrupoVeiculos grupoSelecionado)
         {
             cmbVeiculos.Items.Clear();
 
@@ -78,12 +89,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 foreach (var item in veiculos)
                 {
-                    cmbVeiculos.Items.Add(item);
+                    if(item.GrupoVeiculos == grupoSelecionado)
+                        cmbVeiculos.Items.Add(item);
                 }
             }
         }
 
-        private void CarregarPlanoCobranca(List<PlanoCobranca> planosCobrancas)
+        private void CarregarPlanoCobrancaDoGrupo(List<PlanoCobranca> planosCobrancas, GrupoVeiculos grupoSelecionado)
         {
             cmbPlanoCobranca.Items.Clear();
 
@@ -91,8 +103,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 foreach (var item in planosCobrancas)
                 {
-                    cmbPlanoCobranca.Items.Add(item);
+                    if(item.GrupoVeiculos == grupoSelecionado)
+                        cmbPlanoCobranca.Items.Add(item);
                 }
+            }
+        }
+
+        private void CarregarTaxas(List<Taxa> taxas)
+        {
+            listTaxas.Items.Clear();
+
+            foreach (var item in taxas)
+            {
+                listTaxas.Items.Add(item);
             }
         }
 
@@ -142,7 +165,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.PlanoCobranca = (PlanoCobranca)cmbPlanoCobranca.SelectedItem;
             locacao.DataLocacao = datePickerDataLocacao.Value;
             locacao.DataDevolucaoPrevista = dateTimeDataDevolucao.Value;
-            locacao.ValorTotalPrevisto = 1400;
+
+            txtValorTotalPrevisto.Text = txtValorTotalPrevisto.Text.Remove(0,2);
+            locacao.ValorTotalPrevisto = Convert.ToDouble(txtValorTotalPrevisto.Text);
 
             var resultadoValidacao = GravarRegistro(locacao);
 
@@ -162,6 +187,95 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     DialogResult = DialogResult.None;
                 }
             }
+        }
+
+        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var clienteSelecionado = (Cliente)cmbClientes.SelectedItem;
+            CarregarCondutoresDoCliente(condutores, clienteSelecionado);
+        }
+
+        private void cmbGrupoVeiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            planoCobrancaSelecionado = null;
+            txtKmRodado.Text = string.Empty;
+            var grupoSelecionado = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
+            CarregarVeiculosDoGrupo(veiculos, grupoSelecionado);
+            CarregarPlanoCobrancaDoGrupo(planosCobrancas, grupoSelecionado);
+            CalcularValorTotalPrevisto();
+        }
+
+        private void cmbPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            planoCobrancaSelecionado = (PlanoCobranca)cmbPlanoCobranca.SelectedItem;
+            CalcularValorTotalPrevisto();
+        }
+
+        private void CalcularValorTotalPrevisto()
+        {
+            decimal valorTotalPrevisto = 0;
+
+            if(planoCobrancaSelecionado != null)
+            {
+                if (planoCobrancaSelecionado.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Livre)
+                {
+                    valorTotalPrevisto = qtdDiasLocacao * planoCobrancaSelecionado.ValorDiaria + valorTaxasSelecionadas;
+                    AlterarMensagemInformacaoPlanoCobranca(planoCobrancaSelecionado.ModalidadePlanoCobranca);
+                }
+                else if (planoCobrancaSelecionado.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Diario)
+                {
+                    valorTotalPrevisto = qtdDiasLocacao * planoCobrancaSelecionado.ValorDiaria + valorTaxasSelecionadas;
+                    AlterarMensagemInformacaoPlanoCobranca(planoCobrancaSelecionado.ModalidadePlanoCobranca);
+                }
+                else if (planoCobrancaSelecionado.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Controle)
+                {
+                    valorTotalPrevisto = qtdDiasLocacao * planoCobrancaSelecionado.ValorDiaria + valorTaxasSelecionadas;
+                    AlterarMensagemInformacaoPlanoCobranca(planoCobrancaSelecionado.ModalidadePlanoCobranca);
+                }
+            }
+            else
+            {
+                valorTotalPrevisto = valorTaxasSelecionadas;
+            }
+
+            txtValorTotalPrevisto.Text = "R$" + valorTotalPrevisto.ToString();
+        }
+
+        private void AlterarMensagemInformacaoPlanoCobranca(ModalidadePlanoCobranca modalidadePlanoCobranca)
+        {
+            if(modalidadePlanoCobranca == ModalidadePlanoCobranca.Diario)
+                lblInformacaoPlanoCobranca.Text = "Valor por KM calculado somente na devolução";
+            else if(modalidadePlanoCobranca == ModalidadePlanoCobranca.Controle)
+                lblInformacaoPlanoCobranca.Text = "Multa para limite de KM excedido";
+            else if(modalidadePlanoCobranca == ModalidadePlanoCobranca.Livre)
+                lblInformacaoPlanoCobranca.Text = string.Empty;
+        }
+
+        private void CalcularDiasLocacao()
+        {
+            qtdDiasLocacao = (int)(dateTimeDataDevolucao.Value - datePickerDataLocacao.Value).TotalDays;
+            CalcularValorTotalPrevisto();
+        }
+
+        private void datePickerDataLocacao_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularDiasLocacao();
+        }
+
+        private void dateTimeDataDevolucao_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularDiasLocacao();
+        }
+
+        private void listTaxas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            Taxa taxaSelecionada = (Taxa)listTaxas.SelectedItem;
+            if (listTaxas.CheckedItems.Contains(taxaSelecionada))
+                valorTaxasSelecionadas -= taxaSelecionada.Valor;
+            else
+                valorTaxasSelecionadas += taxaSelecionada.Valor;
+
+            CalcularValorTotalPrevisto();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxas
 
         public override string ToString()
         {
-            return $"Descrição: {Descricao}; Valor: {Valor}; Tipo de Cálculo: {TipoCalculo}";
+            return $"{Descricao} - Valor: {Valor}";
         }
 
         public Taxa Clonar()

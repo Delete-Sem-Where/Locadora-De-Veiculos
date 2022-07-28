@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos
         public string? Nome { get; set; }
         public override string ToString()
         {
-            return $"Nome: {Nome}";
+            return $"{Nome}";
         }
 
         public GrupoVeiculos Clonar()

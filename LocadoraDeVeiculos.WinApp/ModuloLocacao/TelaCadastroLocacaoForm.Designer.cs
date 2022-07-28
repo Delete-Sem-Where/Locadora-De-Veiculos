@@ -50,9 +50,12 @@
             this.dateTimeDataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.tabTaxas = new System.Windows.Forms.TabControl();
             this.pageTaxas = new System.Windows.Forms.TabPage();
+            this.listTaxas = new System.Windows.Forms.CheckedListBox();
             this.txtValorTotalPrevisto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblInformacaoPlanoCobranca = new System.Windows.Forms.Label();
             this.tabTaxas.SuspendLayout();
+            this.pageTaxas.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbClientes
@@ -63,6 +66,7 @@
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(233, 28);
             this.cmbClientes.TabIndex = 77;
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -160,6 +164,7 @@
             this.cmbGrupoVeiculos.Name = "cmbGrupoVeiculos";
             this.cmbGrupoVeiculos.Size = new System.Drawing.Size(233, 28);
             this.cmbGrupoVeiculos.TabIndex = 85;
+            this.cmbGrupoVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbGrupoVeiculos_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -185,6 +190,7 @@
             this.cmbPlanoCobranca.Name = "cmbPlanoCobranca";
             this.cmbPlanoCobranca.Size = new System.Drawing.Size(233, 28);
             this.cmbPlanoCobranca.TabIndex = 89;
+            this.cmbPlanoCobranca.SelectedIndexChanged += new System.EventHandler(this.cmbPlanoCobranca_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -210,6 +216,7 @@
             this.datePickerDataLocacao.Name = "datePickerDataLocacao";
             this.datePickerDataLocacao.Size = new System.Drawing.Size(233, 27);
             this.datePickerDataLocacao.TabIndex = 94;
+            this.datePickerDataLocacao.ValueChanged += new System.EventHandler(this.datePickerDataLocacao_ValueChanged);
             // 
             // label6
             // 
@@ -233,6 +240,7 @@
             this.dateTimeDataDevolucao.Name = "dateTimeDataDevolucao";
             this.dateTimeDataDevolucao.Size = new System.Drawing.Size(233, 27);
             this.dateTimeDataDevolucao.TabIndex = 96;
+            this.dateTimeDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
             // 
             // tabTaxas
             // 
@@ -245,6 +253,7 @@
             // 
             // pageTaxas
             // 
+            this.pageTaxas.Controls.Add(this.listTaxas);
             this.pageTaxas.Location = new System.Drawing.Point(4, 29);
             this.pageTaxas.Name = "pageTaxas";
             this.pageTaxas.Padding = new System.Windows.Forms.Padding(3);
@@ -252,6 +261,17 @@
             this.pageTaxas.TabIndex = 0;
             this.pageTaxas.Text = "Taxas da Locação";
             this.pageTaxas.UseVisualStyleBackColor = true;
+            // 
+            // listTaxas
+            // 
+            this.listTaxas.CheckOnClick = true;
+            this.listTaxas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listTaxas.FormattingEnabled = true;
+            this.listTaxas.Location = new System.Drawing.Point(3, 3);
+            this.listTaxas.Name = "listTaxas";
+            this.listTaxas.Size = new System.Drawing.Size(300, 128);
+            this.listTaxas.TabIndex = 101;
+            this.listTaxas.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listTaxas_ItemCheck);
             // 
             // txtValorTotalPrevisto
             // 
@@ -272,11 +292,21 @@
             this.label10.TabIndex = 99;
             this.label10.Text = "Valor total previsto:";
             // 
+            // lblInformacaoPlanoCobranca
+            // 
+            this.lblInformacaoPlanoCobranca.AutoSize = true;
+            this.lblInformacaoPlanoCobranca.Font = new System.Drawing.Font("Segoe UI", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblInformacaoPlanoCobranca.Location = new System.Drawing.Point(387, 356);
+            this.lblInformacaoPlanoCobranca.Name = "lblInformacaoPlanoCobranca";
+            this.lblInformacaoPlanoCobranca.Size = new System.Drawing.Size(0, 17);
+            this.lblInformacaoPlanoCobranca.TabIndex = 101;
+            // 
             // TelaCadastroLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 493);
+            this.Controls.Add(this.lblInformacaoPlanoCobranca);
             this.Controls.Add(this.txtValorTotalPrevisto);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tabTaxas);
@@ -309,6 +339,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Locação";
             this.tabTaxas.ResumeLayout(false);
+            this.pageTaxas.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +371,7 @@
         private TabPage pageTaxas;
         private TextBox txtValorTotalPrevisto;
         private Label label10;
+        private CheckedListBox listTaxas;
+        private Label lblInformacaoPlanoCobranca;
     }
 }
