@@ -184,6 +184,8 @@ namespace LocadoraDeVeiculos.WinApp
             listagemControl.Dock = DockStyle.Fill;
 
             panelRegistros.Controls.Add(listagemControl);
-        }       
+        }
+
+       
     }
 }
