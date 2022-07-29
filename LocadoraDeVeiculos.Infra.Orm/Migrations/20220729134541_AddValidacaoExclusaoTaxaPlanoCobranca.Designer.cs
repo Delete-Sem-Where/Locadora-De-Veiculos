@@ -4,6 +4,7 @@ using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    partial class LocadoraDeVeiculosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220729134541_AddValidacaoExclusaoTaxaPlanoCobranca")]
+    partial class AddValidacaoExclusaoTaxaPlanoCobranca
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -341,8 +343,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloTaxas.Taxa", null)
                         .WithMany("Locacoes")
-                        .HasForeignKey("TaxaId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("TaxaId");
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloVeiculos.Veiculos", "Veiculo")
                         .WithMany()

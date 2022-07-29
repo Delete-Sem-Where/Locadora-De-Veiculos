@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca
 
         public List<PlanoCobranca> SelecionarTodos()
         {
-            return planosCobranca.ToList();
+            return planosCobranca.Include(x => x.GrupoVeiculos).ToList();
         }
 
         public PlanoCobranca SelecionarPorId(Guid id)

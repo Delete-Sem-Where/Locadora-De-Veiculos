@@ -27,6 +27,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
             builder.HasOne(x => x.Veiculo)
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.PlanoCobranca)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
             builder.Property(x => x.DataLocacao).HasColumnType("date");
             builder.Property(x => x.DataDevolucaoPrevista).HasColumnType("date");
             builder.Property(x => x.ValorTotalPrevisto).HasColumnType("decimal(8,2)");

@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -109,6 +110,26 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
                 Log.Logger.Information("Condutor {CondutorId} excluído com sucesso", condutor.Id);
 
                 return Result.Ok();
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"O condutor {condutor.Nome} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", condutor.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"O condutor {condutor.Nome} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", condutor.Id);
+
+                return Result.Fail(msgErro);
             }
             catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxas;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,26 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
                 Log.Logger.Information("Taxa {TaxaDescricao} excluída com sucesso", taxa.Descricao);
 
                 return Result.Ok();
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"A taxa {taxa.Descricao} está relacionada com outro registro e não pode ser excluída";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"A taxa {taxa.Descricao} está relacionada com outro registro e não pode ser excluída";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
+
+                return Result.Fail(msgErro);
             }
             catch (Exception ex)
             {
