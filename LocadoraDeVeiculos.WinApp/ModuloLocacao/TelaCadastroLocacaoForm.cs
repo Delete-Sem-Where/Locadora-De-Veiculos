@@ -6,15 +6,6 @@ using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxas;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
@@ -31,6 +22,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public TelaCadastroLocacaoForm(List<Cliente> clientes, List<Condutor> condutores, List<GrupoVeiculos> gruposVeiculos, List<Veiculos> veiculos, List<PlanoCobranca> planosCobrancas, List<Taxa> taxas)
         {
             InitializeComponent();
+            LimitarCalendarios();
 
             this.condutores = condutores;
             this.veiculos = veiculos;
@@ -39,6 +31,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             CarregarClientes(clientes);
             CarregarGrupoVeiculos(gruposVeiculos);
             CarregarTaxas(taxas);
+
+            
         }
 
         private void CarregarClientes(List<Cliente> clientes)
@@ -395,7 +389,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void CalcularDiasLocacao()
         {
-            qtdDiasLocacao = (int)(datePickerDataDevolucao.Value - datePickerDataLocacao.Value).TotalDays;
+            qtdDiasLocacao = datePickerDataDevolucao.Value.Day - datePickerDataLocacao.Value.Day;
+            
+            if(qtdDiasLocacao == 0)
+                qtdDiasLocacao = 1;
+
             CalcularValorTotalPrevisto();
         }
 
@@ -418,6 +416,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 valorTaxasSelecionadas += taxaSelecionada.Valor;
 
             CalcularValorTotalPrevisto();
+        }
+
+        private void LimitarCalendarios()
+        {
+            datePickerDataLocacao.MinDate = DateTime.Now.Date;
+            datePickerDataDevolucao.MinDate = DateTime.Now.Date;
         }
     }
 }
