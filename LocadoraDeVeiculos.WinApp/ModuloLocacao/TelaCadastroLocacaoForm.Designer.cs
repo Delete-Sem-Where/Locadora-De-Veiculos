@@ -212,6 +212,7 @@
             // 
             // datePickerDataLocacao
             // 
+            this.datePickerDataLocacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePickerDataLocacao.Location = new System.Drawing.Point(91, 248);
             this.datePickerDataLocacao.Name = "datePickerDataLocacao";
             this.datePickerDataLocacao.Size = new System.Drawing.Size(233, 27);
@@ -234,10 +235,11 @@
             this.label8.TabIndex = 97;
             this.label8.Text = "Devolução Prevista:";
             // 
-            // dateTimeDataDevolucao
+            // datePickerDataDevolucao
             // 
+            this.datePickerDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePickerDataDevolucao.Location = new System.Drawing.Point(467, 248);
-            this.datePickerDataDevolucao.Name = "dateTimeDataDevolucao";
+            this.datePickerDataDevolucao.Name = "datePickerDataDevolucao";
             this.datePickerDataDevolucao.Size = new System.Drawing.Size(233, 27);
             this.datePickerDataDevolucao.TabIndex = 96;
             this.datePickerDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);

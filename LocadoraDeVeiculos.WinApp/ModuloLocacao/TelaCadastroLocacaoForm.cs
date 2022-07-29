@@ -22,7 +22,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public TelaCadastroLocacaoForm(List<Cliente> clientes, List<Condutor> condutores, List<GrupoVeiculos> gruposVeiculos, List<Veiculos> veiculos, List<PlanoCobranca> planosCobrancas, List<Taxa> taxas)
         {
             InitializeComponent();
-            LimitarCalendarios();
 
             this.condutores = condutores;
             this.veiculos = veiculos;
@@ -133,6 +132,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void PreencherDadosNaTela()
         {
             txtNumero.Text = locacao.Id.ToString();
+            LimitarCalendarios();
+
             if (locacao.Cliente != null)
                 CarregarAtributosSelecionados();
         }
@@ -389,7 +390,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void CalcularDiasLocacao()
         {
-            qtdDiasLocacao = datePickerDataDevolucao.Value.Day - datePickerDataLocacao.Value.Day;
+            qtdDiasLocacao = datePickerDataDevolucao.Value.DayOfYear - datePickerDataLocacao.Value.DayOfYear;
             
             if(qtdDiasLocacao == 0)
                 qtdDiasLocacao = 1;
@@ -420,8 +421,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void LimitarCalendarios()
         {
-            datePickerDataLocacao.MinDate = DateTime.Now.Date;
-            datePickerDataDevolucao.MinDate = DateTime.Now.Date;
+            if(locacao.DataLocacao == DateTime.Now)
+                datePickerDataLocacao.MinDate = DateTime.Now.Date;
+            if(locacao.DataDevolucaoPrevista == DateTime.Now)
+                datePickerDataDevolucao.MinDate = DateTime.Now.Date;
+            else if(locacao.DataLocacao.Date <= DateTime.Now.Date)
+            {
+                datePickerDataLocacao.MinDate = locacao.DataLocacao;
+                datePickerDataLocacao.Enabled = false;
+            }
         }
     }
 }
