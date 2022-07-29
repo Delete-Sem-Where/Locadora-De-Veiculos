@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    [Migration("20220728173858_RemovidoTaxasTBLocacao")]
-    partial class RemovidoTaxasTBLocacao
+    [Migration("20220729184125_OnDeleteRemovidos")]
+    partial class OnDeleteRemovidos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,21 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("LocacaoTaxa", b =>
+                {
+                    b.Property<Guid>("LocacoesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TaxasSelecionadasId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LocacoesId", "TaxasSelecionadasId");
+
+                    b.HasIndex("TaxasSelecionadasId");
+
+                    b.ToTable("LocacaoTaxa");
+                });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", b =>
                 {
@@ -235,9 +250,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<Guid?>("LocacaoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("TipoCalculo")
                         .HasColumnType("int")
                         .HasColumnName("TipoCalculo");
@@ -246,8 +258,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .HasColumnType("decimal(8,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LocacaoId");
 
                     b.ToTable("TBTaxa", (string)null);
                 });
@@ -299,6 +309,21 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.ToTable("TBVeiculos", (string)null);
                 });
 
+            modelBuilder.Entity("LocacaoTaxa", b =>
+                {
+                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", null)
+                        .WithMany()
+                        .HasForeignKey("LocacoesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloTaxas.Taxa", null)
+                        .WithMany()
+                        .HasForeignKey("TaxasSelecionadasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCondutor.Condutor", b =>
                 {
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
@@ -333,7 +358,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca.PlanoCobranca", "PlanoCobranca")
                         .WithMany()
                         .HasForeignKey("PlanoCobrancaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloVeiculos.Veiculos", "Veiculo")
@@ -364,13 +389,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Navigation("GrupoVeiculos");
                 });
 
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloTaxas.Taxa", b =>
-                {
-                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", null)
-                        .WithMany("TaxasSelecionadas")
-                        .HasForeignKey("LocacaoId");
-                });
-
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloVeiculos.Veiculos", b =>
                 {
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos.GrupoVeiculos", "GrupoVeiculos")
@@ -380,11 +398,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .IsRequired();
 
                     b.Navigation("GrupoVeiculos");
-                });
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", b =>
-                {
-                    b.Navigation("TaxasSelecionadas");
                 });
 #pragma warning restore 612, 618
         }

@@ -113,6 +113,14 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloTaxas
 
                 return Result.Ok();
             }
+            catch (NaoPodeExcluirEsteRegistroException ex)
+            {
+                string msgErro = $"A taxa {taxa.Descricao} está relacionada com outro registro e não pode ser excluída";
+
+                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
+
+                return Result.Fail(msgErro);
+            }
             catch (DbUpdateException ex)
             {
                 string msgErro = $"A taxa {taxa.Descricao} está relacionada com outro registro e não pode ser excluída";

@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxas;
+﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using LocadoraDeVeiculos.Dominio.ModuloTaxas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -18,7 +19,13 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloTaxa
             builder.Property(x => x.Descricao).HasColumnType("varchar(100)").IsRequired();
             builder.Property(x => x.Valor).HasColumnType("decimal(8,2)").IsRequired();
             builder.Property(x => x.TipoCalculo).HasColumnType("int").IsRequired().HasConversion<int>().HasColumnName("TipoCalculo");
-            builder.HasMany(x => x.Locacoes);
+            builder.HasMany(x => x.Locacoes)
+                    .WithMany(s => s.TaxasSelecionadas)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "LocacaoTaxa",
+                        x => x.HasOne<Locacao>().WithMany().OnDelete(DeleteBehavior.Cascade),
+                        x => x.HasOne<Taxa>().WithMany().OnDelete(DeleteBehavior.Restrict)
+                    );
         }
     }
 }

@@ -5,10 +5,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
-    public partial class RelacaoTBLocacaoComTBTaxa : Migration
+    public partial class OnDeleteRemovidos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_TBLocacao_TBPlanoCobranca_PlanoCobrancaId",
+                table: "TBLocacao");
+
             migrationBuilder.DropForeignKey(
                 name: "FK_TBTaxa_TBLocacao_LocacaoId",
                 table: "TBTaxa");
@@ -49,10 +53,21 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 name: "IX_LocacaoTaxa_TaxasSelecionadasId",
                 table: "LocacaoTaxa",
                 column: "TaxasSelecionadasId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_TBLocacao_TBPlanoCobranca_PlanoCobrancaId",
+                table: "TBLocacao",
+                column: "PlanoCobrancaId",
+                principalTable: "TBPlanoCobranca",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_TBLocacao_TBPlanoCobranca_PlanoCobrancaId",
+                table: "TBLocacao");
+
             migrationBuilder.DropTable(
                 name: "LocacaoTaxa");
 
@@ -66,6 +81,14 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                 name: "IX_TBTaxa_LocacaoId",
                 table: "TBTaxa",
                 column: "LocacaoId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_TBLocacao_TBPlanoCobranca_PlanoCobrancaId",
+                table: "TBLocacao",
+                column: "PlanoCobrancaId",
+                principalTable: "TBPlanoCobranca",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TBTaxa_TBLocacao_LocacaoId",

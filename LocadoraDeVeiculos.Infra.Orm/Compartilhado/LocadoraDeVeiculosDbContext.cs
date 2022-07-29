@@ -22,7 +22,19 @@ namespace LocadoraDeVeiculos.Infra.Orm.Compartilhado
 
         public void GravarDados()
         {
-            SaveChanges();
+            try
+            {
+                SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                if(ex.InnerException != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    throw new NaoPodeExcluirEsteRegistroException(ex);
+                }
+
+                throw;
+            }
         }
 
         public void RollBack()
@@ -33,19 +45,23 @@ namespace LocadoraDeVeiculos.Infra.Orm.Compartilhado
 
             foreach (var entry in changedEntries)
             {
-                switch (entry.State)
+                try
                 {
-                    case EntityState.Modified:
-                        entry.CurrentValues.SetValues(entry.OriginalValues);
-                        entry.State = EntityState.Unchanged;
-                        break;
-                    case EntityState.Added:
-                        entry.State = EntityState.Detached;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Unchanged;
-                        break;
+                    switch (entry.State)
+                    {
+                        case EntityState.Modified:
+                            entry.CurrentValues.SetValues(entry.OriginalValues);
+                            entry.State = EntityState.Unchanged;
+                            break;
+                        case EntityState.Added:
+                            entry.State = EntityState.Detached;
+                            break;
+                        case EntityState.Deleted:
+                            entry.State = EntityState.Unchanged;
+                            break;
+                    }
                 }
+                catch (Exception ex) { }
             }
         }
 
