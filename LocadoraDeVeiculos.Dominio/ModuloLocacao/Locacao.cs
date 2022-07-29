@@ -33,6 +33,16 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         public double ValorTotalPrevisto { get; set; }
 
+        #region Devolução
+
+        public DateTime DataDevolucao { get; set; }
+
+        public bool EstaAlugado { get; set; }
+
+        public NivelTanqueDevolucao NivelTanqueDevolucao { get; set; }
+
+        #endregion
+
         public Locacao()
         {
             DataLocacao = DateTime.Now;

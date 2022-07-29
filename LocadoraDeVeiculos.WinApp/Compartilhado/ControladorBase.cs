@@ -10,7 +10,9 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
     {
         public abstract void Inserir();
         public abstract void Editar();
-        public abstract void Excluir();        
+        public abstract void Excluir();
+
+        public virtual void RegistrarDevolucao() { }
 
         public abstract UserControl ObtemListagem();
 

@@ -225,5 +225,47 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             return lista;
         }
 
+        #region Devolução
+
+        public override void RegistrarDevolucao()
+        {
+            var id = tabelaLocacao.ObtemNumeroLocacaoSelecionada();
+
+            if (id == Guid.Empty)
+            {
+                MessageBox.Show("Selecione um Locacao primeiro",
+                "Devoluções", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var resultado = servicoLocacao.SelecionarPorId(id);
+
+            if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var condutorSelecionado = resultado.Value;
+
+            TelaCadastroDevolucaoForm tela = new TelaCadastroDevolucaoForm(ObterClientes(),
+                ObterCondutores(),
+                ObterGrupoVeiculos(),
+                ObterVeiculos(),
+                ObterPlanoCobrancas(),
+                ObterTaxas());
+
+            tela.Locacao = condutorSelecionado;
+
+            tela.GravarRegistro = servicoLocacao.Editar;
+
+            DialogResult resultadoTela = tela.ShowDialog();
+
+            if (resultadoTela == DialogResult.OK)
+                CarregarLocacaoes();
+        }
+
+        #endregion
     }
 }

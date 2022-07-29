@@ -62,47 +62,46 @@
             // 
             this.cmbClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClientes.FormattingEnabled = true;
-            this.cmbClientes.Location = new System.Drawing.Point(91, 56);
+            this.cmbClientes.Location = new System.Drawing.Point(80, 42);
+            this.cmbClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbClientes.Name = "cmbClientes";
-            this.cmbClientes.Size = new System.Drawing.Size(233, 28);
+            this.cmbClientes.Size = new System.Drawing.Size(204, 23);
             this.cmbClientes.TabIndex = 77;
             this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 60);
+            this.label9.Location = new System.Drawing.Point(9, 45);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 20);
+            this.label9.Size = new System.Drawing.Size(47, 15);
             this.label9.TabIndex = 82;
             this.label9.Text = "Cliente:";
             // 
             // txtNumero
             // 
             this.txtNumero.Enabled = false;
-            this.txtNumero.Location = new System.Drawing.Point(91, 13);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNumero.Location = new System.Drawing.Point(80, 10);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(34, 27);
+            this.txtNumero.Size = new System.Drawing.Size(30, 23);
             this.txtNumero.TabIndex = 81;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 16);
+            this.label7.Location = new System.Drawing.Point(9, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 20);
+            this.label7.Size = new System.Drawing.Size(54, 15);
             this.label7.TabIndex = 80;
             this.label7.Text = "Numero:";
             // 
             // buttonCancelarPf
             // 
             this.buttonCancelarPf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelarPf.Location = new System.Drawing.Point(606, 421);
-            this.buttonCancelarPf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCancelarPf.Location = new System.Drawing.Point(530, 316);
             this.buttonCancelarPf.Name = "buttonCancelarPf";
-            this.buttonCancelarPf.Size = new System.Drawing.Size(94, 51);
+            this.buttonCancelarPf.Size = new System.Drawing.Size(82, 38);
             this.buttonCancelarPf.TabIndex = 79;
             this.buttonCancelarPf.Text = "Cancelar";
             this.buttonCancelarPf.UseVisualStyleBackColor = true;
@@ -110,10 +109,9 @@
             // buttonGravarPf
             // 
             this.buttonGravarPf.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravarPf.Location = new System.Drawing.Point(488, 421);
-            this.buttonGravarPf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGravarPf.Location = new System.Drawing.Point(427, 316);
             this.buttonGravarPf.Name = "buttonGravarPf";
-            this.buttonGravarPf.Size = new System.Drawing.Size(94, 51);
+            this.buttonGravarPf.Size = new System.Drawing.Size(82, 38);
             this.buttonGravarPf.TabIndex = 78;
             this.buttonGravarPf.Text = "Gravar";
             this.buttonGravarPf.UseVisualStyleBackColor = true;
@@ -123,17 +121,18 @@
             // 
             this.cmbCondutores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCondutores.FormattingEnabled = true;
-            this.cmbCondutores.Location = new System.Drawing.Point(467, 56);
+            this.cmbCondutores.Location = new System.Drawing.Point(409, 42);
+            this.cmbCondutores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCondutores.Name = "cmbCondutores";
-            this.cmbCondutores.Size = new System.Drawing.Size(233, 28);
+            this.cmbCondutores.Size = new System.Drawing.Size(204, 23);
             this.cmbCondutores.TabIndex = 83;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(381, 60);
+            this.label1.Location = new System.Drawing.Point(333, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 84;
             this.label1.Text = "Condutor:";
             // 
@@ -141,18 +140,19 @@
             // 
             this.cmbVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVeiculos.FormattingEnabled = true;
-            this.cmbVeiculos.Location = new System.Drawing.Point(467, 111);
+            this.cmbVeiculos.Location = new System.Drawing.Point(409, 83);
+            this.cmbVeiculos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbVeiculos.Name = "cmbVeiculos";
-            this.cmbVeiculos.Size = new System.Drawing.Size(233, 28);
+            this.cmbVeiculos.Size = new System.Drawing.Size(204, 23);
             this.cmbVeiculos.TabIndex = 87;
             this.cmbVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbVeiculos_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(381, 114);
+            this.label2.Location = new System.Drawing.Point(333, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 88;
             this.label2.Text = "Veículo:";
             // 
@@ -160,25 +160,26 @@
             // 
             this.cmbGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupoVeiculos.FormattingEnabled = true;
-            this.cmbGrupoVeiculos.Location = new System.Drawing.Point(91, 111);
+            this.cmbGrupoVeiculos.Location = new System.Drawing.Point(80, 83);
+            this.cmbGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGrupoVeiculos.Name = "cmbGrupoVeiculos";
-            this.cmbGrupoVeiculos.Size = new System.Drawing.Size(233, 28);
+            this.cmbGrupoVeiculos.Size = new System.Drawing.Size(204, 23);
             this.cmbGrupoVeiculos.TabIndex = 85;
             this.cmbGrupoVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbGrupoVeiculos_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(10, 102);
+            this.label3.Location = new System.Drawing.Point(9, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 46);
+            this.label3.Size = new System.Drawing.Size(66, 34);
             this.label3.TabIndex = 86;
             this.label3.Text = "Grupo de Veículos:";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(381, 173);
+            this.label4.Location = new System.Drawing.Point(333, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 43);
+            this.label4.Size = new System.Drawing.Size(65, 32);
             this.label4.TabIndex = 92;
             this.label4.Text = "Km do Veículo:";
             // 
@@ -186,78 +187,82 @@
             // 
             this.cmbPlanoCobranca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlanoCobranca.FormattingEnabled = true;
-            this.cmbPlanoCobranca.Location = new System.Drawing.Point(91, 179);
+            this.cmbPlanoCobranca.Location = new System.Drawing.Point(80, 134);
+            this.cmbPlanoCobranca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPlanoCobranca.Name = "cmbPlanoCobranca";
-            this.cmbPlanoCobranca.Size = new System.Drawing.Size(233, 28);
+            this.cmbPlanoCobranca.Size = new System.Drawing.Size(204, 23);
             this.cmbPlanoCobranca.TabIndex = 89;
             this.cmbPlanoCobranca.SelectedIndexChanged += new System.EventHandler(this.cmbPlanoCobranca_SelectedIndexChanged);
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(10, 170);
+            this.label5.Location = new System.Drawing.Point(9, 128);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 46);
+            this.label5.Size = new System.Drawing.Size(66, 34);
             this.label5.TabIndex = 90;
             this.label5.Text = "Plano de Cobrança:";
             // 
             // txtKmRodado
             // 
             this.txtKmRodado.Enabled = false;
-            this.txtKmRodado.Location = new System.Drawing.Point(467, 180);
-            this.txtKmRodado.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtKmRodado.Location = new System.Drawing.Point(409, 135);
             this.txtKmRodado.Name = "txtKmRodado";
             this.txtKmRodado.ReadOnly = true;
-            this.txtKmRodado.Size = new System.Drawing.Size(233, 27);
+            this.txtKmRodado.Size = new System.Drawing.Size(204, 23);
             this.txtKmRodado.TabIndex = 93;
             // 
             // datePickerDataLocacao
             // 
-            this.datePickerDataLocacao.Location = new System.Drawing.Point(91, 248);
+            this.datePickerDataLocacao.Location = new System.Drawing.Point(80, 186);
+            this.datePickerDataLocacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.datePickerDataLocacao.Name = "datePickerDataLocacao";
-            this.datePickerDataLocacao.Size = new System.Drawing.Size(233, 27);
+            this.datePickerDataLocacao.Size = new System.Drawing.Size(204, 23);
             this.datePickerDataLocacao.TabIndex = 94;
             this.datePickerDataLocacao.ValueChanged += new System.EventHandler(this.datePickerDataLocacao_ValueChanged);
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(10, 238);
+            this.label6.Location = new System.Drawing.Point(9, 178);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 46);
+            this.label6.Size = new System.Drawing.Size(69, 34);
             this.label6.TabIndex = 95;
             this.label6.Text = "Data de Locação:";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(381, 238);
+            this.label8.Location = new System.Drawing.Point(333, 178);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 47);
+            this.label8.Size = new System.Drawing.Size(70, 35);
             this.label8.TabIndex = 97;
             this.label8.Text = "Devolução Prevista:";
             // 
             // dateTimeDataDevolucao
             // 
-            this.datePickerDataDevolucao.Location = new System.Drawing.Point(467, 248);
-            this.datePickerDataDevolucao.Name = "dateTimeDataDevolucao";
-            this.datePickerDataDevolucao.Size = new System.Drawing.Size(233, 27);
-            this.datePickerDataDevolucao.TabIndex = 96;
-            this.datePickerDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
+            this.dateTimeDataDevolucao.Location = new System.Drawing.Point(409, 186);
+            this.dateTimeDataDevolucao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimeDataDevolucao.Name = "dateTimeDataDevolucao";
+            this.dateTimeDataDevolucao.Size = new System.Drawing.Size(204, 23);
+            this.dateTimeDataDevolucao.TabIndex = 96;
+            this.dateTimeDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
             // 
             // tabTaxas
             // 
             this.tabTaxas.Controls.Add(this.pageTaxas);
-            this.tabTaxas.Location = new System.Drawing.Point(10, 305);
+            this.tabTaxas.Location = new System.Drawing.Point(9, 229);
+            this.tabTaxas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabTaxas.Name = "tabTaxas";
             this.tabTaxas.SelectedIndex = 0;
-            this.tabTaxas.Size = new System.Drawing.Size(314, 167);
+            this.tabTaxas.Size = new System.Drawing.Size(275, 125);
             this.tabTaxas.TabIndex = 98;
             // 
             // pageTaxas
             // 
             this.pageTaxas.Controls.Add(this.listTaxas);
-            this.pageTaxas.Location = new System.Drawing.Point(4, 29);
+            this.pageTaxas.Location = new System.Drawing.Point(4, 24);
+            this.pageTaxas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pageTaxas.Name = "pageTaxas";
-            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3);
-            this.pageTaxas.Size = new System.Drawing.Size(306, 134);
+            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pageTaxas.Size = new System.Drawing.Size(267, 97);
             this.pageTaxas.TabIndex = 0;
             this.pageTaxas.Text = "Taxas da Locação";
             this.pageTaxas.UseVisualStyleBackColor = true;
@@ -267,28 +272,28 @@
             this.listTaxas.CheckOnClick = true;
             this.listTaxas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listTaxas.FormattingEnabled = true;
-            this.listTaxas.Location = new System.Drawing.Point(3, 3);
+            this.listTaxas.Location = new System.Drawing.Point(3, 2);
+            this.listTaxas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listTaxas.Name = "listTaxas";
-            this.listTaxas.Size = new System.Drawing.Size(300, 128);
+            this.listTaxas.Size = new System.Drawing.Size(261, 93);
             this.listTaxas.TabIndex = 101;
             this.listTaxas.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listTaxas_ItemCheck);
             // 
             // txtValorTotalPrevisto
             // 
             this.txtValorTotalPrevisto.Enabled = false;
-            this.txtValorTotalPrevisto.Location = new System.Drawing.Point(531, 323);
-            this.txtValorTotalPrevisto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtValorTotalPrevisto.Location = new System.Drawing.Point(465, 242);
             this.txtValorTotalPrevisto.Name = "txtValorTotalPrevisto";
             this.txtValorTotalPrevisto.ReadOnly = true;
-            this.txtValorTotalPrevisto.Size = new System.Drawing.Size(169, 27);
+            this.txtValorTotalPrevisto.Size = new System.Drawing.Size(148, 23);
             this.txtValorTotalPrevisto.TabIndex = 100;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(387, 326);
+            this.label10.Location = new System.Drawing.Point(339, 244);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(138, 20);
+            this.label10.Size = new System.Drawing.Size(108, 15);
             this.label10.TabIndex = 99;
             this.label10.Text = "Valor total previsto:";
             // 
@@ -296,16 +301,16 @@
             // 
             this.lblInformacaoPlanoCobranca.AutoSize = true;
             this.lblInformacaoPlanoCobranca.Font = new System.Drawing.Font("Segoe UI", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblInformacaoPlanoCobranca.Location = new System.Drawing.Point(387, 356);
+            this.lblInformacaoPlanoCobranca.Location = new System.Drawing.Point(339, 267);
             this.lblInformacaoPlanoCobranca.Name = "lblInformacaoPlanoCobranca";
-            this.lblInformacaoPlanoCobranca.Size = new System.Drawing.Size(0, 17);
+            this.lblInformacaoPlanoCobranca.Size = new System.Drawing.Size(0, 13);
             this.lblInformacaoPlanoCobranca.TabIndex = 101;
             // 
             // TelaCadastroLocacaoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 493);
+            this.ClientSize = new System.Drawing.Size(629, 370);
             this.Controls.Add(this.lblInformacaoPlanoCobranca);
             this.Controls.Add(this.txtValorTotalPrevisto);
             this.Controls.Add(this.label10);
@@ -331,6 +336,7 @@
             this.Controls.Add(this.buttonCancelarPf);
             this.Controls.Add(this.buttonGravarPf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaCadastroLocacaoForm";
