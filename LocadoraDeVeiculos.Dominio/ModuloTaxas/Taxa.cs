@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxas
         public string? Descricao { get; set; }
         public decimal Valor { get; set; }
         public TipoCalculo TipoCalculo { get; set; }
+
+        public List<Locacao> Locacoes { get; set; }
 
         public Taxa()
         {
