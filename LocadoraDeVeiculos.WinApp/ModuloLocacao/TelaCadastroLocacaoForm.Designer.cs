@@ -47,7 +47,7 @@
             this.datePickerDataLocacao = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimeDataDevolucao = new System.Windows.Forms.DateTimePicker();
+            this.datePickerDataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.tabTaxas = new System.Windows.Forms.TabControl();
             this.pageTaxas = new System.Windows.Forms.TabPage();
             this.listTaxas = new System.Windows.Forms.CheckedListBox();
@@ -236,11 +236,11 @@
             // 
             // dateTimeDataDevolucao
             // 
-            this.dateTimeDataDevolucao.Location = new System.Drawing.Point(467, 248);
-            this.dateTimeDataDevolucao.Name = "dateTimeDataDevolucao";
-            this.dateTimeDataDevolucao.Size = new System.Drawing.Size(233, 27);
-            this.dateTimeDataDevolucao.TabIndex = 96;
-            this.dateTimeDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
+            this.datePickerDataDevolucao.Location = new System.Drawing.Point(467, 248);
+            this.datePickerDataDevolucao.Name = "dateTimeDataDevolucao";
+            this.datePickerDataDevolucao.Size = new System.Drawing.Size(233, 27);
+            this.datePickerDataDevolucao.TabIndex = 96;
+            this.datePickerDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
             // 
             // tabTaxas
             // 
@@ -311,7 +311,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tabTaxas);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimeDataDevolucao);
+            this.Controls.Add(this.datePickerDataDevolucao);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.datePickerDataLocacao);
             this.Controls.Add(this.txtKmRodado);
@@ -366,7 +366,7 @@
         private DateTimePicker datePickerDataLocacao;
         private Label label6;
         private Label label8;
-        private DateTimePicker dateTimeDataDevolucao;
+        private DateTimePicker datePickerDataDevolucao;
         private TabControl tabTaxas;
         private TabPage pageTaxas;
         private TextBox txtValorTotalPrevisto;

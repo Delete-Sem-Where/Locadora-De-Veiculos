@@ -132,15 +132,104 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             set
             {
                 locacao = value;
-
-                if (locacao.Id != Guid.Empty)
-                    PreencherDadosNaTela();
+                PreencherDadosNaTela();
             }
         }
 
         private void PreencherDadosNaTela()
         {
             txtNumero.Text = locacao.Id.ToString();
+            if (locacao.Cliente != null)
+                CarregarAtributosSelecionados();
+        }
+
+        private void CarregarAtributosSelecionados()
+        {
+            LocalizarDatas();
+            LocalizarClienteComboBox();
+            LocalizarCondutorComboBox();
+            LocalizarGrupoVeiculosComboBox();
+            LocalizarVeiculosComboBox();
+            LocalizarPlanoCobrancaComboBox();
+            LocalizarTaxasSelecionadas();
+        }
+
+        private void LocalizarDatas()
+        {
+            datePickerDataLocacao.Value = locacao.DataLocacao;
+            datePickerDataDevolucao.Value = locacao.DataDevolucaoPrevista;
+        }
+
+        private void LocalizarClienteComboBox()
+        {
+            for (int i = 0; i < cmbClientes.Items.Count; i++)
+            {
+                if (locacao.Cliente == (Cliente)cmbClientes.Items[i])
+                {
+                    cmbClientes.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LocalizarCondutorComboBox()
+        {
+            for (int i = 0; i < cmbCondutores.Items.Count; i++)
+            {
+                if (locacao.Condutor == (Condutor)cmbCondutores.Items[i])
+                {
+                    cmbCondutores.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LocalizarGrupoVeiculosComboBox()
+        {
+            for (int i = 0; i < cmbGrupoVeiculos.Items.Count; i++)
+            {
+                if (locacao.GrupoVeiculos == (GrupoVeiculos)cmbGrupoVeiculos.Items[i])
+                {
+                    cmbGrupoVeiculos.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LocalizarVeiculosComboBox()
+        {
+            for (int i = 0; i < cmbVeiculos.Items.Count; i++)
+            {
+                if (locacao.Veiculo == (Veiculos)cmbVeiculos.Items[i])
+                {
+                    cmbVeiculos.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LocalizarPlanoCobrancaComboBox()
+        {
+            for (int i = 0; i < cmbPlanoCobranca.Items.Count; i++)
+            {
+                if (locacao.PlanoCobranca == (PlanoCobranca)cmbPlanoCobranca.Items[i])
+                {
+                    cmbPlanoCobranca.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LocalizarTaxasSelecionadas()
+        {
+            for (int i = 0; i < listTaxas.Items.Count; i++)
+            {
+                if (locacao.TaxasSelecionadas.Contains(listTaxas.Items[i]))
+                {
+                    listTaxas.SelectedItem = listTaxas.Items[i];
+                    listTaxas.SetItemChecked(i, true);
+                }
+            }
         }
 
         private void cmbVeiculos_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,16 +247,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void buttonGravarPf_Click(object sender, EventArgs e)
         {
-            locacao.Cliente = (Cliente)cmbClientes.SelectedItem;
-            locacao.Condutor = (Condutor)cmbCondutores.SelectedItem;
-            locacao.GrupoVeiculos = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
-            locacao.Veiculo = (Veiculos)cmbVeiculos.SelectedItem;
-            locacao.PlanoCobranca = (PlanoCobranca)cmbPlanoCobranca.SelectedItem;
-            locacao.DataLocacao = datePickerDataLocacao.Value;
-            locacao.DataDevolucaoPrevista = dateTimeDataDevolucao.Value;
+            var resultadoValidacaoSelecoes = ValidarCamposSelecionados();
 
-            txtValorTotalPrevisto.Text = txtValorTotalPrevisto.Text.Remove(0,2);
-            locacao.ValorTotalPrevisto = Convert.ToDouble(txtValorTotalPrevisto.Text);
+            if (resultadoValidacaoSelecoes.IsSuccess)
+            {
+                locacao.Cliente = (Cliente)cmbClientes.SelectedItem;
+                locacao.Condutor = (Condutor)cmbCondutores.SelectedItem;
+                locacao.GrupoVeiculos = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
+                locacao.Veiculo = (Veiculos)cmbVeiculos.SelectedItem;
+                locacao.PlanoCobranca = (PlanoCobranca)cmbPlanoCobranca.SelectedItem;
+                locacao.DataLocacao = datePickerDataLocacao.Value;
+                locacao.DataDevolucaoPrevista = datePickerDataDevolucao.Value;
+                locacao.TaxasSelecionadas = SalvarTaxasSelecionadas();
+
+                txtValorTotalPrevisto.Text = txtValorTotalPrevisto.Text.Remove(0,2);
+                locacao.ValorTotalPrevisto = Convert.ToDouble(txtValorTotalPrevisto.Text);
+            }
+            else
+            {
+                string erro = $"Não pode inserir uma locação sem selecionar um {resultadoValidacaoSelecoes.Errors[0].Message}";
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                DialogResult = DialogResult.None;
+                return;
+            }
 
             var resultadoValidacao = GravarRegistro(locacao);
 
@@ -187,6 +289,46 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     DialogResult = DialogResult.None;
                 }
             }
+        }
+
+        private Result ValidarCamposSelecionados()
+        {
+            if (cmbClientes.SelectedItem == null)
+            {
+                return Result.Fail(new Error("cliente"));
+            }
+            else if (cmbCondutores.SelectedItem == null)
+            {
+                return Result.Fail(new Error("condutor"));
+            }
+            else if (cmbGrupoVeiculos.SelectedItem == null)
+            {
+                return Result.Fail(new Error("grupo de veículos"));
+            }
+            else if (cmbVeiculos.SelectedItem == null)
+            {
+                return Result.Fail(new Error("veículo"));
+            }
+            else if (cmbPlanoCobranca.SelectedItem == null)
+            {
+                return Result.Fail(new Error("plano de cobrança"));
+            }
+            else
+            {
+                return Result.Ok();
+            }
+        }
+
+        private List<Taxa> SalvarTaxasSelecionadas()
+        {
+            List<Taxa> taxasSelecionadas = new List<Taxa>();
+
+            foreach (Taxa item in listTaxas.CheckedItems)
+            {
+                taxasSelecionadas.Add(item);
+            }
+
+            return taxasSelecionadas;
         }
 
         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,7 +395,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void CalcularDiasLocacao()
         {
-            qtdDiasLocacao = (int)(dateTimeDataDevolucao.Value - datePickerDataLocacao.Value).TotalDays;
+            qtdDiasLocacao = (int)(datePickerDataDevolucao.Value - datePickerDataLocacao.Value).TotalDays;
             CalcularValorTotalPrevisto();
         }
 

@@ -59,8 +59,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     locacao.Condutor.Nome,
                     locacao.Veiculo.Modelo,
                     locacao.PlanoCobranca.ModalidadePlanoCobranca.ToString(),
-                    locacao.DataLocacao,
-                    locacao.DataDevolucaoPrevista
+                    locacao.DataLocacao.Date,
+                    locacao.DataDevolucaoPrevista.Date
                     );
             }
         }
