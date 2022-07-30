@@ -121,7 +121,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             decimal calculoTanque = Calcular_Valor_Tanque();
             decimal calculoDeQuantoRodou = Calcular_km_rodado() * locacao.PlanoCobranca.ValorKm;
 
-
             if (locacao.PlanoCobranca.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Livre)
             {
                 valorTotal = calculoDiaria + calculoTaxas + calculoTanque;
@@ -131,14 +130,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 valorTotal = calculoDeQuantoRodou + calculoDiaria + calculoTaxas + calculoTanque;
             }
             else if (locacao.PlanoCobranca.ModalidadePlanoCobranca == ModalidadePlanoCobranca.Controle)
-            {
-                decimal fatorMulta = 0m;
+            {               
+                decimal fatorMultaPorDiasExcedidos = 1m;
+                decimal fatorMultaPorKmExcedido = 0m;
                 if (locacao.DataDevolucao.DayOfYear > locacao.DataDevolucaoPrevista.DayOfYear)
                 {
-                    fatorMulta = CalcularMulta();
+                    fatorMultaPorDiasExcedidos += CalcularMultaPorDiasExcedidos();
                 }
-                valorTotal = (calculoDeQuantoRodou + calculoDiaria + calculoTaxas + calculoTanque) * fatorMulta;                
-            }                       
+                if ((numericKm.Value - Convert.ToDecimal(locacao.Veiculo.QuilometroPercorrido)) > locacao.PlanoCobranca.LimiteKm)
+                {
+                    fatorMultaPorKmExcedido += CalcularMultaPorKmExcedido();
+                }
+                valorTotal = (calculoDeQuantoRodou + calculoDiaria + calculoTaxas + calculoTanque) * fatorMultaPorDiasExcedidos + fatorMultaPorKmExcedido;
+            }
 
             txtValorTotalDevolucao.Text = "R$" + valorTotal.ToString();
         }
@@ -201,12 +205,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 qtdDiasLocacao = 1;
         }
 
-        private decimal CalcularMulta()
+        private decimal CalcularMultaPorDiasExcedidos()
         {
             var qtdDias = locacao.DataDevolucao.DayOfYear - locacao.DataDevolucaoPrevista.DayOfYear;
             decimal fatorMulta = qtdDias * 0.1m;
 
             return fatorMulta;
+        }
+
+        private decimal CalcularMultaPorKmExcedido()
+        {
+            const int valorPorKm = 5;
+            var valorMulta = (numericKm.Value - (Convert.ToDecimal(locacao.Veiculo.QuilometroPercorrido) + locacao.PlanoCobranca.LimiteKm)) * valorPorKm;
+
+            return valorMulta;
         }
 
         private void btnGravarDevolucao_Click(object sender, EventArgs e)

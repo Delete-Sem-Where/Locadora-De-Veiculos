@@ -217,7 +217,6 @@
             this.datePickerDataLocacao.Name = "datePickerDataLocacao";
             this.datePickerDataLocacao.Size = new System.Drawing.Size(233, 27);
             this.datePickerDataLocacao.TabIndex = 94;
-            this.datePickerDataLocacao.ValueChanged += new System.EventHandler(this.datePickerDataLocacao_ValueChanged);
             // 
             // label6
             // 
@@ -243,6 +242,7 @@
             this.datePickerDataDevolucao.Name = "datePickerDataDevolucao";
             this.datePickerDataDevolucao.Size = new System.Drawing.Size(233, 27);
             this.datePickerDataDevolucao.TabIndex = 102;
+            this.datePickerDataDevolucao.ValueChanged += new System.EventHandler(this.datePickerDataDevolucao_ValueChanged);
             // 
             // tabTaxas
             // 
@@ -258,7 +258,7 @@
             this.pageTaxas.Controls.Add(this.listTaxas);
             this.pageTaxas.Location = new System.Drawing.Point(4, 29);
             this.pageTaxas.Name = "pageTaxas";
-            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3);
             this.pageTaxas.Size = new System.Drawing.Size(306, 134);
             this.pageTaxas.TabIndex = 0;
             this.pageTaxas.Text = "Taxas da Locação";

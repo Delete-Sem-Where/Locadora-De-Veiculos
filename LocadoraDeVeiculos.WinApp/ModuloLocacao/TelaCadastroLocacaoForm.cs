@@ -30,8 +30,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             CarregarClientes(clientes);
             CarregarGrupoVeiculos(gruposVeiculos);
             CarregarTaxas(taxas);
-
-            
         }
 
         private void CarregarClientes(List<Cliente> clientes)
@@ -401,12 +399,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             CalcularValorTotalPrevisto();
         }
 
-        private void datePickerDataLocacao_ValueChanged(object sender, EventArgs e)
-        {
-            CalcularDiasLocacao();
-        }
-
-        private void dateTimeDataDevolucao_ValueChanged(object sender, EventArgs e)
+        private void datePickerDataDevolucao_ValueChanged(object sender, EventArgs e)
         {
             CalcularDiasLocacao();
         }
