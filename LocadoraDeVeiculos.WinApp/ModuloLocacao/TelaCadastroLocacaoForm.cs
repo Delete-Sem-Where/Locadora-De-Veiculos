@@ -125,6 +125,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             set
             {
                 locacao = value;
+                locacao.TaxasSelecionadas = new List<Taxa>();
                 PreencherDadosNaTela();
             }
         }
@@ -257,6 +258,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 txtValorTotalPrevisto.Text = txtValorTotalPrevisto.Text.Remove(0,2);
                 locacao.ValorTotalPrevisto = Convert.ToDouble(txtValorTotalPrevisto.Text);
+
+                locacao.EstaAlugado = true;
             }
             else
             {

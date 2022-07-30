@@ -16,5 +16,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public override string TooltipEditar { get { return "Editar uma locacação existente"; } }
 
         public override string TooltipExcluir { get { return "Excluir uma locacação existente"; } }
+
+        public override string TooltipAdicionarItens { get { return "Registrar uma devolução"; } }
+
+        public override bool AdicionarItensHabilitado { get { return true; } }
+
     }
 }

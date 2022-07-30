@@ -150,7 +150,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(381, 114);
+            this.label2.Location = new System.Drawing.Point(381, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 88;
@@ -168,9 +168,9 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(10, 102);
+            this.label3.Location = new System.Drawing.Point(10, 101);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 46);
+            this.label3.Size = new System.Drawing.Size(75, 45);
             this.label3.TabIndex = 86;
             this.label3.Text = "Grupo de Veículos:";
             // 
@@ -194,9 +194,9 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(10, 170);
+            this.label5.Location = new System.Drawing.Point(10, 171);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 46);
+            this.label5.Size = new System.Drawing.Size(75, 45);
             this.label5.TabIndex = 90;
             this.label5.Text = "Plano de Cobrança:";
             // 
@@ -221,15 +221,15 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(10, 238);
+            this.label6.Location = new System.Drawing.Point(10, 237);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 46);
+            this.label6.Size = new System.Drawing.Size(79, 45);
             this.label6.TabIndex = 95;
             this.label6.Text = "Data de Locação:";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(381, 238);
+            this.label8.Location = new System.Drawing.Point(381, 237);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 47);
             this.label8.TabIndex = 97;
@@ -239,10 +239,10 @@
             // 
             this.datePickerDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePickerDataDevolucao.Location = new System.Drawing.Point(467, 248);
+            this.datePickerDataDevolucao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.datePickerDataDevolucao.Name = "datePickerDataDevolucao";
             this.datePickerDataDevolucao.Size = new System.Drawing.Size(233, 27);
-            this.datePickerDataDevolucao.TabIndex = 96;
-            this.datePickerDataDevolucao.ValueChanged += new System.EventHandler(this.dateTimeDataDevolucao_ValueChanged);
+            this.datePickerDataDevolucao.TabIndex = 102;
             // 
             // tabTaxas
             // 
@@ -258,7 +258,7 @@
             this.pageTaxas.Controls.Add(this.listTaxas);
             this.pageTaxas.Location = new System.Drawing.Point(4, 29);
             this.pageTaxas.Name = "pageTaxas";
-            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3);
+            this.pageTaxas.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.pageTaxas.Size = new System.Drawing.Size(306, 134);
             this.pageTaxas.TabIndex = 0;
             this.pageTaxas.Text = "Taxas da Locação";
@@ -288,7 +288,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(387, 326);
+            this.label10.Location = new System.Drawing.Point(387, 325);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(138, 20);
             this.label10.TabIndex = 99;

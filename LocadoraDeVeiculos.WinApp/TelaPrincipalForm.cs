@@ -127,28 +127,25 @@ namespace LocadoraDeVeiculos.WinApp
             controlador.Excluir();
         }
 
+        private void btnDevolucao_Click_1(object sender, EventArgs e)
+        {
+            controlador.RegistrarDevolucao();
+        }
+
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
             btnInserir.Enabled = configuracao.InserirHabilitado;
             btnEditar.Enabled = configuracao.EditarHabilitado;
-            btnExcluir.Enabled = configuracao.ExcluirHabilitado;
-            btnAdicionarItens.Enabled = configuracao.AdicionarItensHabilitado;
-            btnAtualizarItens.Enabled = configuracao.AtualizarItensHabilitado;
-            btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
-            btnAgrupar.Enabled = configuracao.AgruparHabilitado;
-            btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
+            btnDevolucao.Enabled = configuracao.ExcluirHabilitado;
+            btnDevolucao.Enabled = configuracao.AdicionarItensHabilitado;            
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
         {
             btnInserir.ToolTipText = configuracao.TooltipInserir;
             btnEditar.ToolTipText = configuracao.TooltipEditar;
-            btnExcluir.ToolTipText = configuracao.TooltipExcluir;
-            btnAdicionarItens.ToolTipText = configuracao.TooltipAdicionarItens;
-            btnAtualizarItens.ToolTipText = configuracao.TooltipAtualizarItens;
-            btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
-            btnAgrupar.ToolTipText = configuracao.TooltipAgrupar;
-            btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
+            btnDevolucao.ToolTipText = configuracao.TooltipExcluir;
+            btnDevolucao.ToolTipText = configuracao.TooltipAdicionarItens;            
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controlador)
@@ -188,5 +185,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             panelRegistros.Controls.Add(listagemControl);
         }
+
+       
     }
 }
