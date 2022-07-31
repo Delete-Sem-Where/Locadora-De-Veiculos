@@ -34,9 +34,13 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
             builder.Property(x => x.DataDevolucaoPrevista).HasColumnType("date");
             builder.Property(x => x.ValorTotalPrevisto).HasColumnType("decimal(8,2)");
             builder.HasMany(x => x.TaxasSelecionadas);
-            builder.Ignore(x => x.DataDevolucao);
-            builder.Ignore(x => x.EstaAlugado);
-            builder.Ignore(x => x.NivelTanqueDevolucao);
+            builder.Property(x => x.DataDevolucao).HasColumnType("date").HasDefaultValue(DateTime.MinValue);
+            builder.Property(x => x.EstaAlugado).HasColumnType("bit").IsRequired();
+            builder.Property(x => x.NivelTanqueDevolucao)
+                .HasColumnType("int")
+                .HasConversion<int>()
+                .HasColumnName("NivelTanqueDevolucao")
+                .HasDefaultValue(NivelTanqueDevolucao.Cheio);
         }
     }
 }

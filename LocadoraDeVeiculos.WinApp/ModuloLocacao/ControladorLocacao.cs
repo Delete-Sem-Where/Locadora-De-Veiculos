@@ -84,7 +84,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-            var condutorSelecionado = resultado.Value;
+            var locacaoSelecionada = resultado.Value;
+
+            if (locacaoSelecionada.EstaAlugado == false)
+            {
+                MessageBox.Show("O veículo já foi devolvido e não pode ser editado",
+                "Locação encerrada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             TelaCadastroLocacaoForm tela = new TelaCadastroLocacaoForm(
                 ObterClientes(),
@@ -95,7 +102,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 ObterTaxas()
                 );
 
-            tela.Locacao = condutorSelecionado;
+            tela.Locacao = locacaoSelecionada;
 
             tela.GravarRegistro = servicoLocacao.Editar;
 
@@ -110,7 +117,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             var id = tabelaLocacao.ObtemNumeroLocacaoSelecionada();
             if (id == Guid.Empty)
             {
-                MessageBox.Show("Selecione um condutor primeiro",
+                MessageBox.Show("Selecione uma locação primeiro",
                     "Exclusão de Locacao", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -126,7 +133,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             var funcionarioSelecionado = resultadoSelecao.Value;
 
-            if (MessageBox.Show("Deseja realmente excluir o condutor?", "Exclusão de Locacao",
+            if (MessageBox.Show("Deseja realmente excluir a locação?", "Exclusão de Locacao",
                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 var resultadoExclusao = servicoLocacao.Excluir(funcionarioSelecionado);
@@ -159,15 +166,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             if (resultado.IsSuccess)
             {
-                List<Locacao> condutores = resultado.Value;
+                List<Locacao> locacoes = resultado.Value;
 
-                tabelaLocacao.AtualizarRegistros(condutores);
+                tabelaLocacao.AtualizarRegistros(locacoes);
 
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {condutores.Count} condutor(es)");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoes.Count} locação(ões)");
             }
             else
             {
-                MessageBox.Show(resultado.Errors[0].Message, "Listagem de Locacao",
+                MessageBox.Show(resultado.Errors[0].Message, "Listagem de Locação",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -247,7 +254,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-            var condutorSelecionado = resultado.Value;
+            var locacaoSelecionada = resultado.Value;
+            
+            if (locacaoSelecionada.EstaAlugado == false)
+            {
+                MessageBox.Show("O veículo já foi devolvido",
+                "Locação encerrada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             TelaCadastroDevolucaoForm tela = new TelaCadastroDevolucaoForm(ObterClientes(),
                 ObterCondutores(),
@@ -256,9 +270,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 ObterPlanoCobrancas(),
                 ObterTaxas());
 
-            tela.Locacao = condutorSelecionado;
+            tela.Locacao = locacaoSelecionada;
 
-            tela.GravarRegistro = servicoLocacao.Editar;
+            tela.GravarRegistro = servicoLocacao.RegistrarDevolucao;
 
             DialogResult resultadoTela = tela.ShowDialog();
 

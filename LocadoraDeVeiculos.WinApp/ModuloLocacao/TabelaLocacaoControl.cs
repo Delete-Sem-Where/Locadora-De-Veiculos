@@ -37,7 +37,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 new DataGridViewTextBoxColumn {DataPropertyName = "DataLocacao", HeaderText = "Data de Locação"},
 
-                new DataGridViewTextBoxColumn {DataPropertyName = "DataDevolucaoPrevista", HeaderText = "Data de Devolução Prevista"}
+                new DataGridViewTextBoxColumn {DataPropertyName = "DataDevolucaoPrevista", HeaderText = "Data de Devolução Prevista"},
+                
+                new DataGridViewTextBoxColumn {DataPropertyName = "EstaAlugado", HeaderText = "Foi devolvido?"}
             };
 
             return colunas;
@@ -60,7 +62,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     locacao.Veiculo.Modelo,
                     locacao.PlanoCobranca.ModalidadePlanoCobranca.ToString(),
                     locacao.DataLocacao.Date,
-                    locacao.DataDevolucaoPrevista.Date
+                    locacao.DataDevolucaoPrevista.Date,
+                    locacao.EstaAlugado ? "Não" : "Sim"
                     );
             }
         }
