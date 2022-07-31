@@ -15,6 +15,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.Compartilhado
             Db.ExecutarSql("DELETE FROM TBPESSOAJURIDICA;");
             Db.ExecutarSql("DELETE FROM TBPESSOAFISICA;");
             Db.ExecutarSql("DELETE FROM TBTAXA;");
+            Db.ExecutarSql("DELETE FROM TBVEICULOS;");
             Db.ExecutarSql("DELETE FROM TBPLANOCOBRANCA;");
             Db.ExecutarSql("DELETE FROM TBVEICULOS;");
             Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");

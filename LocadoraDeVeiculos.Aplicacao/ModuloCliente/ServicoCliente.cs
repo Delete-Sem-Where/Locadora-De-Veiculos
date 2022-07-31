@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
 {
     public class ServicoCliente
     {
-        private RepositorioClienteEmBancoDados repositorioCliente;
+        private IRepositorioCliente repositorioCliente;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoCliente(RepositorioClienteEmBancoDados repositorioCliente)
+        public ServicoCliente(IRepositorioCliente repositorioCliente, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioCliente = repositorioCliente;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<Cliente> Inserir(Cliente cliente)
@@ -41,6 +44,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Inserir(cliente);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Cliente {ClienteId} inserido com sucesso", cliente.Id);
 
@@ -77,6 +82,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             {
                 repositorioCliente.Editar(cliente);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Cliente {ClienteId} editado com sucesso", cliente.Id);
 
                 return Result.Ok(cliente);
@@ -99,6 +106,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             {
                 repositorioCliente.Excluir(cliente);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Cliente {ClienteId} excluído com sucesso", cliente.Id);
 
                 return Result.Ok();
@@ -106,6 +115,26 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
             catch (NaoPodeExcluirEsteRegistroException ex)
             {
                 string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
 
                 Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
 
@@ -168,11 +197,11 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
                 erros.Add(new Error("Nome duplicado"));
 
             if (cliente.TipoCliente == TipoCliente.PessoaJuridica)
-                if (CNPJDuplicado(cliente))
+                if (DocumentoDuplicado(cliente))
                 erros.Add(new Error("CNPJ duplicado"));
 
             if (cliente.TipoCliente == TipoCliente.PessoaFisica)
-                if (CPFDuplicado(cliente))
+                if (DocumentoDuplicado(cliente))
                     erros.Add(new Error("CPF duplicado"));
 
             if (erros.Any())
@@ -190,21 +219,12 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCliente
                    clienteEncontrado.Id != cliente.Id;
         }
 
-        private bool CNPJDuplicado(Cliente cliente)
+        private bool DocumentoDuplicado(Cliente cliente)
         {
-            var clienteEncontrado = repositorioCliente.SelecionarClientePorCNPJ(cliente.CNPJ);
+            var clienteEncontrado = repositorioCliente.SelecionarClientePorDocumento(cliente.Documento);
 
             return clienteEncontrado != null &&
-                   clienteEncontrado.CNPJ == cliente.CNPJ &&
-                   clienteEncontrado.Id != cliente.Id;
-        }
-
-        private bool CPFDuplicado(Cliente cliente)
-        {
-            var clienteEncontrado = repositorioCliente.SelecionarClientePorCPF(cliente.CPF);
-
-            return clienteEncontrado != null &&
-                   clienteEncontrado.CPF == cliente.CPF &&
+                   clienteEncontrado.Documento == cliente.Documento &&
                    clienteEncontrado.Id != cliente.Id;
         }
 

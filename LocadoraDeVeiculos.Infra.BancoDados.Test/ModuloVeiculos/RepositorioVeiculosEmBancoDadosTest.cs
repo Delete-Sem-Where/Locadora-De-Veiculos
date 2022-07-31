@@ -98,7 +98,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloVeiculos
                 TipoCombustivel = "Gasolina",
                 QuilometroPercorrido = "90000",
                 CapacidadeTanque = "17",
-                GrupoVeiculos_Id = grupoVeiculos_encontrado.Id,
+                GrupoVeiculos = grupoVeiculos_encontrado,
             };
 
             repositorioVeiculos.Inserir(v1);
@@ -113,7 +113,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloVeiculos
                 TipoCombustivel = "Gasolina",
                 QuilometroPercorrido = "90000",
                 CapacidadeTanque = "15",
-                GrupoVeiculos_Id = grupoVeiculos_encontrado.Id,
+                GrupoVeiculos = grupoVeiculos_encontrado,
             };
 
             repositorioVeiculos.Inserir(v2);
@@ -128,7 +128,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloVeiculos
                 TipoCombustivel = "Gasolina",
                 QuilometroPercorrido = "90000",
                 CapacidadeTanque = "16",
-                GrupoVeiculos_Id = grupoVeiculos_encontrado.Id,
+                GrupoVeiculos = grupoVeiculos_encontrado,
             };
 
             repositorioVeiculos.Inserir(v3);
@@ -160,7 +160,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloVeiculos
                 TipoCombustivel = "Gasolina",
                 QuilometroPercorrido = "90000",
                 CapacidadeTanque = "17",
-                GrupoVeiculos_Id = grupoVeiculos_encontrado.Id,
+                GrupoVeiculos = grupoVeiculos_encontrado,
             };
         }
 

@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculos
                 .NotNull().NotEmpty()
                 .MaximumLength(8);
 
-            RuleFor(x => x.GrupoVeiculos_Id)
+            RuleFor(x => x.GrupoVeiculos)
                     .NotNull().NotEmpty();
         }
     }

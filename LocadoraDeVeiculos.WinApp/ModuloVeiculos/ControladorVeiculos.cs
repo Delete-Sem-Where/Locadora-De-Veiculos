@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Aplicacao.ModuloVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloGruposVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -13,15 +15,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
     {
         private TabelaVeiculosControl tabelaVeiculos;
         private readonly ServicoVeiculos servicoVeiculos;
+        private ServicoGrupoVeiculos servicoGrupoVeiculos;
 
-        public ControladorVeiculos(ServicoVeiculos servicoVeiculos)
+        public ControladorVeiculos(ServicoVeiculos servicoVeiculos, ServicoGrupoVeiculos servicoGrupoVeiculos)
         {
             this.servicoVeiculos = servicoVeiculos;
+            this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+
         }
 
         public override void Inserir()
         {
-            TelaCadastroVeiculosForm tela = new TelaCadastroVeiculosForm();
+            TelaCadastroVeiculosForm tela = new TelaCadastroVeiculosForm(ObterGrupoVeiculos());
+
             tela.Veiculos = new Veiculos();
 
             tela.GravarRegistro = servicoVeiculos.Inserir;
@@ -54,9 +60,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             var veiculoSelecionado = resultado.Value;
 
-            TelaCadastroVeiculosForm tela = new TelaCadastroVeiculosForm();
+            TelaCadastroVeiculosForm tela = new TelaCadastroVeiculosForm(ObterGrupoVeiculos());
 
-            tela.Veiculos = veiculoSelecionado.Clonar();
+            tela.Veiculos = veiculoSelecionado;
 
             tela.GravarRegistro = servicoVeiculos.Editar;
 
@@ -131,6 +137,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
                 MessageBox.Show(resultado.Errors[0].Message, "Listagem de Veículo",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             
+        }
+        private List<GrupoVeiculos> ObterGrupoVeiculos()
+        {
+            var resultado = servicoGrupoVeiculos.SelecionarTodos();
+            List<GrupoVeiculos> lista = new List<GrupoVeiculos>();
+            if (resultado.IsSuccess)
+                lista = resultado.Value;
+            return lista;
         }
     }
 }

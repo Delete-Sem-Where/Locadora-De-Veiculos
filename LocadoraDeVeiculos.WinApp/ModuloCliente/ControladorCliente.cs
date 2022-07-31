@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             TelaCadastroClientesForm tela = new TelaCadastroClientesForm();
 
-            tela.Cliente = clienteSelecionado.Clonar();
+            tela.Cliente = clienteSelecionado;
 
             tela.GravarRegistro = servicoCliente.Editar;
 

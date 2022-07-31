@@ -98,7 +98,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 CPF = "123.123.123-11",
                 CNH = "12345678912",
                 ValidadeCNH = DateTime.Now,
-                Cliente_Id = cliente_encontrado.Id,
+                //Cliente_Id = cliente_encontrado.Id,
             };
 
             repositorioCondutor.Inserir(c1);
@@ -112,7 +112,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 CPF = "123.123.123-12",
                 CNH = "12345678912",
                 ValidadeCNH = DateTime.Now,
-                Cliente_Id = cliente_encontrado.Id,
+                //Cliente_Id = cliente_encontrado.Id,
             };
 
             repositorioCondutor.Inserir(c2);
@@ -126,7 +126,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 CPF = "123.123.123-13",
                 CNH = "12345678912",
                 ValidadeCNH = DateTime.Now,
-                Cliente_Id = cliente_encontrado.Id,
+                //Cliente_Id = cliente_encontrado.Id,
             };
 
             repositorioCondutor.Inserir(c3);
@@ -157,7 +157,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 CPF = "123.123.123-12",
                 CNH = "12345678912",
                 ValidadeCNH = DateTime.Now,
-                Cliente_Id = cliente_encontrado.Id,
+                //Cliente_Id = cliente_encontrado.Id,
             };
         }
 
@@ -169,8 +169,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Test.ModuloCondutor
                 Email = "email@gmail.com",
                 Telefone = "(13)1656-1235",
                 Endereco = "endereco",
-                CPF = "123.123.123-12",
-                CNPJ = null,
+                Documento = "123.123.123-12",
                 TipoCliente = TipoCliente.PessoaFisica,
             };
         }

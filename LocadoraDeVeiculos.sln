@@ -31,7 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Aplicacao", "2 - Aplica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Aplicacao", "LocadoraDeVeiculos.Aplicacao\LocadoraDeVeiculos.Aplicacao.csproj", "{6E020944-C04B-49E3-B5EB-C4129CFA1DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Logging", "LocadoraDeVeiculos.Infra.Logging\LocadoraDeVeiculos.Infra.Logging.csproj", "{E0FE4276-D724-43D9-885F-D1EEE8B259BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Logging", "LocadoraDeVeiculos.Infra.Logging\LocadoraDeVeiculos.Infra.Logging.csproj", "{E0FE4276-D724-43D9-885F-D1EEE8B259BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Orm", "LocadoraDeVeiculos.Infra.Orm\LocadoraDeVeiculos.Infra.Orm.csproj", "{83DCA386-0808-4FBE-B80B-4BFE576CCC10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{E0FE4276-D724-43D9-885F-D1EEE8B259BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0FE4276-D724-43D9-885F-D1EEE8B259BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0FE4276-D724-43D9-885F-D1EEE8B259BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DCA386-0808-4FBE-B80B-4BFE576CCC10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DCA386-0808-4FBE-B80B-4BFE576CCC10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DCA386-0808-4FBE-B80B-4BFE576CCC10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DCA386-0808-4FBE-B80B-4BFE576CCC10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{26CE20A4-ADF7-4C3B-B42C-68E6E3BCFB57} = {3CE3989F-35F2-4859-8EE6-62DED5105F03}
 		{6E020944-C04B-49E3-B5EB-C4129CFA1DBA} = {D024DF0A-E5AC-48A8-B17C-999F966AF429}
 		{E0FE4276-D724-43D9-885F-D1EEE8B259BB} = {3CE3989F-35F2-4859-8EE6-62DED5105F03}
+		{83DCA386-0808-4FBE-B80B-4BFE576CCC10} = {3CE3989F-35F2-4859-8EE6-62DED5105F03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {884FD2D4-6309-4072-B46A-2924D72AAF8C}

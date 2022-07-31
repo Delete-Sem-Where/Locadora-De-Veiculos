@@ -69,12 +69,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         private void btnGravar_Click(object sender, EventArgs e)
         {
             cliente.Nome = txtNome.Text;
-            cliente.CPF = txtCPF.Text;
-            cliente.CNPJ = txtCNPJ.Text;
             cliente.Email = txtEmail.Text;
             cliente.Telefone = txtTelefone.Text;
             cliente.Endereco = txtEndereco.Text;
             cliente.TipoCliente = ObterTipoCliente();
+
+            if (cliente.TipoCliente == TipoCliente.PessoaFisica)
+                cliente.Documento = txtCPF.Text;
+            else
+                cliente.Documento = txtCNPJ.Text;
 
             var resultadoValidacao = GravarRegistro(cliente);
 
@@ -102,8 +105,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             txtNome.Text = cliente.Nome;
             txtEmail.Text = cliente.Email;
             txtTelefone.Text = cliente.Telefone;
-            txtCPF.Text = cliente.CPF;
-            txtCNPJ.Text = cliente.CNPJ;
             txtEndereco.Text = cliente.Endereco;
             PreencherTipoCliente();
         }
@@ -115,14 +116,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 radioButtonPessoaFisica.Checked = true;
                 DesabilitarPessoaJuridica();
                 HabilitarPessoaFisica();
-                txtCPF.Text = cliente.CPF;
+                txtCPF.Text = cliente.Documento;
             }
             else if (cliente.TipoCliente == TipoCliente.PessoaJuridica)
             {
                 radioButtonPessoaJuridica.Checked = true;
                 DesabilitarPessoaFisica();
                 HabilitarPessoaJuridica();
-                txtCNPJ.Text = cliente.CNPJ;
+                txtCNPJ.Text = cliente.Documento;
             }
         }
 

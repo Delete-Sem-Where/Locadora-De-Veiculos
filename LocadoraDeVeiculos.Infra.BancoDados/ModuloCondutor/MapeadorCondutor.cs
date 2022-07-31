@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -21,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
             comando.Parameters.AddWithValue("CPF", registro.CPF);
             comando.Parameters.AddWithValue("CNH", registro.CNH);
             comando.Parameters.AddWithValue("VALIDADECNH", registro.ValidadeCNH);
-            comando.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente_Id);
+            comando.Parameters.AddWithValue("CLIENTEID", registro.Cliente.Id);
         }
 
         public override Condutor ConverterRegistro(SqlDataReader leitorRegistro)
@@ -34,7 +36,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
             string cpf = Convert.ToString(leitorRegistro["CONDUTOR_CPF"]);
             string cnh = Convert.ToString(leitorRegistro["CONDUTOR_CNH"]);
             DateTime validade_cnh = Convert.ToDateTime(leitorRegistro["CONDUTOR_VALIDADECNH"]);
-            Guid cliente_id = Guid.Parse(leitorRegistro["CONDUTOR_CLIENTE_ID"].ToString());
+            var cliente = new MapeadorCliente().ConverterRegistro(leitorRegistro);
 
             return new Condutor()
             {
@@ -46,7 +48,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCondutor
                 CPF = cpf,
                 CNH = cnh,
                 ValidadeCNH = validade_cnh,
-                Cliente_Id = cliente_id,
+                Cliente = cliente,
             };
         }
     }

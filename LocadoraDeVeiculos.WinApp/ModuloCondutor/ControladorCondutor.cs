@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
+﻿using LocadoraDeVeiculos.Aplicacao.ModuloCliente;
+using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -13,15 +15,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
     {
         private TabelaCondutorControl tabelaCondutor;
         private readonly ServicoCondutor servicoCondutor;
+        private readonly ServicoCliente servicoCliente;
 
-        public ControladorCondutor(ServicoCondutor servicoCondutor)
+        public ControladorCondutor(ServicoCondutor servicoCondutor, ServicoCliente servicoCliente)
         {
             this.servicoCondutor = servicoCondutor;
+            this.servicoCliente = servicoCliente;
         }
 
         public override void Inserir()
         {
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm();
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(ObterClientes());
             tela.Condutor = new Condutor();
 
             tela.GravarRegistro = servicoCondutor.Inserir;
@@ -55,9 +59,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             var condutorSelecionado = resultado.Value;
 
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm();
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(ObterClientes());
 
-            tela.Condutor = condutorSelecionado.Clonar();
+            tela.Condutor = condutorSelecionado;
 
             tela.GravarRegistro = servicoCondutor.Editar;
 
@@ -132,6 +136,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 MessageBox.Show(resultado.Errors[0].Message, "Listagem de Condutor",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private List<Cliente> ObterClientes()
+        {
+            var resultado = servicoCliente.SelecionarTodos();
+            List<Cliente> lista = new List<Cliente>();
+            if (resultado.IsSuccess)
+                lista = resultado.Value;
+            return lista;
         }
     }
 }

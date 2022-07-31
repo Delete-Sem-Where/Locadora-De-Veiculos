@@ -1,6 +1,8 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,12 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
     public class ServicoCondutor
     {
         private IRepositorioCondutor repositorioCondutor;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoCondutor(IRepositorioCondutor repositorioCondutor)
+        public ServicoCondutor(IRepositorioCondutor repositorioCondutor, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioCondutor = repositorioCondutor;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<Condutor> Inserir(Condutor condutor)
@@ -39,6 +43,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Inserir(condutor);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Condutor {CondutorId} inserido com sucesso", condutor.Id);
 
@@ -75,6 +81,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
             {
                 repositorioCondutor.Editar(condutor);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Condutor {CondutorId} editado com sucesso", condutor.Id);
 
                 return Result.Ok(condutor);
@@ -97,9 +105,31 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloCondutor
             {
                 repositorioCondutor.Excluir(condutor);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Condutor {CondutorId} excluído com sucesso", condutor.Id);
 
                 return Result.Ok();
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"O condutor {condutor.Nome} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", condutor.Id);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"O condutor {condutor.Nome} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{CondutorId}", condutor.Id);
+
+                return Result.Fail(msgErro);
             }
             catch (Exception ex)
             {

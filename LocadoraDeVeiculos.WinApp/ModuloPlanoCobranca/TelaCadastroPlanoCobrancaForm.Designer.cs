@@ -237,7 +237,6 @@
             // 
             // txtLimiteKm_tab3
             // 
-            this.txtLimiteKm_tab3.DecimalPlaces = 2;
             this.txtLimiteKm_tab3.Location = new System.Drawing.Point(23, 153);
             this.txtLimiteKm_tab3.Maximum = new decimal(new int[] {
             999999999,
