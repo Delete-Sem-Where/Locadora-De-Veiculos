@@ -127,6 +127,11 @@ namespace LocadoraDeVeiculos.WinApp
             controlador.Excluir();
         }
 
+        private void btnGerarPdf_Click(object sender, EventArgs e)
+        {
+            controlador.GerarPdfLocacao();
+        }
+
         private void btnDevolucao_Click_1(object sender, EventArgs e)
         {
             controlador.RegistrarDevolucao();
@@ -184,8 +189,6 @@ namespace LocadoraDeVeiculos.WinApp
             listagemControl.Dock = DockStyle.Fill;
 
             panelRegistros.Controls.Add(listagemControl);
-        }
-
-       
+        }        
     }
 }

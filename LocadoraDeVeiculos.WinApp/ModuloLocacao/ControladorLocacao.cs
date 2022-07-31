@@ -18,6 +18,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Diagnostics;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
@@ -280,6 +283,112 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 CarregarLocacaoes();
         }
 
+        #endregion
+
+        #region GERADOR DE PDF DA LOCAÇÂO
+        public override void GerarPdfLocacao()
+        {
+            var id = tabelaLocacao.ObtemNumeroLocacaoSelecionada();
+
+            if (id == Guid.Empty)
+            {
+                MessageBox.Show("Selecione um Locacao primeiro",
+                "Edição de Locacaoes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var resultado = servicoLocacao.SelecionarPorId(id);
+
+            if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Edição de Locacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var locacaoSelecionada = resultado.Value;
+
+            string diretorio = @"C:\PDF-LOCAÇÕES\";
+
+            if (!System.IO.Directory.Exists(diretorio))
+                System.IO.Directory.CreateDirectory(diretorio);
+
+            var tituloTexto = $"Locação de - {locacaoSelecionada.Condutor}";
+
+            Document doc = new Document(PageSize.A4);
+            doc.SetMargins(20, 20, 20, 50);
+
+            string caminhoEArquivo = diretorio + locacaoSelecionada.Condutor.Nome + ".pdf";
+
+            if (File.Exists(caminhoEArquivo) == true)
+                File.Delete(caminhoEArquivo);
+
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(caminhoEArquivo, FileMode.Create));
+
+            doc.Open();
+
+
+            Paragraph titulo = new Paragraph();
+            titulo.Font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 18);
+            titulo.Alignment = Element.ALIGN_CENTER;
+            titulo.Add($"{tituloTexto}\n\n");
+            doc.Add(titulo);
+
+            Paragraph paragrafo = new Paragraph("", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 12));
+            string conteudo = $"\nID.......................: {locacaoSelecionada.Id}\n" +
+                               $"Condutor.................: {locacaoSelecionada.Condutor}\n" +
+                               $"Veículo..................: {locacaoSelecionada.Veiculo}\n" +
+                               $"Grupo....................: {locacaoSelecionada.GrupoVeiculos}\n" +
+                               $"Kms Rodados:.............: {locacaoSelecionada.Veiculo.QuilometroPercorrido}\n" +
+                               $"Plano....................: {locacaoSelecionada.PlanoCobranca}\n" +
+                               $"Data de Locação..........: {locacaoSelecionada.DataLocacao}\n" +
+                               $"Data Devolutiva Prevista.: {locacaoSelecionada.DataDevolucaoPrevista}\n" +
+                               $"Valor Previsto:..........: {locacaoSelecionada.ValorTotalPrevisto:c}\n\n\n\n\n";
+            paragrafo.Add(conteudo);
+            doc.Add(paragrafo);
+
+            PdfPTable table1 = new PdfPTable(1);
+            table1.AddCell($"\nID interno:\n {locacaoSelecionada.Id}\n\t");
+            PdfPTable tableCondutor = new PdfPTable(1);
+            table1.AddCell($"\nCondutor: \n{locacaoSelecionada.Condutor}\n\t");
+
+            PdfPTable tableVeiculo = new PdfPTable(1);
+            tableVeiculo.AddCell($"Veículo: \n{locacaoSelecionada.Veiculo}\t");
+
+            PdfPTable table2 = new PdfPTable(2);
+            table2.AddCell($"Grupo: \n{locacaoSelecionada.GrupoVeiculos}\t");
+            table2.AddCell($"Kms Rodados: \n{locacaoSelecionada.Veiculo.QuilometroPercorrido}\t");
+
+            PdfPTable table3 = new PdfPTable(2);
+            table3.AddCell($"Plano:  {locacaoSelecionada.PlanoCobranca}\t");
+            table3.AddCell($"Valor Previsto:  {locacaoSelecionada.ValorTotalPrevisto:c}\t");
+
+            PdfPTable table4 = new PdfPTable(1);
+            table4.AddCell($"Data de locação: {locacaoSelecionada.DataLocacao}\t");
+
+            PdfPTable tableDevolutiva = new PdfPTable(1);
+            tableDevolutiva.AddCell($"Data Devolutiva Prevista: {locacaoSelecionada.DataDevolucaoPrevista}\t");
+
+            doc.Add(table1);
+            doc.Add(table2);
+            doc.Add(table3);
+            doc.Add(table4);
+            doc.Add(tableCondutor);
+            doc.Add(tableDevolutiva);
+            doc.Add(tableVeiculo);
+
+            doc.Close();
+
+            // ABRE O Diretório do PDF AUTOMATICAMENTE, ASSIM QUE CRIADO; 
+
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(diretorio)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+            /**/
+        }
         #endregion
     }
 }

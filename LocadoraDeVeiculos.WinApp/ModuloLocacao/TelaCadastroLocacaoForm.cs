@@ -7,6 +7,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxas;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 
+
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
     public partial class TelaCadastroLocacaoForm : Form
@@ -426,6 +427,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 datePickerDataLocacao.MinDate = locacao.DataLocacao;
                 datePickerDataLocacao.Enabled = false;
             }
-        }
+        }        
     }
 }

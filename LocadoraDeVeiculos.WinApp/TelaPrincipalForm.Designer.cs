@@ -43,9 +43,10 @@
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDevolucao = new System.Windows.Forms.ToolStripButton();
+            this.btnGerarPdf = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -162,9 +163,10 @@
             this.toolbox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnInserir,
             this.btnEditar,
-            this.toolStripButton2,
+            this.btnExcluir,
             this.toolStripSeparator2,
             this.btnDevolucao,
+            this.btnGerarPdf,
             this.toolStripSeparator4,
             this.labelTipoCadastro});
             this.toolbox.Location = new System.Drawing.Point(0, 25);
@@ -197,17 +199,17 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // toolStripButton2
+            // btnExcluir
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.outline_delete_black_24dp;
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.toolStripButton2.Size = new System.Drawing.Size(38, 38);
-            this.toolStripButton2.Text = "Excluir";
-            this.toolStripButton2.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExcluir.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.outline_delete_black_24dp;
+            this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Padding = new System.Windows.Forms.Padding(5);
+            this.btnExcluir.Size = new System.Drawing.Size(38, 38);
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // toolStripSeparator2
             // 
@@ -225,6 +227,19 @@
             this.btnDevolucao.Size = new System.Drawing.Size(38, 38);
             this.btnDevolucao.Text = "Devolucao";
             this.btnDevolucao.Click += new System.EventHandler(this.btnDevolucao_Click_1);
+            // 
+            // btnGerarPdf
+            // 
+            this.btnGerarPdf.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnGerarPdf.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.picture_as_pdf_FILL0_wght400_GRAD0_opsz24;
+            this.btnGerarPdf.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGerarPdf.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGerarPdf.Name = "btnGerarPdf";
+            this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
+            this.btnGerarPdf.Size = new System.Drawing.Size(38, 38);
+            this.btnGerarPdf.Text = "GerarPdf";
+            this.btnGerarPdf.ToolTipText = "Gerar Pdf";
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // toolStripSeparator4
             // 
@@ -316,6 +331,7 @@
         private ToolStripMenuItem veículosToolStripMenuItem;
         private ToolStripMenuItem locaçãoToolStripMenuItem;
         private ToolStripButton btnDevolucao;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton btnGerarPdf;
+        private ToolStripButton btnExcluir;
     }
 }
