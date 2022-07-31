@@ -178,14 +178,28 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Property<Guid>("CondutorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("DataDevolucao")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("date")
+                        .HasDefaultValue(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
                     b.Property<DateTime>("DataDevolucaoPrevista")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("DataLocacao")
                         .HasColumnType("date");
 
+                    b.Property<bool>("EstaAlugado")
+                        .HasColumnType("bit");
+
                     b.Property<Guid>("GrupoVeiculosId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("NivelTanqueDevolucao")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(4)
+                        .HasColumnName("NivelTanqueDevolucao");
 
                     b.Property<Guid>("PlanoCobrancaId")
                         .HasColumnType("uniqueidentifier");
