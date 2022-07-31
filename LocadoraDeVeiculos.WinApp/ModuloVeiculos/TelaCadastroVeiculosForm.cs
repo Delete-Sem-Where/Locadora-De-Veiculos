@@ -8,6 +8,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 {
     public partial class TelaCadastroVeiculosForm : Form
     {
+        private string caminhoImagem = "";
+
         public TelaCadastroVeiculosForm(List<GrupoVeiculos> grupos)
         {
             InitializeComponent();
@@ -47,6 +49,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
                 txtCapacidadeTanque.Text = veiculos.CapacidadeTanque;
                 txtTipoCombustivel.Text = veiculos.TipoCombustivel;
 
+                if(veiculos.Imagem != null)
+                {
+                    using (var imagem = new MemoryStream(veiculos.Imagem))
+                    {
+                        picBoxImagem.Image = Image.FromStream(imagem);
+                    }
+                }
+
+                if(veiculos.GrupoVeiculos != null)
+                {
+                    for (int i = 0; i < cmbGrupoVeiculos.Items.Count; i++)
+                    {
+                        if (veiculos.GrupoVeiculos == (GrupoVeiculos)cmbGrupoVeiculos.Items[i])
+                        {
+                            cmbGrupoVeiculos.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -73,11 +94,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
 
             if (cmbGrupoVeiculos.SelectedItem == null)
             {
-                string erro = "Não pode inserir um veículo sem selecionar seu grupo veicular";
+                string erro = "Não pode inserir um veículo sem selecionar seu grupo de veículos";
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);
                 DialogResult = DialogResult.None;
                 return;
             }
+
+            if (caminhoImagem != string.Empty)
+                veiculos.Imagem = ReceberFoto(caminhoImagem);
 
             var grupoVeiculos_Selecionado = (GrupoVeiculos)cmbGrupoVeiculos.SelectedItem;
             veiculos.GrupoVeiculos = grupoVeiculos_Selecionado;
@@ -100,6 +124,37 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculos
                     DialogResult = DialogResult.None;
                 }
             }
+        }
+
+        private void btnSelecionarFoto_Click(object sender, EventArgs e)
+        {
+            var abrirArquivo = new OpenFileDialog();
+            abrirArquivo.Filter = "|*.jpg; *.jpeg; *.png;";
+            abrirArquivo.Multiselect = false;
+
+            if (abrirArquivo.ShowDialog() == DialogResult.OK)
+            {
+                caminhoImagem = abrirArquivo.FileName;
+            }
+
+            if (caminhoImagem != "")
+            {
+                picBoxImagem.Load(caminhoImagem);
+            }
+        }
+
+        private byte[] ReceberFoto(string caminhoImagem)
+        {
+            byte[] imagem;
+            using (var fileStream = new FileStream(caminhoImagem, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = new BinaryReader(fileStream))
+                {
+                    imagem = reader.ReadBytes((int)fileStream.Length);
+                }
+            }
+
+            return imagem;
         }
     }
 }
