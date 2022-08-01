@@ -1,4 +1,6 @@
 using LocadoraDeVeiculos.Infra.Logging;
+using LocadoraDeVeiculos.Infra.Orm.Compartilhado;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -10,9 +12,15 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
+            MigradorBancoDadosLocadoraDeVeiculos.AtualizarBancoDados();
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             ApplicationConfiguration.Initialize();
-            Application.Run(new TelaPrincipalForm());
+
+            var serviceLocatorAutofac = new ServiceLocatorAutofac();
+            var serviceLocatorManual = new ServiceLocatorManual();
+
+            //Application.Run(new TelaPrincipalForm(serviceLocatorAutofac));
+            Application.Run(new TelaPrincipalForm(serviceLocatorManual));
         }
     }
 }

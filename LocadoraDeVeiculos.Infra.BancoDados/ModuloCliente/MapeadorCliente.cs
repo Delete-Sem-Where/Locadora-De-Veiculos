@@ -19,11 +19,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
             comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
             comando.Parameters.AddWithValue("ENDERECO", registro.Endereco);
             comando.Parameters.AddWithValue("TIPO_CLIENTE", registro.TipoCliente);
-
-            if (registro.TipoCliente == TipoCliente.PessoaJuridica)
-                comando.Parameters.AddWithValue("DOCUMENTO", registro.CNPJ);
-            else
-                comando.Parameters.AddWithValue("DOCUMENTO", registro.CPF);
+            comando.Parameters.AddWithValue("DOCUMENTO", registro.Documento);
         }
 
         public override Cliente ConverterRegistro(SqlDataReader leitorRegistro)
@@ -55,12 +51,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
             if (tipo == 0)
             {
                 cliente.TipoCliente = TipoCliente.PessoaFisica;
-                cliente.CPF = documento;
+                cliente.Documento = documento;
             }
             else if (tipo == 1)
             {
                 cliente.TipoCliente = TipoCliente.PessoaJuridica;
-                cliente.CNPJ = documento;
+                cliente.Documento = documento;
             }
         }
 

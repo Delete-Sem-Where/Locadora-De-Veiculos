@@ -2,16 +2,20 @@
 using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using Serilog;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
 {
     public class ServicoVeiculos
     {
         private IRepositorioVeiculos repositorioVeiculos;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoVeiculos(IRepositorioVeiculos repositorioVeiculos)
+        public ServicoVeiculos(IRepositorioVeiculos repositorioVeiculos, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioVeiculos = repositorioVeiculos;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<Veiculos> Inserir(Veiculos veiculo)
@@ -33,6 +37,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
             try
             {
                 repositorioVeiculos.Inserir(veiculo);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Veículo {VeiculoId} inserido com sucesso", veiculo.Id);
 
@@ -70,6 +76,8 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
             {
                 repositorioVeiculos.Editar(veiculo);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Veículo {VeiculoId} editado com sucesso", veiculo.Id);
 
                 return Result.Ok(veiculo);
@@ -93,8 +101,30 @@ namespace LocadoraDeVeiculos.Aplicacao.ModuloVeiculos
             {
                 repositorioVeiculos.Excluir(veiculos);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Veículo {VeiculosId} excluído com sucesso", veiculos.Id);
                 return Result.Ok();
+            }
+            catch (DbUpdateException ex)
+            {
+                string msgErro = $"O veículo {veiculos.Modelo} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{VeiculoId}", veiculos.Modelo);
+
+                return Result.Fail(msgErro);
+            }
+            catch (InvalidOperationException ex)
+            {
+                string msgErro = $"O veículo {veiculos.Modelo} está relacionado com outro registro e não pode ser excluído";
+
+                contextoPersistencia.RollBack();
+
+                Log.Logger.Error(ex, msgErro + "{VeiculoId}", veiculos.Modelo);
+
+                return Result.Fail(msgErro);
             }
             catch (Exception ex)
             {

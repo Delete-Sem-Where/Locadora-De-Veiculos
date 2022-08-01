@@ -83,6 +83,16 @@ namespace LocadoraDeVeiculos.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap no_crash_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("no_crash_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap outline_add_circle_outline_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("outline_add_circle_outline_black_24dp", resourceCulture);
@@ -156,6 +166,16 @@ namespace LocadoraDeVeiculos.WinApp.Properties {
         internal static System.Drawing.Bitmap payments_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("payments_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap picture_as_pdf_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("picture_as_pdf_FILL0_wght400_GRAD0_opsz24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Infra.BancoDados.ModuloGruposVeiculos;
 using System.Data.SqlClient;
 
 
@@ -7,6 +8,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
 {
     public class MapeadorVeiculos : MapeadorBase<Veiculos>
     {
+        RepositorioGrupoVeiculosEmBancoDados repositorioGrupo = new RepositorioGrupoVeiculosEmBancoDados();
         public override void ConfigurarParametros(Veiculos novoVeiculo, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", novoVeiculo.Id);
@@ -18,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
             comando.Parameters.AddWithValue("QUILOMETRO_PERCORRIDO", novoVeiculo.QuilometroPercorrido);
             comando.Parameters.AddWithValue("CAPACIDADE_TANQUE", novoVeiculo.CapacidadeTanque);
             comando.Parameters.AddWithValue("TIPO_COMBUSTIVEL", novoVeiculo.TipoCombustivel);
-            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", novoVeiculo.GrupoVeiculos_Id);
+            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", novoVeiculo.GrupoVeiculos);
         }
         public override Veiculos ConverterRegistro(SqlDataReader leitorRegistro)
         {
@@ -44,7 +46,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloVeiculos
                 QuilometroPercorrido = quilometroPercorrido,
                 CapacidadeTanque = capacidadeTanque,
                 TipoCombustivel = tipoCombustivel,
-                GrupoVeiculos_Id = grupoVeiculos_Id
+                GrupoVeiculos = repositorioGrupo.SelecionarPorId(grupoVeiculos_Id)
+
             };            
         }
     }

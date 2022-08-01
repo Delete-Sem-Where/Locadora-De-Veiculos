@@ -105,14 +105,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.ModuloCliente
             WHERE
                 [DOCUMENTO] = @DOCUMENTO";
 
-        public Cliente SelecionarClientePorCNPJ(string cnpj)
+        public Cliente SelecionarClientePorDocumento(string documento)
         {
-            return SelecionarPorParametro(sqlSelecionarPorDocumento, new SqlParameter("DOCUMENTO", cnpj));
-        }
-
-        public Cliente SelecionarClientePorCPF(string cpf)
-        {
-            return SelecionarPorParametro(sqlSelecionarPorDocumento, new SqlParameter("DOCUMENTO", cpf));
+            return SelecionarPorParametro(sqlSelecionarPorDocumento, new SqlParameter("DOCUMENTO", documento));
         }
 
         public Cliente SelecionarClientePorNome(string nome)
