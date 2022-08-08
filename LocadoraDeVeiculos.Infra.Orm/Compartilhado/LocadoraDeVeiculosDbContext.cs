@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using Configs;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
@@ -15,9 +16,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.Compartilhado
     {
         private string connectionString;
 
-        public LocadoraDeVeiculosDbContext(string connectionString)
+        public LocadoraDeVeiculosDbContext(ConnectionStrings connectionString)
         {
-            this.connectionString = connectionString;
+            this.connectionString = connectionString.SqlServer;
         }
 
         public void GravarDados()

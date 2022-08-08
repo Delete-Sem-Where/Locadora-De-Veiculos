@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Aplicacao.ModuloCliente;
+﻿using Configs;
+using LocadoraDeVeiculos.Aplicacao.ModuloCliente;
 using LocadoraDeVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Aplicacao.ModuloGrupoVeiculos;
@@ -54,14 +55,9 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
         private void ConfigurarControladores()
         {
-            var configuracao = new ConfigurationBuilder()
-                 .SetBasePath(Directory.GetCurrentDirectory())
-                 .AddJsonFile("ConfiguracaoAplicacao.json")
-                 .Build();
+            var configuracaoAplicacao = new ConfiguracaoAplicacao();
 
-            var connectionString = configuracao.GetConnectionString("SqlServer");
-
-            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
+            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(configuracaoAplicacao.ConnectionStrings);
 
             var repositorioFuncionario = new RepositorioFuncionarioOrm(contextoDadosOrm);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, contextoDadosOrm);

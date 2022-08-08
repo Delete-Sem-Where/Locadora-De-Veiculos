@@ -1,9 +1,11 @@
 {
   "ConfiguracaoLogs": {
-    "DiretorioSaida": "C:\\logs"
+    "DiretorioSaida": "D:\\logs"
   },
-
   "ConnectionStrings": {
-    "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=LocadoraDeVeiculosDbOrm;Integrated Security=True"
+    "SqlServer": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=DbLocadoraDeVeiculosOrm;Integrated Security=True;Pooling=False"
+  },
+  "ConfiguracaoPrecoGasolina": {
+    "PrecoGasolina": "5.00"
   }
 }
